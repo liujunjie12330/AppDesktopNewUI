@@ -1,0 +1,24 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="26dp"
+    android:height="26dp"
+    android:viewportWidth="26"
+    android:viewportHeight="26">
+
+  <path
+      android:name="outer_circle"
+      android:pathData="M13,2A11,11 0 1,0 13,24A11,11 0 1,0 13,2Z"
+      android:strokeWidth="1.8"
+      android:strokeColor="#FFFFFFFF"
+      android:fillColor="@android:color/transparent" />
+
+  <path
+      android:name="helmet_bottom"
+      android:fillColor="#FFFFFFFF"
+      android:pathData="M18.3539,22.2787L16.188,15.7811L16.947,15.5281L16.188,15.7811Q16.1449,15.6518 16.0343,15.5721Q15.9238,15.4924 15.7875,15.4924L10.216,15.4924L10.216,14.6924Q10.0797,15.4924 9.96912,15.5721Q9.85854,15.6518 9.81544,15.7811L9.05649,15.5281L7.64957,22.2787L6.13168,21.7727L8.29755,15.2751Q8.50399,14.6558 9.03358,14.2741Q9.56318,13.8924 10.216,13.8924L15.7875,13.8924Q16.4403,13.8924 16.9699,14.2741Q17.4995,14.6558 17.7059,15.2751L19.8718,21.7727L18.3539,22.2787Z" />
+
+  <path
+      android:name="helmet_top"
+      android:fillColor="#FFFFFFFF"
+      android:fillType="evenOdd"
+      android:pathData="M13.8188,8.25671L13.4588,7.3221C13.298,6.90455 12.7072,6.90455 12.5464,7.3221L12.1864,8.25671L12.1453,8.36337L9.82483,14.3877L16.1804,14.3877L15.5641,12.7877L13.8188,8.25671ZM13.0026,10.589L13.8495,12.7877L12.1557,12.7877L13.0026,10.589Z" />
+</vector>

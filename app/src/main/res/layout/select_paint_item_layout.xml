@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="20dp"
+    android:gravity="bottom"
+    android:layout_gravity="bottom"
+    android:layout_height="100dp">
+<ImageView
+    android:id="@+id/paint"
+    android:layout_width="20dp"
+    android:layout_height="80dp"
+    android:src="@drawable/paint_brush_selected_one_arrow_head"/>
+</LinearLayout>

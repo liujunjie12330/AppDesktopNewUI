@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/tint">
+        <bitmap
+            android:src="@drawable/paint_shape_5_tint"
+            android:tint="@color/black"/>
+    </item>
+
+    <item>
+        <bitmap android:src="@drawable/paint_shape_shell" />
+    </item>
+
+</layer-list>

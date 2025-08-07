@@ -1,0 +1,7 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 选中时使用背景图 -->
+    <item android:state_selected="true" android:drawable="@drawable/image_sidebar_item_bg" />
+
+    <!-- 默认透明背景 -->
+    <item android:drawable="@android:color/transparent" />
+</selector>
