@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.liujunjie.appdesktopnewui.adapter.PaintSelectAdapter
+import com.liujunjie.appdesktopnewui.adapter.PaintSelectEvent
 import com.liujunjie.appdesktopnewui.databinding.PaintSelectPopWindowLayoutBinding
 import com.liujunjie.appdesktopnewui.popwindow.BasePopupWindow
 import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
@@ -20,11 +21,25 @@ class PaintSelectPopWindow(
     }
     private val binding = PaintSelectPopWindowLayoutBinding.inflate(LayoutInflater.from(context))
 
-    private val adapter = PaintSelectAdapter(
-        selectPaint = { item -> Log.d("PaintSelectPopWindow", "selectPaint: ${item.type}") },
-        eraserSetting = { item -> Log.d("PaintSelectPopWindow", "selectPaint: ${item.type}") },
-        smartLineSetting ={ item -> Log.d("PaintSelectPopWindow", "selectPaint: ${item.type}") },
-        commonLineSetting = { item -> Log.d("PaintSelectPopWindow", "selectPaint: ${item.type}") }
+    private val adapter = PaintSelectAdapter( object : PaintSelectEvent {
+        override fun onItemClickOnce(item: PaintItem) {
+
+        }
+
+        override fun eraserSetting(item: PaintItem) {
+            TODO("Not yet implemented")
+        }
+
+        override fun smartLineSetting(item: PaintItem) {
+            TODO("Not yet implemented")
+        }
+
+        override fun commonLineSetting(item: PaintItem) {
+            TODO("Not yet implemented")
+        }
+
+
+    }
     )
 
     init {

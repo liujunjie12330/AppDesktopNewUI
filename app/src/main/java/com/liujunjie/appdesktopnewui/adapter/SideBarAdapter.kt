@@ -1,15 +1,13 @@
 package com.liujunjie.appdesktopnewui.adapter
 
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.liujunjie.appdesktopnewui.uimodel.SideBarItem
 import com.liujunjie.appdesktopnewui.databinding.NewUiSidebarItemBinding
-import com.liujunjie.appdesktopnewui.uimodel.SideBarItems
+import com.liujunjie.appdesktopnewui.uimodel.SideBarItem
 
 class SideBarAdapter(
     private val sideBarEvent: SideBarEvent

@@ -12,8 +12,10 @@ import com.liujunjie.appdesktopnewui.adapter.SideBarEvent
 import com.liujunjie.appdesktopnewui.databinding.ActivityMainUiLayoutBinding
 import com.liujunjie.appdesktopnewui.popwindow.paint.PaintSelectPopWindow
 import com.liujunjie.appdesktopnewui.uimodel.SideBarItem
+import com.liujunjie.appdesktopnewui.uimodel.SideBarItems
 import com.liujunjie.appdesktopnewui.viewModel.paint.PaintViewModel
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 class MainUIActivity : AppCompatActivity() {
@@ -52,12 +54,20 @@ class MainUIActivity : AppCompatActivity() {
         binding.sidebarRecycleview.adapter = sideBarAdapter
         binding.sidebarRecycleview.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        lifecycleScope.launchWhenStarted {
+        lifecycleScope.launch {
             sideBarViewModel.sideBarItems.collectLatest {
                 sideBarAdapter.submitList(it)
             }
         }
-        lifecycleScope.launchWhenStarted {
+        lifecycleScope.launch {
+            sideBarViewModel.selectedItem.collectLatest {
+                if (it == SideBarItems.DrawPaintItem)  paintViewModel.addPaints()
+                else paintViewModel.clear()
+
+            }
+        }
+
+        lifecycleScope.launch {
             paintPopWindow.collectState(paintViewModel.paintList, binding.root)
         }
     }

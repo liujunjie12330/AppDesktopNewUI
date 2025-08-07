@@ -3,13 +3,15 @@ package com.liujunjie.appdesktopnewui.uimodel
 import androidx.annotation.DrawableRes
 import com.liujunjie.appdesktopnewui.R
 
+/**
+ * 侧边栏ui data
+ */
 data class SideBarItem(
     val index: Int,
     val title: String,
     @DrawableRes val imageRes: Int,
     var isSelect: Boolean = false
 )
-
 object SideBarItems {
     val SceneItem = SideBarItem(0, "场景", R.drawable.image_sidebar_scene)
     val LayoutItem = SideBarItem(1, "布局", R.drawable.image_sidebar_layout)

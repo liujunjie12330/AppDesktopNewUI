@@ -13,10 +13,7 @@ import com.liujunjie.appdesktopnewui.enums.TrackType
 import com.liujunjie.appdesktopnewui.uimodel.paint.Brush
 
 class PaintSelectAdapter(
-    val selectPaint: (item: PaintItem) -> Unit,
-    val eraserSetting: (item: PaintItem) -> Unit,
-    val smartLineSetting: (item: PaintItem) -> Unit,
-    val commonLineSetting: (item: PaintItem) -> Unit
+    private val paintSelectEvent: PaintSelectEvent
 ) : ListAdapter<PaintItem, PaintSelectAdapter.PaintItemViewHolder>(PaintDiffCallback) {
 
     companion object {
@@ -47,9 +44,21 @@ class PaintSelectAdapter(
         val item = getItem(position)
         val type = getItemViewType(position)
         when (type) {
-            TrackType.SMART_LINE.ordinal -> holder.bind(item, selectPaint, smartLineSetting)
-            TrackType.ERASER.ordinal -> holder.bind(item, selectPaint, eraserSetting)
-            else -> holder.bind(item, selectPaint, commonLineSetting)
+            TrackType.SMART_LINE.ordinal->holder.bind(
+                item = item,
+                onItemClick = { paintSelectEvent.onItemClickOnce(it) },
+                colorSetting = { paintSelectEvent.eraserSetting(it) }
+            )
+            TrackType.ERASER.ordinal->holder.bind(
+                item = item,
+                onItemClick = { paintSelectEvent.onItemClickOnce(it) },
+                colorSetting = { paintSelectEvent.eraserSetting(it) }
+            )
+            else -> holder.bind(
+                item = item,
+                onItemClick = { paintSelectEvent.onItemClickOnce(it) },
+                colorSetting = { paintSelectEvent.commonLineSetting(it) }
+                )
         }
     }
 
@@ -94,8 +103,8 @@ object PaintDiffCallback : DiffUtil.ItemCallback<PaintItem>() {
 }
 
 interface PaintSelectEvent {
-    val selectPaint: (item: PaintItem) -> Unit
-    val eraserSetting: (item: PaintItem) -> Unit
-    val smartLineSetting: (item: PaintItem) -> Unit
-    val commonLineSetting: (item: PaintItem) -> Unit
+    fun onItemClickOnce(item: PaintItem)
+    fun eraserSetting(item: PaintItem)
+    fun smartLineSetting(item: PaintItem)
+    fun commonLineSetting(item: PaintItem)
 }
