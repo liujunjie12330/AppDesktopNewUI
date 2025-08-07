@@ -1,4 +1,4 @@
-package cn.synway.module_sdirector_ui.new_ui.adapter
+package com.liujunjie.appdesktopnewui.adapter
 
 import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
 import android.annotation.SuppressLint
@@ -34,16 +34,22 @@ class PaintSelectAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaintItemViewHolder {
-        return PaintItemViewHolder(SelectPaintItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return PaintItemViewHolder(
+            SelectPaintItemLayoutBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: PaintItemViewHolder, position: Int) {
-        var item = getItem(position)
-        var type = getItemViewType(position)
+        val item = getItem(position)
+        val type = getItemViewType(position)
         when (type) {
-            TrackType.SMART_LINE.ordinal -> holder.bind(item,selectPaint,smartLineSetting)
-            TrackType.ERASER.ordinal->holder.bind(item,selectPaint,eraserSetting)
-            else -> holder.bind(item,selectPaint,commonLineSetting)
+            TrackType.SMART_LINE.ordinal -> holder.bind(item, selectPaint, smartLineSetting)
+            TrackType.ERASER.ordinal -> holder.bind(item, selectPaint, eraserSetting)
+            else -> holder.bind(item, selectPaint, commonLineSetting)
         }
     }
 
@@ -51,10 +57,10 @@ class PaintSelectAdapter(
 
     class PaintItemViewHolder(
         private val binding: SelectPaintItemLayoutBinding
-    ): RecyclerView.ViewHolder(binding.root){
-        fun bind(item: PaintItem, onItemClick: (item: PaintItem) -> Unit, colorSetting: (item: PaintItem) -> Unit){
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: PaintItem, onItemClick: (item: PaintItem) -> Unit, colorSetting: (item: PaintItem) -> Unit) {
             binding.paint.setImageResource(Brush.getResId(item.type))
-            binding.root.setOnClickListener{
+            binding.root.setOnClickListener {
                 onItemClick(item)
             }
             binding.root.setOnLongClickListener {
@@ -67,8 +73,6 @@ class PaintSelectAdapter(
 
 
 }
-
-
 
 
 object PaintDiffCallback : DiffUtil.ItemCallback<PaintItem>() {
@@ -87,4 +91,11 @@ object PaintDiffCallback : DiffUtil.ItemCallback<PaintItem>() {
         return oldItem == newItem
     }
 
+}
+
+interface PaintSelectEvent {
+    val selectPaint: (item: PaintItem) -> Unit
+    val eraserSetting: (item: PaintItem) -> Unit
+    val smartLineSetting: (item: PaintItem) -> Unit
+    val commonLineSetting: (item: PaintItem) -> Unit
 }

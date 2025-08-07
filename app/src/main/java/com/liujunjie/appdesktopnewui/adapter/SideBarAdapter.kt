@@ -8,23 +8,24 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.liujunjie.appdesktopnewui.uimodel.SideBarItem
 import com.liujunjie.appdesktopnewui.databinding.NewUiSidebarItemBinding
+import com.liujunjie.appdesktopnewui.uimodel.SideBarItems
 
 class SideBarAdapter(
-    val setSelectItem: (item: SideBarItem) -> Unit
+    private val sideBarEvent: SideBarEvent
 ) : ListAdapter<SideBarItem, SideBarAdapter.SideBarViewHolder>(SideBarDiffCallBack) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SideBarViewHolder {
-        return SideBarViewHolder(NewUiSidebarItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        return SideBarViewHolder(NewUiSidebarItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    var selectedItem: SideBarItem = SideBarItem.None
+    private var selectedItem: SideBarItem = SideBarItems.None
 
     /**
      * 局部刷新
      */
-    fun updateSelected(item: SideBarItem){
-        if (item==selectedItem) return
+    private fun updateSelected(item: SideBarItem) {
+        if (item == selectedItem) return
         //直接刷新
-        if (selectedItem== SideBarItem.None){
+        if (selectedItem == SideBarItems.None) {
             selectedItem = item
             notifyItemChanged(item.index)
             return
@@ -36,39 +37,41 @@ class SideBarAdapter(
     }
 
     override fun onBindViewHolder(holder: SideBarViewHolder, position: Int) {
-        val item = getItem(position)
-        val isSelected = item == selectedItem
-        holder.bind(item,isSelected ,setSelectItem)
+        holder.bind(getItem(position), sideBarEvent)
     }
-
 
     inner class SideBarViewHolder(
         val binding: NewUiSidebarItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: SideBarItem, isSelected: Boolean, setSelectItem: (SideBarItem) -> Unit) {
+        fun bind(item: SideBarItem,  sideBarEvent: SideBarEvent) {
             binding.sidebarItemImage.setImageResource(item.imageRes)
             binding.sidebarItemText.text = item.title
-            binding.root.isSelected = isSelected
+            binding.root.isSelected = item.isSelect
             binding.root.setOnClickListener {
-                setSelectItem(item)
+                sideBarEvent.onSideBarItemClick(item)
+                updateSelected(item)
             }
 
         }
     }
 }
 
-    object SideBarDiffCallBack : DiffUtil.ItemCallback<SideBarItem>() {
-        override fun areItemsTheSame(
-            oldItem: SideBarItem,
-            newItem: SideBarItem
-        ): Boolean {
-            return newItem == oldItem
-        }
-
-        override fun areContentsTheSame(
-            oldItem: SideBarItem,
-            newItem: SideBarItem
-        ): Boolean {
-            return newItem.index == oldItem.index
-        }
+object SideBarDiffCallBack : DiffUtil.ItemCallback<SideBarItem>() {
+    override fun areItemsTheSame(
+        oldItem: SideBarItem,
+        newItem: SideBarItem
+    ): Boolean {
+        return newItem == oldItem
     }
+
+    override fun areContentsTheSame(
+        oldItem: SideBarItem,
+        newItem: SideBarItem
+    ): Boolean {
+        return newItem.index == oldItem.index
+    }
+}
+
+interface SideBarEvent {
+    fun onSideBarItemClick(item: SideBarItem)
+}

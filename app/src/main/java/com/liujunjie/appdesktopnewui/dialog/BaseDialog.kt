@@ -1,4 +1,4 @@
-package cn.synway.module_sdirector_ui.new_ui.dialog
+package com.liujunjie.appdesktopnewui.dialog
 
 import android.app.Dialog
 import android.content.Context

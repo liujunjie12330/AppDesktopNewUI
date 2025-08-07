@@ -1,5 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="grey">#616161</color>
+    <color name="black_a75">#BF000000</color>
+    <color name="black_a40">#66000000</color>
+    <color name="default_text_color">#2E3539</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_a10">#20FFFFFF</color>
+    <color name="white_a20">#33FFFFFF</color>
+    <color name="white_a30">#4DFFFFFF</color>
+    <color name="white_a40">#66FFFFFF</color>
+    <color name="white_a50">#80FFFFFF</color>
+    <color name="white_a60">#99FFFFFF</color>
+    <color name="white_a75">#BFFFFFFF</color>
+    <color name="white_a90">#E6FFFFFF</color>
+    <color name="blue">#75C9F6</color>
+    <color name="blue2A82E4">#2A82E4</color>
+    <color name="deep_blue">#1E85F3</color>
+    <color name="deep_blue_a75">#BF1E85F3</color>
+    <color name="deep_blue_click">#006FE6</color>
+    <color name="deep_blue_click_a50">#80006FE6</color>
+    <color name="green">#27B148</color>
+    <color name="red">#FF2929</color>
+    <color name="menu_center_color">#ccc</color>
+    <color name="menu_normal_btn_color">#ddd</color>
+    <color name="live_start_btn_color">#eee</color>
+    <color name="share_btn_color">#eee</color>
+    <color name="back_btn_color">#ddd</color>
+    <color name="transparent">#00000000</color>
+    <color name="file_background">#383838</color>
+
+    <color name="White">#FFFFFF</color>
+    <color name="Gray">#7D7D7D</color>
+    <color name="LightGray">#ABABAB</color>
+    <color name="Blue">#2196F3</color>
+    <color name="Red">#F44336</color>
+    <color name="Green">#4CAF50</color>
+
+    <color name="icon_color_n">#525252</color>
+    <color name="icon_color_s">#FFFFFF</color>
+    <color name="shape_color_n">#525252</color>
+    <color name="half_transparent">#30000000</color>
+    <color name="light_blue">#2A82E4</color>
+    <color name="LightCoral">#F08080</color>
+    <color name="HalfTransparentLightGray">#30D3D3D3</color>
+    <color name="transparent_alpha_10">#10FFFFFF</color>
+    <color name="transparent_alpha_40">#40000000</color>
+
+    <color name="show_btn_color">#80EEEEEE</color>
+    <color name="float_list_btn_color">#33FFFFFF</color>
+    <color name="float_list_btn_color_selected">#1E85F3</color>
+    <color name="float_list_btn_color_pressed">#1E85F3</color>
+    <color name="float_list_icon_color">#FFFFFF</color>
+    <color name="float_list_icon_gray">#716f6f</color>
+    <color name="float_list_color">#40000000</color>
+    <color name="float_list_divider_color">#FFF</color>
+    <color name="video_source_color">#eee</color>
+    <color name="video_source_color_pressed">#ddd</color>
+    <color name="window_layout_background_color">#B3000000</color>
+    <color name="window_layout_white_background_color">#40FFFFFF</color>
+
+
+    <color name="set_fragment_background">#E5E5EA</color>
+    <color name="set_btn_text_color">#333</color>
+    <color name="set_background_color">#002D4F</color>
+    <color name="setting_button_container_color">#C7C7CC</color>
+    <color name="setting_button_text_color">#2E3539</color>
+    <color name="setting_button_text_color_selected">#1E85F3</color>
+    <color name="setting_button_divider_color">#1E85F3</color>
+    <color name="set_btn_default_color">#eee</color>
+    <color name="set_btn_selected_color">#ddd</color>
+    <color name="set_btn_pressed_color">#ddd</color>
+    <color name="chroma_reset_color">#eee</color>
+    <color name="chroma_reset_color_pressed">#eee</color>
+    <color name="set_confirm_color">#eee</color>
+    <color name="set_confirm_color_pressed">#ddd</color>
+    <color name="set_cancel_color">#eee</color>
+    <color name="set_cancel_color_pressed">#ddd</color>
+    <color name="divider_color">#aaa</color>
+    <color name="disabled_color">#999</color>
+    <color name="navigation_bar_color">#40000000</color>
+
+    <color name="storage_background_color">#E5E5EA</color>
+
+    <color name="play_script_item_color">#33FFFFFF</color>
+    <color name="play_script_tag_color">#BF1E85F3</color>
+    <color name="play_script_tag_text_color">#BF1E85F3</color>
+
+    <color name="announcement_text_color">#80FFFFFF</color>
+    <color name="text_black_color">#333</color>
+
+    <color name="top_status_text_color">#ddd</color>
+    <color name="top_status_icon_color">#ddd</color>
+
+    <color name="top_status_wifi_time_color">#FFFFFF</color>
+    <color name="top_status_speed_color">#FFFFFF</color>
+    <color name="top_status_background_color">#40000000</color>
+
+    <color name="dialog_cancel_color">#BDBDBD</color>
+    <color name="dialog_title_color">#005699</color>
+    <color name="text_btn_default">#2196F3</color>
+    <color name="text_btn_default_disable">#8A8A8A</color>
+    <color name="text_btn_default_press">#0073FF</color>
+    <color name="text_default_color">#424242</color>
+    <color name="live_setting_title_text_color">#EFEFEF</color>
+    <color name="live_setting_text_color">#EFEFEF</color>
+    <color name="live_setting_title_bg_color">#4D6C6C6C</color>
+    <color name="whiteboard_config_title">#005699</color>
+    <color name="previous_folder">#2a82e4</color>
+    <color name="gray50">#80808080</color>
+    <color name="template_content_color">#333333</color>
+    <color name="gray_e5e5e5">#E5E5E5</color>
+    <color name="light_gray_6C">#CCCCCC</color>
+    <color name="black_383838">#383838</color>
+
+    <color name="disk_bg_gray">#ABABAB</color>
+    <color name="disk_bg_gray_deep">#808080</color>
+    <color name="disk_bg_file_select">#A6A6A6</color>
+    <color name="disk_blue_2a">#2A82E4</color>
+    <color name="disk_blue_8c">#8CC2FF</color>
+    <color name="disk_blue_2a_0d">#0D2A82E4</color>
+    <color name="disk_blue_cf">#CFE5FF</color>
+    <color name="deep_gray">#A6A6A6</color>
+    <color name="disk_black_e5">#E5E5E5</color>
+    <color name="disk_black_38">#383838</color>
+    <color name="disk_black_00_80">#80000000</color>
+    <color name="disk_red_ff">#FF5733</color>
+
+    <color name="template_black_38">#383838</color>
+    <color name="template_black_80">#808080</color>
+    <color name="template_black_80_80">#80808080</color>
+    <color name="template_black_80_ff">#FF808080</color>
+    <color name="template_blue">#2A82E4</color>
+    <color name="template_red">#D43030</color>
+    <color name="template_white_e5">#E5E5E5</color>
+    <color name="template_dialog_bg">#660A0A0A</color>
+    <color name="template_black_a6">#A6A6A6</color>
+    <color name="template_scene_blue">#EDF5FFFF</color>
+    <color name="template_white_cc">#CCCCCC</color>
+
+    <!--    引导页-->
+    <color name="guide_bg">#660A0A0A</color>
+    <color name="guide_blue">#2A82E4</color>
+    <color name="guide_blue_shallow">#D9EAFF</color>
+    <color name="guide_black_38">#383838</color>
+    <color name="guide_black_e5">#E5E5E5</color>
+    <color name="guide_banner_select">#808080</color>
+    <color name="guide_banner_unselect">#CCCCCC</color>
+    <color name="E5E5E5">#e5e5e5</color>
+    <color name="_036CFF">#036CFF</color>
+    <color name="fff0f0f0">#FFF0F0F0</color>
 </resources>

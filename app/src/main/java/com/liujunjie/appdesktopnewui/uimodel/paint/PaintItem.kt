@@ -1,10 +1,12 @@
 package com.liujunjie.appdesktopnewui.uimodel.paint
 
 
+import android.R.attr.data
 import androidx.annotation.DrawableRes
 import com.liujunjie.appdesktopnewui.config.ColorConfig
 import com.liujunjie.appdesktopnewui.enums.TrackType
 import com.liujunjie.appdesktopnewui.uimodel.PopWindowStates
+import com.liujunjie.appdesktopnewui.uimodel.SideBarItem
 
 
 class  PaintItem(
@@ -16,3 +18,4 @@ class  PaintItem(
 )
 
 class PaintUIItem(data: PaintItem): PopWindowStates<PaintItem>(false,data)
+class PaintSelectUiItem(): PopWindowStates<SideBarItem>(false)

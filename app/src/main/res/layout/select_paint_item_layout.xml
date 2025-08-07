@@ -8,5 +8,5 @@
     android:id="@+id/paint"
     android:layout_width="20dp"
     android:layout_height="80dp"
-    android:src="@drawable/paint_brush_selected_one_arrow_head"/>
+    android:src="@drawable/paint_brush_not_selected_arc_head"/>
 </LinearLayout>

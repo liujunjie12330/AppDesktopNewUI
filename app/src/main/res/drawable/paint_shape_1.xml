@@ -4,7 +4,7 @@
     <item android:id="@+id/tint">
         <bitmap
             android:src="@drawable/paint_shape_1_tint"
-            android:tint="@color/Blue" />
+            android:tint="@color/black" />
     </item>
 
     <item>

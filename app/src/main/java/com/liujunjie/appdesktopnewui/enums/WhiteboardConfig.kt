@@ -1,7 +1,5 @@
 package com.liujunjie.appdesktopnewui.enums
 
-import com.synway.whiteboard.core.track.data.TrackType
-
 object WhiteboardConfig {
 
     const val WHITEBOARD_FRAME_RATE = 60
