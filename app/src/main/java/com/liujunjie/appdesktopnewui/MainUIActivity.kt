@@ -7,18 +7,19 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.liujunjie.appdesktopnewui.adapter.SideBarAdapter
-import cn.synway.module_sdirector_ui.new_ui.viewModel.SideBarViewModel
+import com.liujunjie.appdesktopnewui.viewModel.SideBarViewModel
 import com.liujunjie.appdesktopnewui.adapter.SideBarEvent
 import com.liujunjie.appdesktopnewui.databinding.ActivityMainUiLayoutBinding
 import com.liujunjie.appdesktopnewui.popwindow.paint.PaintSelectPopWindow
 import com.liujunjie.appdesktopnewui.uimodel.SideBarItem
-import com.liujunjie.appdesktopnewui.uimodel.SideBarItems
-import com.liujunjie.appdesktopnewui.uimodel.paint.PaintSelectUiItem
 import com.liujunjie.appdesktopnewui.viewModel.paint.PaintViewModel
+import kotlinx.coroutines.flow.collectLatest
 
 
 class MainUIActivity : AppCompatActivity() {
-
+   companion object{
+        const val TAG = "MainUIActivity"
+    }
     private val binding by lazy {
         ActivityMainUiLayoutBinding.inflate(layoutInflater)
     }
@@ -51,7 +52,11 @@ class MainUIActivity : AppCompatActivity() {
         binding.sidebarRecycleview.adapter = sideBarAdapter
         binding.sidebarRecycleview.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        sideBarAdapter.submitList(SideBarItems.allItems())
+        lifecycleScope.launchWhenStarted {
+            sideBarViewModel.sideBarItems.collectLatest {
+                sideBarAdapter.submitList(it)
+            }
+        }
         lifecycleScope.launchWhenStarted {
             paintPopWindow.collectState(paintViewModel.paintList, binding.root)
         }
