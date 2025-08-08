@@ -34,32 +34,10 @@ class PaintSelectAdapter(
     override fun onBindViewHolder(holder: PaintItemViewHolder, position: Int) {
         val item = getItem(position)
         val type = getItemViewType(position)
-        if (!item.isSelected){
-            val target = holder.itemView.context.dpToPx(25f)
-            holder.itemView.animate()
-                .translationY(target)
-                .setDuration(300)
-                .start()
-        }
         when (type) {
             TrackType.SMART_LINE.ordinal -> holder.bind(item = item)
             TrackType.ERASER.ordinal -> holder.bind(item = item)
             else -> holder.bind(item = item)
-        }
-    }
-    override fun onBindViewHolder(holder: PaintItemViewHolder, position: Int, payloads: MutableList<Any>) {
-        if (payloads.isNotEmpty() && payloads.contains(PaintDiffCallback.PAYLOAD_SELECTION)) {
-            // 只更新选中动画
-            val item = getItem(position)
-            Log.d(TAG,"onBindViewHolder: $item")
-            if (item.isSelected) {
-                holder.animateTranslation(up = true)
-            } else {
-                holder.animateTranslation(up = false)
-            }
-        } else {
-            // 完整刷新
-            super.onBindViewHolder(holder, position, payloads)
         }
     }
 
@@ -70,19 +48,21 @@ class PaintSelectAdapter(
             binding.root.setOnClickListener {
                 paintSelectEvent.onItemClickOnce(item)
             }
+            if (item.isSelected){
+                binding.root.animate()
+                    .translationY(-binding.root.context.dpToPx(25f))
+                    .setDuration(200)
+                    .start()
+            }else{
+                binding.root.animate()
+                    .translationY(binding.root.context.dpToPx(25f))
+                    .setDuration(200)
+                    .start()
+            }
             binding.root.setOnLongClickListener {
                 paintSelectEvent.eraserSetting(item)
                 true
             }
-        }
-
-        fun animateTranslation(up: Boolean) {
-            Log.d(TAG,"animateTranslation $up")
-            val target = if (up) -binding.root.context.dpToPx(25f) else binding.root.context.dpToPx(25f)
-            binding.itemContainer.animate()
-                .translationY(target)
-                .setDuration(300)
-                .start()
         }
     }
 
@@ -91,7 +71,6 @@ class PaintSelectAdapter(
 
 
 object PaintDiffCallback : DiffUtil.ItemCallback<PaintItem>() {
-    const val PAYLOAD_SELECTION = "PAYLOAD_SELECTION"
 
     override fun areItemsTheSame(oldItem: PaintItem, newItem: PaintItem): Boolean {
         return oldItem.index == newItem.index
@@ -99,10 +78,6 @@ object PaintDiffCallback : DiffUtil.ItemCallback<PaintItem>() {
 
     override fun areContentsTheSame(oldItem: PaintItem, newItem: PaintItem): Boolean {
         return oldItem == newItem
-    }
-
-    override fun getChangePayload(oldItem: PaintItem, newItem: PaintItem): Any? {
-        return if (oldItem.isSelected != newItem.isSelected) PAYLOAD_SELECTION else null
     }
 }
 

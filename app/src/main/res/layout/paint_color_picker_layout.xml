@@ -28,7 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.liujunjie.appdesktopnewui.view.CircleColorView
+        <com.liujunjie.appdesktopnewui.view.ColorPickerView
             android:id="@+id/color_picker"
             android:layout_width="0dp"
             android:layout_height="100dp"
