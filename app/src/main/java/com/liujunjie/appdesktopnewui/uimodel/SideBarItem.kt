@@ -10,7 +10,7 @@ data class SideBarItem(
     val index: Int,
     val title: String,
     @DrawableRes val imageRes: Int,
-    var isSelect: Boolean = false
+    val isSelect: Boolean = false
 )
 object SideBarItems {
     val SceneItem = SideBarItem(0, "场景", R.drawable.image_sidebar_scene)

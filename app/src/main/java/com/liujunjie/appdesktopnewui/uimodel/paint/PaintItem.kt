@@ -6,11 +6,13 @@ import com.liujunjie.appdesktopnewui.config.ColorConfig
 import com.liujunjie.appdesktopnewui.enums.TrackType
 
 
-data class  PaintItem(
+
+
+data class PaintItem(
     val index: Int,
-    var isSelected: Boolean = false,
-    var type: TrackType,
-    var thickness: Float,
-    var colorConfig: ColorConfig,
+    val isSelected: Boolean = false,
+    val type: TrackType,
+    val thickness: Float,
+    val colorConfig: ColorConfig,
     @DrawableRes val icon: Int
 )

@@ -1,14 +1,17 @@
 package com.liujunjie.appdesktopnewui.adapter
 
-import android.graphics.Color
+import android.content.res.ColorStateList
 import android.graphics.Paint
-import android.util.Log
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.LayerDrawable
+import android.graphics.drawable.StateListDrawable
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.liujunjie.appdesktopnewui.config.ColorConfig
+import com.liujunjie.appdesktopnewui.R
 import com.liujunjie.appdesktopnewui.databinding.SelectPaintItemLayoutBinding
 import com.liujunjie.appdesktopnewui.dpToPx
 import com.liujunjie.appdesktopnewui.enums.TrackType
@@ -23,14 +26,8 @@ class PaintSelectAdapter(
     }
 
 
-    private var lastPaintItem  = PaintItem(-1,false, TrackType.ERASER, 1f,ColorConfig(Color.BLACK),-1)
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaintItemViewHolder {
-
         val binding = SelectPaintItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
-//        binding.root.translationY =  binding.root.context.dpToPx(25f) // 或者 binding.root.context.dpToPx(25f)
-
         return PaintItemViewHolder(binding)
     }
 
@@ -39,16 +36,15 @@ class PaintSelectAdapter(
         if (payloads.isEmpty()) {
             super.onBindViewHolder(holder, position, payloads)
         }else{
-            val any = payloads[0] as List<*>
             if (getItem(position).isSelected){
                holder. binding.paint.animate()
                     .translationY(0F)
-                    .setDuration(200)
+                    .setDuration(150)
                     .start()
             }else{
                holder. binding.paint.animate()
-                    .translationY(50F)
-                    .setDuration(200)
+                    .translationY(holder.binding.paint.context.dpToPx(25f))
+                    .setDuration(150)
                     .start()
             }
         }
@@ -58,18 +54,11 @@ class PaintSelectAdapter(
         val item = getItem(position)
         val type = getItemViewType(position)
         when (type) {
-            TrackType.SMART_LINE.ordinal -> holder.bind(item = item)
-            TrackType.ERASER.ordinal -> holder.bind(item = item)
-            else -> holder.bind(item = item)
+            TrackType.SMART_LINE.ordinal -> holder.bind(item = item, itemClick = {paintSelectEvent.onItemClickOnce(it)}, itemLongClick = {paintSelectEvent.smartLineSetting(it)})
+            TrackType.ERASER.ordinal -> holder.bind(item = item,itemClick = {paintSelectEvent.onItemClickOnce(it)}, itemLongClick = {paintSelectEvent.eraserSetting(it)})
+            else -> holder.bind(item = item,itemClick = {paintSelectEvent.onItemClickOnce(it)}, itemLongClick = {paintSelectEvent.commonLineSetting(it)})
         }
-        updateTranslate(item,holder)
     }
-
-
-    private fun updateTranslate(item: PaintItem, holder: PaintItemViewHolder) {
-
-    }
-
     init {
         setHasStableIds(true)
     }
@@ -78,29 +67,32 @@ class PaintSelectAdapter(
         return getItem(position).index.toLong()
     }
     override fun getItemViewType(position: Int): Int = getItem(position).type.ordinal
-    inner class PaintItemViewHolder( val binding: SelectPaintItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: PaintItem) {
+    class PaintItemViewHolder( val binding: SelectPaintItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.paint.translationY = binding.paint.context.dpToPx(25f)
+        }
+        fun bind(item: PaintItem,itemClick:(item: PaintItem)-> Unit,itemLongClick:(item: PaintItem)-> Unit) {
             binding.paint.setImageResource(item.icon)
-            binding.root.setOnClickListener {
-                paintSelectEvent.onItemClickOnce(item)
+            val drawable = binding.paint.drawable
+            if (drawable is LayerDrawable) {
+                drawable.setTintColor(item.colorConfig.color)
+            } else if (drawable is StateListDrawable) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    val stateDrawable = drawable.getStateDrawable(1)
+                    if (stateDrawable is LayerDrawable) {
+                        stateDrawable.setTintColor(item.colorConfig.color)
+                    }
+                }
             }
-            if (item.isSelected){
-                Log.d(TAG,"${item.index} 选中了")
-                binding.paint.animate()
-                    .translationY(-binding.root.context.dpToPx(0F))
-                    .setDuration(200)
-                    .start()
-            }else{
-                Log.d(TAG,"${item.index} 没选中" +  binding.paint.context.dpToPx(25f))
-                binding.paint.animate()
-                    .translationY(binding.root.context.dpToPx(25f))
-                    .setDuration(200)
-                    .start()
+            binding.root.setOnClickListener {
+                itemClick(item)
             }
             binding.root.setOnLongClickListener {
-                paintSelectEvent.eraserSetting(item)
+                itemClick(item)
+                itemLongClick(item)
                 true
             }
+            //todo 双击事件
         }
     }
 
@@ -120,7 +112,7 @@ object PaintDiffCallback : DiffUtil.ItemCallback<PaintItem>() {
 
     override fun getChangePayload(oldItem: PaintItem, newItem: PaintItem): Any? {
         if (oldItem.isSelected!= newItem.isSelected) {
-            return listOf("1")
+            return listOf("translate")
         }
         return super.getChangePayload(oldItem, newItem)
     }
@@ -133,4 +125,18 @@ interface PaintSelectEvent {
     fun eraserSetting(item: PaintItem)
     fun smartLineSetting(item: PaintItem)
     fun commonLineSetting(item: PaintItem)
+}
+
+
+private val EMPTY = arrayOf(IntArray(0))
+fun Drawable.setTintColor(color: Int) {
+    if (this is LayerDrawable) {
+        val drawable = findDrawableByLayerId(R.id.color_layer)
+        require(drawable != null) {
+            "layer drawable findDrawableByLayerId(R.id.tint) is null"
+        }
+        drawable.setTintList(ColorStateList(EMPTY, intArrayOf(color)))
+    } else {
+        throw IllegalArgumentException("this is not a layerDrawable")
+    }
 }
