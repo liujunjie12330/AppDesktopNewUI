@@ -1,11 +1,14 @@
 package com.liujunjie.appdesktopnewui.adapter
 
+import android.graphics.Color
+import android.graphics.Paint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.liujunjie.appdesktopnewui.config.ColorConfig
 import com.liujunjie.appdesktopnewui.databinding.SelectPaintItemLayoutBinding
 import com.liujunjie.appdesktopnewui.dpToPx
 import com.liujunjie.appdesktopnewui.enums.TrackType
@@ -20,15 +23,18 @@ class PaintSelectAdapter(
     }
 
 
+    private var lastPaintItem  = PaintItem(-1,false, TrackType.ERASER, 1f,ColorConfig(Color.BLACK),-1)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaintItemViewHolder {
-        return PaintItemViewHolder(
-            SelectPaintItemLayoutBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+
+        val binding = SelectPaintItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+//        binding.root.translationY =  binding.root.context.dpToPx(25f) // 或者 binding.root.context.dpToPx(25f)
+
+        return PaintItemViewHolder(binding)
     }
+
+
 
 
     override fun onBindViewHolder(holder: PaintItemViewHolder, position: Int) {
@@ -39,8 +45,13 @@ class PaintSelectAdapter(
             TrackType.ERASER.ordinal -> holder.bind(item = item)
             else -> holder.bind(item = item)
         }
+        updateTranslate(item,holder)
     }
 
+
+    private fun updateTranslate(item: PaintItem, holder: PaintItemViewHolder) {
+
+    }
     override fun getItemViewType(position: Int): Int = getItem(position).type.ordinal
     inner class PaintItemViewHolder(private val binding: SelectPaintItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: PaintItem) {
