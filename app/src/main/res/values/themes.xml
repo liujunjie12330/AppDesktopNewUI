@@ -1,9 +1,16 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.AppDesktopNewUI" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+    <style name="SwitchCompatStyle" parent="Theme.AppCompat.Light">
+        <!--开启时的颜色-->
+        <item name="colorControlActivated">@color/deep_blue_a75</item>
+        <!--关闭时的颜色-->
+        <item name="colorSwitchThumbNormal">@color/white</item>
+        <!--关闭时的轨迹颜色-->
+        <item name="android:colorForeground">@color/white_a40</item>
     </style>
-
-    <style name="Theme.AppDesktopNewUI" parent="Base.Theme.AppDesktopNewUI" />
+    <style name="TextShadow">
+        <item name="android:shadowColor">#4d4d4d</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">3</item>
+        <item name="android:shadowRadius">5</item>
+    </style>
 </resources>
