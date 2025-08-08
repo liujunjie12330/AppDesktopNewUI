@@ -9,13 +9,18 @@ import com.liujunjie.appdesktopnewui.uimodel.paint.Brush
 import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import com.liujunjie.appdesktopnewui.R
 
 class PaintViewModel(application: Application) : AndroidViewModel(application) {
     private val _paintList = MutableStateFlow<MutableList<PaintItem>?>(null)
     val paintList = _paintList.asStateFlow()
 
     private val paints = listOf(
-        PaintItem(false, TrackType.ERASER, 1.00f, ColorConfig(Color.BLACK), Brush.getResId(TrackType.ERASER)),
+        PaintItem(false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK),R.drawable.paint_brush_selected_ellipse_head),
+        PaintItem(false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), Brush.getResId(TrackType.STRAIGHT_LINE)),
+        PaintItem(false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), Brush.getResId(TrackType.STRAIGHT_LINE)),
+        PaintItem(false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), Brush.getResId(TrackType.STRAIGHT_LINE)),
+        PaintItem(false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), Brush.getResId(TrackType.STRAIGHT_LINE)),
         PaintItem(false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), Brush.getResId(TrackType.STRAIGHT_LINE))
     )
 

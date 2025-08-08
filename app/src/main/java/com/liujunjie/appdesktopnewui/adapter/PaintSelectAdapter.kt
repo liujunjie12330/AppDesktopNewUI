@@ -1,6 +1,5 @@
 package com.liujunjie.appdesktopnewui.adapter
 
-import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
 import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.liujunjie.appdesktopnewui.databinding.SelectPaintItemLayoutBinding
 import com.liujunjie.appdesktopnewui.enums.TrackType
-import com.liujunjie.appdesktopnewui.uimodel.paint.Brush
+import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
 
 class PaintSelectAdapter(
     private val paintSelectEvent: PaintSelectEvent
@@ -69,7 +68,7 @@ class PaintSelectAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: PaintItem, onItemClick: (item: PaintItem) -> Unit, colorSetting: (item: PaintItem) -> Unit) {
             Log.d(TAG, "bind: ${item.type}")
-            binding.paint.setImageResource(Brush.getResId(item.type))
+            binding.paint.setImageResource(item.icon)
             binding.root.setOnClickListener {
                 onItemClick(item)
             }
@@ -86,18 +85,12 @@ class PaintSelectAdapter(
 
 
 object PaintDiffCallback : DiffUtil.ItemCallback<PaintItem>() {
-    override fun areItemsTheSame(
-        oldItem: PaintItem,
-        newItem: PaintItem
-    ): Boolean {
+    override fun areItemsTheSame(oldItem: PaintItem, newItem: PaintItem): Boolean {
         return oldItem == newItem
     }
 
     @SuppressLint("DiffUtilEquals")
-    override fun areContentsTheSame(
-        oldItem: PaintItem,
-        newItem: PaintItem
-    ): Boolean {
+    override fun areContentsTheSame(oldItem: PaintItem, newItem: PaintItem): Boolean {
         return oldItem == newItem
     }
 

@@ -75,7 +75,6 @@ class PaintSelectPopWindow(
                 }
             })
         }
-
     }
     override fun createContentView(inflater: LayoutInflater, parent: ViewGroup?): ViewGroup {
         return binding.root
