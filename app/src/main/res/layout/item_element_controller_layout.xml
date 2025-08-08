@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="10dp">
+
+
+    <ImageView
+        android:id="@+id/element_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="fitCenter"
+        android:padding="6.5dp"
+        android:src="@drawable/ic_v_picture_group" />
+
+    <TextView
+        android:id="@+id/element_name"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="start|center"
+        android:maxWidth="100dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textSize="11sp"
+        tools:text="标题111111111111111111111" />
+
+    <ImageView
+        android:id="@+id/element_visible"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/button_press_background"
+        android:gravity="center"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_v_visibility"
+        app:tint="@color/button_press_color_38" />
+
+    <ImageView
+        android:id="@+id/element_move"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/button_press_background"
+        android:gravity="center"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_element_move"
+        app:tint="@color/button_press_color_38" />
+
+    <ImageView
+        android:id="@+id/element_replace"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/button_press_background"
+        android:gravity="center"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_v_replace"
+        app:tint="@color/button_press_color_38" />
+
+    <ImageView
+        android:id="@+id/element_remove"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/button_press_background"
+        android:gravity="center"
+        android:padding="7dp"
+        android:src="@drawable/ic_n_delete"
+        app:tint="@color/button_press_color_38" />
+
+</LinearLayout>

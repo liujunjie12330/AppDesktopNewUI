@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_shadow_white_drawable"
+    android:elevation="@dimen/whiteboard_pop_elevation"
+    android:padding="3dp">
+
+    <include
+        android:id="@+id/paint_type"
+        layout="@layout/paint_panel_option_layout"
+        android:layout_width="@dimen/whiteboard_pop_content_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/paint_type"
+        android:background="@color/light_grey"/>
+
+
+    <LinearLayout
+        android:id="@+id/paint_size_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line">
+
+        <ImageButton
+            android:id="@+id/level_1"
+            android:layout_width="0dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:paddingStart="@dimen/paint_size_padding"
+            android:paddingEnd="@dimen/paint_size_padding"
+            android:scaleType="fitCenter"
+            android:background="@drawable/button_background"
+            android:layout_height="@dimen/paint_size"
+            android:src="@drawable/button_paint_size"
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/level_2"
+            android:layout_width="0dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingStart="@dimen/paint_size_padding"
+            android:paddingEnd="@dimen/paint_size_padding"
+            android:scaleType="fitCenter"
+            android:background="@drawable/button_background"
+            android:layout_height="@dimen/paint_size"
+            android:src="@drawable/button_paint_size"
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/level_3"
+            android:layout_width="0dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="@dimen/paint_size_padding"
+            android:paddingEnd="@dimen/paint_size_padding"
+            android:scaleType="fitCenter"
+            android:background="@drawable/button_background"
+            android:layout_height="@dimen/paint_size"
+            android:src="@drawable/button_paint_size"
+            android:layout_gravity="center"
+            android:layout_weight="1"  />
+
+        <ImageButton
+            android:id="@+id/level_4"
+            android:layout_width="0dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:paddingStart="@dimen/paint_size_padding"
+            android:paddingEnd="@dimen/paint_size_padding"
+            android:scaleType="fitCenter"
+            android:background="@drawable/button_background"
+            android:layout_height="@dimen/paint_size"
+            android:src="@drawable/button_paint_size"
+            android:layout_gravity="center"
+            android:layout_weight="1"  />
+
+        <ImageButton
+            android:id="@+id/level_5"
+            android:layout_width="0dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="@dimen/paint_size_padding"
+            android:paddingStart="@dimen/paint_size_padding"
+            android:paddingEnd="3dp"
+            android:scaleType="fitCenter"
+            android:background="@drawable/button_background"
+            android:layout_height="@dimen/paint_size"
+            android:src="@drawable/button_paint_size"
+            android:layout_gravity="center"
+            android:layout_weight="1"  />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

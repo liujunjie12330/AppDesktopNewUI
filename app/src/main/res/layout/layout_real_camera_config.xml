@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/real_camera_config_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    tools:layout_gravity="center">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp">
+
+        <Spinner
+            android:id="@+id/camera_select_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/camera_select_spinner_bg"
+            android:paddingStart="0dp"
+            android:paddingEnd="20dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/no_camera"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="无视频源"
+            android:textSize="10sp" />
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="24dp"
+        android:background="@color/gray50" />
+
+    <ImageView
+        android:id="@+id/camera_turn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginVertical="2dp"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/button_background"
+        android:padding="4dp"
+        android:src="@drawable/button_camera_turn" />
+
+</LinearLayout>

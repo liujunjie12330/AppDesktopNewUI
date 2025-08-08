@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/camera_push_streams_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_camera_push_stream"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:id="@+id/status_layout"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nginx_open"
+            android:textColor="@color/white"
+            android:textSize="@dimen/live_setting_default_text"
+            android:visibility="gone" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/open_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="0dp"
+            android:maxHeight="20dp"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:thumb="@drawable/switch_thumb_normal"
+            app:track="@drawable/switch_track_normal"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingStart="40dp"
+            android:paddingEnd="0dp"
+            android:text="@string/nginx_tips"
+            android:textColor="@color/white"
+            android:textSize="@dimen/live_setting_small_text" />
+    </LinearLayout>
+
+    <View
+        android:id="@id/divider_line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/status_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/step_one_layout"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/pre_step_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_line">
+
+        <TextView
+            android:id="@+id/step_one_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rtmp_step_one"
+            android:textColor="@color/white"
+            android:textSize="@dimen/live_setting_small_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/connect_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:paddingEnd="30dp"
+            android:maxLines="2"
+            android:text="@string/rtmp_connect_info"
+            android:textColor="@color/white"
+            android:textSize="@dimen/live_setting_small_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/step_one_text" />
+
+        <TextView
+            android:id="@+id/connect_info_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/connect_info_refresh"
+            android:textColor="@color/text_btn_default"
+            android:textSize="@dimen/live_setting_small_text"
+            app:layout_constraintBottom_toBottomOf="@id/connect_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/connect_info" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/step_two_layout"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/pre_step_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_line">
+
+        <TextView
+            android:id="@+id/tips_one_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rtmp_step_two"
+            android:textColor="@color/white"
+            android:textSize="@dimen/live_setting_small_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/QR_code_one_imageview"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="5dp"
+            android:src="@mipmap/applet_qr_code"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tips_one_text" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/step_three_layout"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/pre_step_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_line">
+
+        <TextView
+            android:id="@+id/tips_two_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rtmp_step_three"
+            android:textColor="@color/white"
+            android:textSize="@dimen/live_setting_small_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/QR_code_two_imageview"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tips_two_text" />
+
+        <TextView
+            android:id="@+id/QR_code_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/qr_code_refresh"
+            android:textColor="@color/text_btn_default"
+            android:textSize="@dimen/live_setting_small_text"
+            app:layout_constraintBottom_toBottomOf="@id/QR_code_two_imageview"
+            app:layout_constraintStart_toEndOf="@id/QR_code_two_imageview"
+            app:layout_constraintTop_toTopOf="@id/QR_code_two_imageview" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/pre_step_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pull_setting_btn_background"
+        android:padding="5dp"
+        android:text="@string/pre_step"
+        android:textColor="@color/white"
+        android:textSize="@dimen/live_setting_small_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/now_page"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/now_page"
+        android:layout_width="7dp"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textColor="@color/deep_blue"
+        android:textSize="@dimen/live_setting_small_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/sum_pages"
+        app:layout_constraintTop_toTopOf="@id/pre_step_btn" />
+
+    <TextView
+        android:id="@+id/sum_pages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/3"
+        android:textColor="@color/white"
+        android:textSize="@dimen/live_setting_small_text"
+        app:layout_constraintBottom_toBottomOf="@id/pre_step_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/pre_step_btn" />
+
+    <TextView
+        android:id="@+id/next_step_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pull_setting_btn_background"
+        android:padding="5dp"
+        android:text="@string/next_step"
+        android:textColor="@color/white"
+        android:textSize="@dimen/live_setting_small_text"
+        app:layout_constraintBottom_toBottomOf="@id/pre_step_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sum_pages"
+        app:layout_constraintTop_toTopOf="@id/pre_step_btn" />
+
+    <TextView
+        android:id="@+id/close_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pull_setting_btn_background"
+        android:padding="5dp"
+        android:text="@string/close"
+        android:textColor="@color/white"
+        android:textSize="@dimen/live_setting_small_text"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/pre_step_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sum_pages"
+        app:layout_constraintTop_toTopOf="@id/pre_step_btn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

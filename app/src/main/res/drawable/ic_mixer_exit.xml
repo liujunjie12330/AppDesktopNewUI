@@ -1,0 +1,18 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="84dp"
+    android:height="84dp"
+    android:viewportWidth="84"
+    android:viewportHeight="84">
+  <path
+      android:pathData="M70,11.8L49.4,31.2L49.4,15.2C49.4,14 48.6,13.2 47.4,13.2C46.2,13.2 45.4,14 45.4,15.2L45.4,35.4L45.4,35.6C45.4,36.8 46.2,37.6 47.4,37.6L68.8,37.6C70,37.6 70.8,36.8 70.8,35.6C70.8,34.4 70,33.6 68.8,33.6L52.4,33.6L72.8,14.6C73.6,13.8 73.6,12.6 72.8,11.8C72,11 70.8,11 70,11.8Z"
+      android:fillColor="@color/mixer_theme"
+      android:fillType="evenOdd"/>
+  <path
+      android:pathData="M36.6,52.8L36.6,68.8C36.6,70 37.4,70.8 38.6,70.8C39.8,70.8 40.6,70 40.6,68.8L40.6,48.4C40.6,47.2 39.8,46.4 38.6,46.4L17.2,46.4C16,46.4 15.2,47.2 15.2,48.4C15.2,49.6 16,50.4 17.2,50.4L33.6,50.4L13.2,69.4C12.4,70.2 12.4,71.4 13.2,72.2C14,73 15.2,73 16,72.2L36.6,52.8Z"
+      android:fillColor="@color/mixer_theme"
+      android:fillType="evenOdd"/>
+  <path
+      android:pathData="M80,10L80,48C80,49.2 80.8,50 82,50C83.2,50 84,49.2 84,48L84,10C84,4.4 79.6,0 74,0L10,0C4.4,0 0,4.4 0,10L0,74C0,79.6 4.4,84 10,84L74,84C79.6,84 84,79.6 84,74L84,64.8C84,63.6 83.2,62.8 82,62.8C80.8,62.8 80,63.6 80,64.8L80,74C80,77.4 77.4,80 74,80L10,80C6.6,80 4,77.4 4,74L4,10C4,6.6 6.6,4 10,4L74,4C77.4,4 80,6.6 80,10Z"
+      android:fillColor="@color/mixer_theme"
+      android:fillType="evenOdd"/>
+</vector>

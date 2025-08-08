@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.FloatImageView2
+        android:id="@+id/float_ball"
+        android:layout_width="25dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/ppt_preview_float_ball_bg"
+        android:padding="6dp"
+        android:src="@drawable/ic_ppt_menu_expand"
+        tools:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ppt_preview_background"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.custom.FloatImageView2
+            android:id="@+id/pick_up"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ppt_preview_title_bg"
+            android:padding="4dp"
+            android:src="@drawable/ic_ppt_menu_pickup" />
+
+        <!-- 导航容器 -->
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ui_navigation"
+    app:startDestination="@id/fragment_desktop">
+
+    <fragment
+        android:id="@+id/fragment_desktop"
+        android:name="cn.synway.module_sdirector_ui.ui.desktop.DesktopFragment"
+        android:label="fragment_desktop"
+        tools:layout="@layout/fragment_desktop">
+    </fragment>
+
+</navigation>

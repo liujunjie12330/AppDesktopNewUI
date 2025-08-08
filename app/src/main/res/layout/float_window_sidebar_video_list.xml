@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/float_second_list_margin"
+    android:background="@drawable/background_shadow_white_drawable"
+    android:elevation="2dp"
+    android:paddingStart="@dimen/video_source_padding"
+    android:paddingTop="@dimen/video_source_padding"
+    android:paddingEnd="@dimen/video_source_padding"
+    android:paddingBottom="@dimen/video_source_padding"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/usb_video_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <include
+            android:id="@+id/video_hdmi1"
+            layout="@layout/item_video_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/video_hdmi2"
+            layout="@layout/item_video_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+
+        <include
+            android:id="@+id/video_lan"
+            layout="@layout/item_video_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/no_camera_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_round_conor"
+            android:backgroundTint="@color/light_blue"
+            android:gravity="center"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingTop="5dp"
+            android:paddingEnd="@dimen/dp_10"
+            android:paddingBottom="5dp"
+            android:text="请插入摄像头"
+            android:textColor="@color/light_blue"
+            android:textSize="8sp"
+            android:visibility="visible" />
+
+    </LinearLayout>
+</ScrollView>

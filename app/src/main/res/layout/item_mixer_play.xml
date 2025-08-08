@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.synway.module_sdirector_ui.ui.sidebarfw.layout.NoInterceptConstrainLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <cn.synway.module_sdirector_ui.ui.sidebarfw.layout.NoInterceptTextView
+        android:id="@+id/tvPlayName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mixer_bg_play"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:textColor="@drawable/mixer_tv_color_play"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</cn.synway.module_sdirector_ui.ui.sidebarfw.layout.NoInterceptConstrainLayout>

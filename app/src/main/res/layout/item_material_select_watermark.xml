@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/item_material_image_box_bg"
+    android:padding="1dp">
+
+    <ImageView
+        android:id="@+id/main_image"
+        android:layout_width="@dimen/material_select_image_width"
+        android:layout_height="@dimen/material_select_image_height"
+        android:background="@color/black"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loading_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black_a40"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/main_image"
+        app:layout_constraintEnd_toEndOf="@id/main_image"
+        app:layout_constraintStart_toStartOf="@id/main_image"
+        app:layout_constraintTop_toTopOf="@id/main_image">
+
+        <ProgressBar
+            android:id="@+id/loading"
+            style="@style/process_bar_loading_style"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/loading_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loading"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            app:layout_constraintEnd_toEndOf="@id/loading"
+            app:layout_constraintStart_toStartOf="@id/loading"
+            app:layout_constraintTop_toBottomOf="@id/loading" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

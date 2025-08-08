@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#9A9A9A"
+    android:orientation="vertical"
+    android:paddingHorizontal="32dp"
+    android:paddingBottom="15dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/panel_layout"
+        android:layout_width="416dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp">
+
+        <LinearLayout
+            android:id="@+id/top_layout"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/text_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="12:00"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="5dp"
+                android:text="2024.01.01 周一"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/setting"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_status_setting" />
+
+            <ImageView
+                android:id="@+id/shutdown"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_status_shutdown" />
+
+            <ImageView
+                android:id="@+id/reboot"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_status_reboot" />
+
+        </LinearLayout>
+
+        <cn.synway.module_sdirector_ui.ui.status.LargeIcon
+            android:id="@+id/wifi_status"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/status_panel_icon_bg"
+            android:backgroundTint="@color/status_panel_icon_bg_color"
+            app:icon="@drawable/icon_status_wifi"
+            app:label="WLAN"
+            app:label2="已关闭"
+            app:layout_constraintDimensionRatio="20:9"
+            app:layout_constraintEnd_toStartOf="@+id/bluetooth_status"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top_layout" />
+
+        <cn.synway.module_sdirector_ui.ui.status.LargeIcon
+            android:id="@+id/bluetooth_status"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="13dp"
+            android:background="@drawable/status_panel_icon_bg"
+            android:backgroundTint="@color/status_panel_icon_bg_color"
+            app:icon="@drawable/icon_status_bluetooth"
+            app:label="蓝牙"
+            app:label2="已关闭"
+            app:layout_constraintBottom_toBottomOf="@id/wifi_status"
+            app:layout_constraintDimensionRatio="20:9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/wifi_status"
+            app:layout_constraintTop_toTopOf="@id/wifi_status"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <cn.synway.module_sdirector_ui.ui.status.Icon
+            android:id="@+id/auto_rotate"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/status_panel_icon_bg"
+            android:backgroundTint="@color/status_panel_icon_bg_color"
+            app:icon="@drawable/icon_status_auto_rotate"
+            app:label="屏幕旋转"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/keyboard_control"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wifi_status" />
+
+
+        <cn.synway.module_sdirector_ui.ui.status.Icon
+            android:id="@+id/keyboard_control"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="13dp"
+            android:background="@drawable/status_panel_icon_bg"
+            android:backgroundTint="@color/status_panel_icon_bg_color"
+            app:icon="@drawable/icon_status_keyboard_control"
+            app:label="遥控模式"
+            app:layout_constraintBottom_toBottomOf="@+id/auto_rotate"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/screenshot"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/auto_rotate"
+            app:layout_constraintTop_toTopOf="@+id/auto_rotate" />
+
+        <cn.synway.module_sdirector_ui.ui.status.Icon
+            android:id="@+id/screenshot"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="13dp"
+            android:background="@drawable/status_panel_icon_bg"
+            android:backgroundTint="@color/status_panel_icon_bg_color"
+            app:icon="@drawable/icon_status_screenshot"
+            app:label="屏幕截图"
+            app:layout_constraintBottom_toBottomOf="@+id/auto_rotate"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/upload_log"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/keyboard_control"
+            app:layout_constraintTop_toTopOf="@+id/auto_rotate"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <cn.synway.module_sdirector_ui.ui.status.Icon
+            android:id="@+id/upload_log"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="13dp"
+            android:background="@drawable/status_panel_icon_bg"
+            android:backgroundTint="@color/status_panel_icon_bg_color"
+            app:icon="@drawable/icon_status_upload"
+            app:label="日志上传"
+            app:layout_constraintBottom_toBottomOf="@+id/auto_rotate"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/screenshot"
+            app:layout_constraintTop_toTopOf="@+id/auto_rotate" />
+
+        <cn.synway.module_sdirector_ui.ui.status.Icon
+            android:id="@+id/ftp_service"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/status_panel_icon_bg"
+            android:backgroundTint="@color/status_panel_icon_bg_color"
+            android:visibility="visible"
+            app:icon="@drawable/icon_status_ftp"
+            app:label="文件共享"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="@id/auto_rotate"
+            app:layout_constraintStart_toStartOf="@id/auto_rotate"
+            app:layout_constraintTop_toBottomOf="@id/auto_rotate" />
+
+        <cn.synway.module_sdirector_ui.ui.status.Icon
+            android:id="@+id/fast_service"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/status_panel_icon_bg"
+            android:backgroundTint="@color/status_panel_icon_bg_color"
+            android:visibility="visible"
+            app:icon="@drawable/ic_fast_pass"
+            app:label="快传"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="@id/keyboard_control"
+            app:layout_constraintStart_toStartOf="@id/keyboard_control"
+            app:layout_constraintTop_toBottomOf="@id/keyboard_control" />
+
+        <SeekBar
+            android:id="@+id/brightness"
+            android:layout_width="0dp"
+            android:layout_height="85dp"
+            android:layout_marginTop="10dp"
+            android:max="100"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:progressDrawable="@drawable/status_brightness_bar"
+            android:thumb="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ftp_service" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/notification_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notification_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="10"
+            tools:listitem="@layout/item_notification" />
+    </FrameLayout>
+
+</LinearLayout>

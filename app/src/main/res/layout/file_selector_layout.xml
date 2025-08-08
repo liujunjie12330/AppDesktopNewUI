@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="360dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ui_color_white_corner_5"
+        android:elevation="5dp">
+
+        <include
+            android:id="@+id/file_home"
+            layout="@layout/file_home_layout" />
+
+        <include
+            android:id="@+id/file_list"
+            layout="@layout/file_list_layout" />
+
+    </FrameLayout>
+
+
+</FrameLayout>

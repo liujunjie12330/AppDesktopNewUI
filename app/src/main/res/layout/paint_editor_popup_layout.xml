@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/whiteboard_pop_content_width"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:background="@drawable/shadow_popup_window"
+    android:elevation="@dimen/whiteboard_pop_elevation"
+    android:paddingTop="@dimen/dp_20"
+    android:paddingBottom="@dimen/dp_10">
+
+    <TextView
+        android:id="@+id/tv_paint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/paint"
+        android:textSize="@dimen/paint_config_text_size"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/dp_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/zone_track"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_paint">
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom"
+            android:background="@color/deep_gray" />
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.custom.paint.PaintView
+            android:id="@+id/paint_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|bottom"
+            android:layout_gravity="bottom"
+            app:animDuration="300"
+            app:divider_span="10dp"
+            android:minHeight="70dp"
+            app:movable_ratio="0.4"
+            app:move_orientation="top_to_bottom"
+            app:single_height="50dp"
+            app:single_width="20dp"
+            app:view_count="3" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/shape_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="4"
+            tools:listitem="@layout/shape_adapter_item"
+            tools:itemCount="8"/>
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/tv_thickness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/thickness"
+        android:textSize="@dimen/paint_config_text_size"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/dp_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/zone_track" />
+
+    <FrameLayout
+        android:id="@+id/fl_thickness"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_thickness">
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.custom.paint.GradeSelection
+            android:id="@+id/thickness_grade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:grade_height="20dp"
+            app:quantity="5"
+            app:grade_div="20"
+            app:incremental="false"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/color"
+        android:layout_marginStart="@dimen/dp_20"
+        android:textSize="@dimen/paint_config_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fl_thickness" />
+
+    <ImageView
+        android:id="@+id/iv_color_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_tips"
+        android:layout_marginEnd="@dimen/dp_20"
+        app:layout_constraintTop_toTopOf="@id/tv_color"
+        app:layout_constraintBottom_toBottomOf="@id/tv_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_color_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/color_option_tips"
+        android:textSize="8sp"
+        android:elevation="2dp"
+        android:visibility="gone"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/ui_color_white_corner_5"
+        android:paddingVertical="3dp"
+        android:paddingHorizontal="5dp"
+        app:layout_constraintTop_toBottomOf="@id/iv_color_tips"
+        app:layout_constraintEnd_toEndOf="@id/iv_color_tips"
+        tools:ignore="SmallSp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/color_recycler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="15dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:spanCount="5"
+        tools:itemCount="15"
+        tools:listitem="@layout/item_color_pick_layout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:width="22dp"
+        android:height="12dp">
+        <vector
+            android:width="22dp"
+            android:height="12dp"
+            android:viewportWidth="22"
+            android:viewportHeight="12">
+            <path
+                android:fillColor="#FFFFFF"
+                android:fillType="evenOdd"
+                android:pathData="M18,1L4,1C2.895,1 2,1.895 2,3L2,9C2,10.105 2.895,11 4,11L18,11C19.105,11 20,10.105 20,9L20,3C20,1.895 19.105,1 18,1ZM18,2L4,2C3.448,2 3,2.448 3,3L3,9C3,9.552 3.448,10 4,10L18,10C18.552,10 19,9.552 19,9L19,3C19,2.448 18.552,2 18,2Z" />
+            <path
+                android:fillColor="#FFFFFF"
+                android:pathData="M20,4L20,4C20.552,4 21,4.448 21,5L21,7C21,7.552 20.552,8 20,8L20,8L20,4Z" />
+        </vector>
+
+    </item>
+    <item
+        android:id="@+id/power_level"
+        android:width="15dp"
+        android:height="7dp"
+        android:gravity="center">
+        <level-list>
+            <item android:maxLevel="0">
+                <layer-list>
+                    <item android:width="0dp">
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/red" />
+                            <corners android:radius="1.5dp" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
+            <item android:maxLevel="10">
+                <layer-list>
+                    <item android:width="1.5dp">
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/red" />
+                            <corners android:radius="1.5dp" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
+            <item android:maxLevel="20">
+                <layer-list>
+                    <item android:width="3dp">
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/red" />
+                            <corners android:radius="1.5dp" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
+            <item android:maxLevel="30">
+                <layer-list>
+                    <item android:width="4.5dp">
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/red" />
+                            <corners android:radius="1.5dp" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
+            <item android:maxLevel="40">
+                <layer-list>
+                    <item android:width="6dp">
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/red" />
+                            <corners android:radius="1.5dp" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
+            <item android:maxLevel="50">
+                <layer-list>
+                    <item android:width="7.5dp">
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/red" />
+                            <corners android:radius="1.5dp" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
+            <item android:maxLevel="60">
+                <layer-list>
+                    <item android:width="9dp">
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/red" />
+                            <corners android:radius="1.5dp" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
+            <item android:maxLevel="70">
+                <layer-list>
+                    <item android:width="10.5dp">
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/red" />
+                            <corners android:radius="1.5dp" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
+            <item android:maxLevel="80">
+                <layer-list>
+                    <item android:width="12dp">
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/red" />
+                            <corners android:radius="1.5dp" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
+            <item android:maxLevel="90">
+                <layer-list>
+                    <item android:width="13.5dp">
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/red" />
+                            <corners android:radius="1.5dp" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
+            <item android:maxLevel="100">
+                <layer-list>
+                    <item android:width="15dp">
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/red" />
+                            <corners android:radius="1.5dp" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
+        </level-list>
+    </item>
+    <item
+        android:id="@+id/power_charging"
+        android:width="8dp"
+        android:height="8dp"
+        android:gravity="center">
+        <vector
+            android:width="8dp"
+            android:height="8dp"
+            android:viewportWidth="8"
+            android:viewportHeight="8">
+            <path
+                android:fillColor="#FFFFFF"
+                android:pathData="M4.9999,0L1,4.4445L3.4999,4.4445L3.0001,8L7,3.5555L4.5001,3.5555L4.9999,0Z" />
+        </vector>
+    </item>
+</layer-list>

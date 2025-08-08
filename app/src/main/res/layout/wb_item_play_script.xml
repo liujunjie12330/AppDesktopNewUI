@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/wb_play_script_item_bg"
+    android:padding="@dimen/view_span"
+    android:layout_marginBottom="@dimen/view_span">
+
+    <TextView
+        android:id="@+id/wb_play_script_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="台本标题"
+        android:maxEms="10"
+        android:textSize="@dimen/wb_play_script_title_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/wb_play_script_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="台本创建日期"
+        android:textSize="@dimen/wb_play_script_date_text_size"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/wb_play_script_title"
+        app:layout_constraintTop_toBottomOf="@+id/wb_play_script_title"
+        app:layout_constraintVertical_bias="0.02" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/wb_play_script_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.434"
+        android:maxHeight="20dp"
+        android:scaleX="0.7"
+        android:scaleY="0.7"
+        android:thumb="@drawable/switch_thumb_normal"
+        app:track="@drawable/switch_track_normal"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

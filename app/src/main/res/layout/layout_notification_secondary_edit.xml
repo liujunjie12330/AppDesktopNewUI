@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/color_white_corner_3"
+    android:elevation="3dp"
+    android:orientation="horizontal">
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.notification.TextSizeView
+        android:id="@+id/item_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.notification.TextStyleView
+        android:id="@+id/item_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.notification.TextColorView
+        android:id="@+id/item_text_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.notification.TextBackgroundColorView
+        android:id="@+id/item_text_background_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.notification.TextFontView
+        android:id="@+id/item_text_font"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.notification.TextScrollModeView
+        android:id="@+id/item_scroll_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="3dp">
+
+        <LinearLayout
+            android:id="@+id/scroll_speed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="滚动速度"
+                android:textColor="@color/black_383838"
+                android:textSize="8sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="慢"
+                    android:textColor="@color/black_383838"
+                    android:textSize="8sp" />
+
+                <SeekBar
+                    android:id="@+id/speed_seekbar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:max="20"
+                    android:min="5"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:progress="10"
+                    android:progressBackgroundTint="@color/blue2A82E4"
+                    android:progressDrawable="@drawable/seekbar_progress_drawable_grey_blue"
+                    android:splitTrack="false"
+                    android:thumb="@drawable/seekbar_thumb_16" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="快"
+                    android:textColor="@color/black_383838"
+                    android:textSize="8sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </cn.synway.module_sdirector_ui.whiteboard.ui.notification.TextScrollModeView>
+
+</LinearLayout>

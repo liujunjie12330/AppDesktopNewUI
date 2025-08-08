@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_whiteboard_config_selector"
+    android:elevation="5dp"
+    android:paddingHorizontal="10dp"
+    tools:ignore="HardcodedText"
+    tools:layout_gravity="center"
+    tools:layout_height="230dp"
+    tools:layout_width="290dp">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:padding="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_setting_back" />
+
+
+    <TextView
+        android:id="@+id/screen_ratio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/whiteboard_record_orientation"
+        android:textColor="#808080"
+        android:textSize="@dimen/whiteboard_config_text_size"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/back"
+        app:layout_constraintTop_toBottomOf="@+id/back" />
+
+    <TextView
+        android:id="@+id/config_orientation_horizontal"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/button_background_normal_border"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="16:9"
+        android:textColor="@color/button_color_80"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="@+id/screen_ratio"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/screen_ratio"
+        app:layout_constraintTop_toTopOf="@+id/screen_ratio" />
+
+    <TextView
+        android:id="@+id/config_orientation_vertical"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/button_background_normal_border"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="9:16"
+        android:textColor="@color/button_color_80"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="@+id/config_orientation_horizontal"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/config_orientation_horizontal"
+        app:layout_constraintTop_toTopOf="@+id/config_orientation_horizontal" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/whiteboard_record_step_three"
+        android:textColor="#383838"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/back"
+        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintTop_toTopOf="@+id/back" />
+
+    <!-- 编码器类型 -->
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:text="编码格式:"
+        android:textColor="#808080"
+        android:textSize="@dimen/whiteboard_config_text_size"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/back"
+        app:layout_constraintTop_toBottomOf="@+id/screen_ratio" />
+
+    <Spinner
+        android:id="@+id/group_encode_type"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/record_config_spinner_bg"
+        android:dropDownWidth="150dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="20dp"
+        android:popupBackground="@drawable/button_border_solid_white"
+        app:layout_constraintBottom_toBottomOf="@+id/textView6"
+        app:layout_constraintStart_toEndOf="@id/barrier2"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+    <!-- 编码方式 -->
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="编码方式:"
+        android:textColor="#808080"
+        android:textSize="@dimen/whiteboard_config_text_size"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Spinner
+        android:id="@+id/group_encode_mode"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/record_config_spinner_bg"
+        android:dropDownWidth="150dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="20dp"
+        android:popupBackground="@drawable/button_border_solid_white"
+        app:layout_constraintBottom_toBottomOf="@+id/textView15"
+        app:layout_constraintStart_toEndOf="@id/barrier2"
+        app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+    <!-- 帧率 -->
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="帧率:"
+        android:textColor="#808080"
+        android:textSize="@dimen/whiteboard_config_text_size"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <Spinner
+        android:id="@+id/group_encode_fps"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:background="@drawable/record_config_spinner_bg"
+        android:dropDownWidth="150dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="20dp"
+        android:popupBackground="@drawable/button_border_solid_white"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="@+id/group_encode_mode"
+        app:layout_constraintTop_toTopOf="@+id/textView7" />
+
+
+    <!-- 编码质量 -->
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="编码质量:"
+        android:textColor="#808080"
+        android:textSize="@dimen/whiteboard_config_text_size"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <Spinner
+        android:id="@+id/group_encode_quality"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:background="@drawable/record_config_spinner_bg"
+        android:dropDownWidth="150dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="20dp"
+        android:popupBackground="@drawable/button_border_solid_white"
+        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/group_encode_fps"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="textView7,textView6,textView8,textView15"
+        tools:layout_editor_absoluteX="91dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

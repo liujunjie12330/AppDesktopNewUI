@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/camera_control_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="显/隐" />
+
+    <LinearLayout
+        android:id="@+id/camera_control"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <CheckBox
+            android:id="@+id/flip_x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="flip X" />
+
+        <CheckBox
+            android:id="@+id/flip_y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="flip Y" />
+
+        <RadioGroup
+            android:id="@+id/rotate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rotate_none"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="不旋转" />
+
+            <RadioButton
+                android:id="@+id/rotate_cw_90"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="顺时针90" />
+
+            <RadioButton
+                android:id="@+id/rotate_ccw_90"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="逆时针90" />
+
+            <RadioButton
+                android:id="@+id/scale_inside"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="缩小画面" />
+
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/scale_x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="scale X" />
+
+        <CheckBox
+            android:id="@+id/scale_y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="scale Y" />
+
+        <Button
+            android:id="@+id/apply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更新" />
+    </LinearLayout>
+</LinearLayout>

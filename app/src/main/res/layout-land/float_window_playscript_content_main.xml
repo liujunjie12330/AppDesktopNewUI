@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:gravity="end"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/content_main_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/content_background_selector"
+        android:elevation="2dp"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/no_content"
+            android:layout_width="@dimen/play_script_content_box_width"
+            android:layout_height="@dimen/play_script_content_box_height"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/no_content_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_no_content_50"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/no_content"
+                android:textColor="@color/white_a75"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/no_content_icon" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/play_script_main_layout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/content_bg_with_progress"
+            android:clipToPadding="false"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_height="400dp"
+            tools:visibility="visible">
+
+            <ImageButton
+                android:id="@+id/play_script_content_setting_btn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:background="@null"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_button_setting"
+                app:layout_constraintBottom_toBottomOf="@id/content_title"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/content_title"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/content_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:ellipsize="middle"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="@drawable/content_title_color_selector"
+                android:textSize="@dimen/play_script_content_title_size"
+                app:layout_constraintEnd_toStartOf="@+id/play_script_pick_up"
+                app:layout_constraintStart_toEndOf="@id/play_script_content_setting_btn"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="测试标题踢踢" />
+
+            <ImageButton
+                android:id="@+id/play_script_pick_up"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:padding="9dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_playscript_close"
+                app:layout_constraintBottom_toBottomOf="@id/content_title"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/content_title"
+                app:tint="@color/button_color_white_a75_blue_a75"
+                tools:ignore="ContentDescription" />
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                android:layout_marginTop="15dp"
+                android:background="#FF474747"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/content_title" />
+
+            <cn.synway.module_sdirector_ui.ui.sidebarfw.layout.NoInterceptRecyclerView
+                android:id="@+id/tag_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="@+id/play_script_content_setting_btn"
+                app:layout_constraintTop_toBottomOf="@+id/divider1"
+                tools:itemCount="3"
+                tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:listitem="@layout/item_playscript_tag"
+                tools:spanCount="3" />
+
+            <cn.synway.module_sdirector_ui.ui.sidebarfw.layout.NoInterceptScrollView
+                android:id="@+id/play_script_text_scroll"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:scrollbars="none"
+                app:layout_constraintBottom_toTopOf="@id/divider2"
+                app:layout_constraintEnd_toEndOf="@id/play_script_pick_up"
+                app:layout_constraintStart_toStartOf="@id/play_script_content_setting_btn"
+                app:layout_constraintTop_toBottomOf="@id/tag_view">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/content_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:textColor="@drawable/content_text_color_selector"
+                        android:textSize="@dimen/play_script_content_text_size" />
+
+                    <View
+                        android:id="@+id/blank_placeholder"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp" />
+                </LinearLayout>
+
+            </cn.synway.module_sdirector_ui.ui.sidebarfw.layout.NoInterceptScrollView>
+
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                android:layout_marginVertical="15dp"
+                android:background="#FF474747"
+                app:layout_constraintBottom_toTopOf="@id/pause_start_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/play_script_text_scroll" />
+
+            <FrameLayout
+                android:id="@+id/pause_start_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/page_layout"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="@id/play_script_content_setting_btn"
+                app:layout_constraintTop_toBottomOf="@id/divider2">
+
+                <ImageButton
+                    android:id="@+id/pause_scroll"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_button_pause"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    tools:ignore="ContentDescription" />
+
+                <ImageButton
+                    android:id="@+id/start_scroll"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_button_left_triangle"
+                    android:visibility="gone"
+                    tools:ignore="ContentDescription" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/page_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="@id/pause_start_layout"
+                app:layout_constraintEnd_toStartOf="@id/expand_more"
+                app:layout_constraintStart_toEndOf="@id/pause_start_layout"
+                app:layout_constraintTop_toTopOf="@id/pause_start_layout">
+
+                <Button
+                    android:id="@+id/previous_page"
+                    android:layout_width="@dimen/content_btn_width"
+                    android:layout_height="@dimen/content_btn_height"
+                    android:background="@drawable/btn_play_script_content_next_pre_selector"
+                    android:text="@string/previous_page"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/play_script_text_size"
+                    app:layout_constraintBottom_toBottomOf="@id/pause_start_layout"
+                    app:layout_constraintEnd_toStartOf="@+id/next_page"
+                    app:layout_constraintStart_toEndOf="@id/pause_start_layout"
+                    app:layout_constraintTop_toTopOf="@id/pause_start_layout"
+                    tools:ignore="ButtonStyle" />
+
+                <Button
+                    android:id="@+id/next_page"
+                    android:layout_width="@dimen/content_btn_width"
+                    android:layout_height="@dimen/content_btn_height"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/btn_play_script_content_next_pre_selector"
+                    android:text="@string/next_page"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/play_script_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/expand_more"
+                    app:layout_constraintStart_toEndOf="@id/previous_page"
+                    app:layout_constraintTop_toTopOf="@id/previous_page"
+                    tools:ignore="ButtonStyle" />
+            </LinearLayout>
+
+
+            <ImageButton
+                android:id="@+id/expand_more"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_button_larger"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@id/pause_start_layout"
+                app:layout_constraintEnd_toEndOf="@id/play_script_pick_up"
+                app:layout_constraintStart_toEndOf="@id/page_layout"
+                app:layout_constraintTop_toTopOf="@id/pause_start_layout"
+                tools:ignore="ContentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/setting_container"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/transparent">
+
+
+        <FrameLayout
+            android:id="@+id/setting_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@color/transparent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/play_script_content_setting_layout"
+                android:layout_width="224dp"
+                android:layout_height="180dp"
+                android:layout_gravity="start"
+                android:background="@drawable/background_shadow_black_drawable"
+                android:elevation="2dp">
+
+                <TextView
+                    android:id="@+id/scroll_cost_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="8sp"
+                    app:layout_constraintBottom_toTopOf="@id/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SmallSp"
+                    tools:text="预计需要 1分30秒 播放完成" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#FF474747"
+                    app:layout_constraintBottom_toTopOf="@id/content_text_size_setting"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <cn.synway.module_sdirector_ui.ui.playscriptcontentfw.ProgressSettingBar
+                    android:id="@+id/content_text_size_setting"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    app:is_float="false"
+                    app:layout_constraintBottom_toTopOf="@id/content_text_scroll_speed_setting"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider"
+                    app:max="20"
+                    app:min="10"
+                    app:ratio="1"
+                    app:title="@string/content_text_size_setting_text" />
+
+                <cn.synway.module_sdirector_ui.ui.playscriptcontentfw.ProgressSettingBar
+                    android:id="@+id/content_text_scroll_speed_setting"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:is_float="true"
+                    app:layout_constraintBottom_toTopOf="@id/content_text_transparent_setting"
+                    app:layout_constraintEnd_toEndOf="@id/content_text_transparent_setting"
+                    app:layout_constraintStart_toStartOf="@id/content_text_transparent_setting"
+                    app:layout_constraintTop_toBottomOf="@id/content_text_size_setting"
+                    app:max="400"
+                    app:min="20"
+                    app:ratio="100"
+                    app:title="@string/content_text_scroll_speed_setting_text" />
+
+                <cn.synway.module_sdirector_ui.ui.playscriptcontentfw.ProgressSettingBar
+                    android:id="@+id/content_text_transparent_setting"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:is_float="false"
+                    app:layout_constraintBottom_toTopOf="@id/content_background_setting_title"
+                    app:layout_constraintEnd_toEndOf="@id/content_text_size_setting"
+                    app:layout_constraintStart_toStartOf="@id/content_text_size_setting"
+                    app:layout_constraintTop_toBottomOf="@id/content_text_scroll_speed_setting"
+                    app:max="100"
+                    app:min="20"
+                    app:ratio="1"
+                    app:title="@string/content_text_transparent_setting_text" />
+
+                <TextView
+                    android:id="@+id/content_background_setting_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/content_background_setting_title_text"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/play_script_text_size"
+                    app:layout_constraintBottom_toTopOf="@id/auto_loop"
+                    app:layout_constraintStart_toStartOf="@id/content_text_scroll_speed_setting"
+                    app:layout_constraintTop_toBottomOf="@id/content_text_transparent_setting" />
+
+                <Button
+                    android:id="@+id/black_background_white_text"
+                    android:layout_width="@dimen/content_btn_width"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/content_background_gradient"
+                    android:text="@string/sidebar_white_font"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="8sp"
+                    app:layout_constraintBottom_toBottomOf="@id/white_background_black_text"
+                    app:layout_constraintDimensionRatio="2.3:1"
+                    app:layout_constraintEnd_toStartOf="@id/white_background_black_text"
+                    app:layout_constraintTop_toTopOf="@id/white_background_black_text"
+                    tools:ignore="SmallSp" />
+
+                <Button
+                    android:id="@+id/white_background_black_text"
+                    android:layout_width="@dimen/content_btn_width"
+                    android:layout_height="0dp"
+                    android:background="@drawable/content_background_gradient"
+                    android:text="@string/sidebar_black_font"
+                    android:textColor="@color/white"
+                    android:textSize="8sp"
+                    app:layout_constraintBottom_toBottomOf="@id/content_background_setting_title"
+                    app:layout_constraintDimensionRatio="2.3:1"
+                    app:layout_constraintEnd_toEndOf="@id/content_text_scroll_speed_setting"
+                    app:layout_constraintTop_toTopOf="@id/content_background_setting_title"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/auto_loop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/auto_loop"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/play_script_text_size"
+                    app:layout_constraintBottom_toTopOf="@id/highlight"
+                    app:layout_constraintStart_toStartOf="@id/content_background_setting_title"
+                    app:layout_constraintTop_toBottomOf="@id/content_background_setting_title" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_auto_loop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
+                    android:thumb="@drawable/switch_thumb_normal"
+                    app:layout_constraintBottom_toBottomOf="@id/auto_loop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/auto_loop"
+                    app:track="@drawable/switch_track_normal" />
+
+                <TextView
+                    android:id="@+id/highlight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/text_highlight"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/play_script_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/content_background_setting_title"
+                    app:layout_constraintTop_toBottomOf="@id/auto_loop" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_highlight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
+                    android:thumb="@drawable/switch_thumb_normal"
+                    app:layout_constraintBottom_toBottomOf="@id/highlight"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/highlight"
+                    app:track="@drawable/switch_track_normal" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+    </FrameLayout>
+</LinearLayout>

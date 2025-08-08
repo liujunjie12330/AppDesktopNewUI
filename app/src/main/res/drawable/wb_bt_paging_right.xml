@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true"
+        android:drawable="@drawable/whiteboard_icon_next_page_right_light_grey"/>
+    <item android:state_enabled="true"
+        android:drawable="@drawable/whiteboard_icon_next_page_right_grey"/>
+    <item android:drawable="@drawable/whiteboard_icon_next_page_right_light_grey"/>
+
+</selector>

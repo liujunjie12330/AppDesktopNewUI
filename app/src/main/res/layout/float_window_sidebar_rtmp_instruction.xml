@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/background_shadow_white_drawable"
+    android:elevation="2dp"
+    android:padding="@dimen/window_layout_padding"
+    android:scrollbars="none"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="350dp">
+
+        <TextView
+            android:id="@+id/instruction"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/wb_lan_instruction"
+            android:textColor="@color/black"
+            android:textSize="8sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/wlan_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:ellipsize="middle"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="8sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instruction"
+            tools:text="WifiNameWifiNameWifiNameWifiNameWifiName" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginEnd="@dimen/dp_4"
+            android:background="@color/lightgray"
+            app:layout_constraintBottom_toBottomOf="@id/middle_dot"
+            app:layout_constraintEnd_toStartOf="@id/middle_dot"
+            app:layout_constraintStart_toStartOf="@id/instruction"
+            app:layout_constraintTop_toTopOf="@id/middle_dot" />
+
+        <View
+            android:id="@+id/middle_dot"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:background="@color/lightgray"
+            app:layout_constraintBottom_toTopOf="@id/show_wx_program_code"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wlan_name" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/dp_4"
+            android:background="@color/lightgray"
+            app:layout_constraintBottom_toBottomOf="@id/middle_dot"
+            app:layout_constraintEnd_toEndOf="@id/instruction"
+            app:layout_constraintStart_toEndOf="@id/middle_dot"
+            app:layout_constraintTop_toTopOf="@id/middle_dot" />
+
+        <TextView
+            android:id="@+id/usage_push_flow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="1dp"
+            android:text="@string/usage_push_flow"
+            android:textColor="@color/black"
+            android:textSize="6.5sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/show_rtmp_code" />
+
+        <ImageView
+            android:id="@+id/rtmp_qr_code"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@id/applet_qr_code"
+            app:layout_constraintStart_toStartOf="@id/applet_qr_code"
+            app:layout_constraintTop_toBottomOf="@id/usage_push_flow"
+            tools:src="@color/white" />
+
+        <TextView
+            android:id="@+id/show_rtmp_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/push_flow_code"
+            android:textColor="@color/deep_blue"
+            android:textSize="8sp"
+            app:layout_constraintStart_toStartOf="@id/show_wx_program_code"
+            app:layout_constraintTop_toBottomOf="@id/applet_qr_code" />
+
+        <TextView
+            android:id="@+id/show_wx_program_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:text="@string/wx_program_code"
+            android:textColor="@color/black"
+            android:textSize="8sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wlan_name" />
+
+        <ImageView
+            android:id="@+id/applet_qr_code"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/applet_qr_code"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/show_wx_program_code" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

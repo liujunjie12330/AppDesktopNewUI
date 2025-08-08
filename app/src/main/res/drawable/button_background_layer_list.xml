@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:bottom="5dp"
+        android:left="5dp"
+        android:right="5dp"
+        android:top="5dp">
+        <selector>
+            <item android:state_pressed="true"
+                android:drawable="@drawable/button_selected_circle_gray" />
+            <item android:state_selected="true"
+                android:drawable="@drawable/button_selected_circle" />
+            <item android:state_enabled="false"
+                android:drawable="@drawable/button_normal_circle" />
+            <item
+                android:drawable="@drawable/button_normal_circle" /><!--默认效果-->
+        </selector>
+    </item>
+</layer-list>

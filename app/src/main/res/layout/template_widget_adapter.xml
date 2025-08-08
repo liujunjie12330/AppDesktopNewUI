@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutPreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/white"
+        android:elevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivPreview"
+            android:layout_width="75dp"
+            android:layout_height="120dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/vvBg"
+            android:layout_width="75dp"
+            android:layout_height="120dp"
+            android:background="@drawable/template_bg_item_default"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/ivPreview"
+            app:layout_constraintEnd_toEndOf="@id/ivPreview"
+            app:layout_constraintStart_toStartOf="@id/ivPreview"
+            app:layout_constraintTop_toTopOf="@id/ivPreview" />
+
+        <TextView
+            android:id="@+id/apply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/template_save_bg"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="2dp"
+            android:text="@string/template_apply"
+            android:textColor="@color/template_blue"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@id/ivPreview"
+            app:layout_constraintEnd_toEndOf="@id/ivPreview"
+            app:layout_constraintStart_toStartOf="@id/ivPreview" />
+
+        <ImageView
+            android:id="@+id/skin"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginBottom="2dp"
+            android:src="@drawable/template_widget_skin_select"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/ivPreview"
+            app:layout_constraintStart_toStartOf="@id/ivPreview"/>
+
+
+        <ImageView
+            android:id="@+id/setting"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
+            android:src="@drawable/template_widget_setting"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/ivPreview"
+            app:layout_constraintRight_toRightOf="@id/ivPreview" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/widgetName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:maxWidth="75dp"
+        android:maxLines="1"
+        android:text="测试名字"
+        android:textColor="@color/template_black_38"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@id/layoutPreview"
+        app:layout_constraintStart_toStartOf="@id/layoutPreview"
+        app:layout_constraintTop_toBottomOf="@id/layoutPreview" />
+
+    <View
+        android:id="@+id/perch"
+        android:layout_width="10dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutPreview" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

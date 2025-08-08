@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="110dp"
+    android:layout_height="160dp"
+    android:background="@color/transparent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="3dp"
+        android:background="@drawable/ui_color_white_corner_5"
+        android:clipToPadding="false"
+        android:elevation="3dp"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="3dp">
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/view_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="
+            textView_scroll_speed,
+            textview_slow,
+            speed_seekbar,
+            textview_fast,
+            textview_display_percent,
+            percent_small,
+            percent_large,
+            percent_seekbar,
+            textview_display_space,
+            space_small,
+            space_large,
+            space_seekbar,
+            title" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/scroll_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:thumb="@drawable/switch_thumb_normal"
+            android:transformPivotX="0dp"
+            android:transformPivotY="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:track="@drawable/switch_track_normal" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/picture_scroll"
+            android:textColor="@color/color_enable_38_a6"
+            android:textSize="11sp"
+            android:translationX="-10dp"
+            app:layout_constraintBottom_toBottomOf="@id/scroll_switch"
+            app:layout_constraintStart_toEndOf="@id/scroll_switch"
+            app:layout_constraintTop_toTopOf="@id/scroll_switch" />
+
+        <TextView
+            android:id="@+id/textView_scroll_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/content_text_scroll_speed_setting_text"
+            android:textColor="@color/color_enable_38_a6"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scroll_switch"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/textview_slow"
+            android:layout_width="15dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/speed_slowly"
+            android:textColor="@color/color_enable_black_dis_a6"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_scroll_speed"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/textview_fast"
+            android:layout_width="15dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/fast"
+            android:textColor="@color/color_enable_black_dis_a6"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@id/textview_slow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textview_slow"
+            tools:ignore="SmallSp" />
+
+        <SeekBar
+            android:id="@+id/speed_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="3dp"
+            android:max="500"
+            android:maxHeight="2dp"
+            android:min="20"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/wb_seekbar_progress_drawable_selector"
+            android:splitTrack="false"
+            android:thumb="@drawable/wb_seekbar_thumb_selector"
+            app:layout_constraintBottom_toBottomOf="@id/textview_slow"
+            app:layout_constraintEnd_toStartOf="@id/textview_fast"
+            app:layout_constraintStart_toEndOf="@id/textview_slow"
+            app:layout_constraintTop_toTopOf="@id/textview_slow" />
+
+        <TextView
+            android:id="@+id/textview_display_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/display_percent"
+            android:textColor="@color/color_enable_38_a6"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_slow"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/percent_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/color_enable_black_dis_a6"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_display_percent"
+            tools:ignore="SmallSp"
+            tools:text="0.0" />
+
+        <TextView
+            android:id="@+id/percent_large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.0"
+            android:textColor="@color/color_enable_black_dis_a6"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@id/percent_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/percent_small"
+            tools:ignore="HardcodedText,SmallSp" />
+
+
+        <SeekBar
+            android:id="@+id/percent_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:maxHeight="2dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:progressDrawable="@drawable/wb_seekbar_progress_drawable_selector"
+            android:splitTrack="false"
+            android:thumb="@drawable/wb_seekbar_thumb_selector"
+            app:layout_constraintBottom_toBottomOf="@id/percent_small"
+            app:layout_constraintEnd_toEndOf="@id/speed_seekbar"
+            app:layout_constraintStart_toStartOf="@id/speed_seekbar"
+            app:layout_constraintTop_toTopOf="@id/percent_small" />
+
+        <TextView
+            android:id="@+id/textview_display_space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/display_space"
+            android:textColor="@color/color_enable_38_a6"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/percent_small"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/space_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="0.0"
+            android:textColor="@color/color_enable_black_dis_a6"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_display_space"
+            tools:ignore="HardcodedText,SmallSp" />
+
+        <TextView
+            android:id="@+id/space_large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.0"
+            android:textColor="@color/color_enable_black_dis_a6"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@id/space_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/space_small"
+            tools:ignore="HardcodedText,SmallSp" />
+
+
+        <SeekBar
+            android:id="@+id/space_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="200"
+            android:maxHeight="2dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:progressDrawable="@drawable/wb_seekbar_progress_drawable_selector"
+            android:splitTrack="false"
+            android:thumb="@drawable/wb_seekbar_thumb_selector"
+            app:layout_constraintBottom_toBottomOf="@id/space_small"
+            app:layout_constraintEnd_toEndOf="@id/speed_seekbar"
+            app:layout_constraintStart_toStartOf="@id/speed_seekbar"
+            app:layout_constraintTop_toTopOf="@id/space_small" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/ui_color_white_corner_5"
+    tools:layout_height="400dp"
+    tools:layout_width="360dp">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/file_chosen"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/top_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:background="@color/guide_black_e5"
+        app:layout_constraintBottom_toBottomOf="@id/top_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <include
+        android:id="@+id/local_file"
+        layout="@layout/material_selector_item_local"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toTopOf="@id/usb_devices"
+        app:layout_constraintEnd_toStartOf="@id/material_file"
+        app:layout_constraintStart_toStartOf="@id/usb_devices"
+        app:layout_constraintTop_toBottomOf="@id/top_guideline"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <include
+        android:id="@+id/material_file"
+        layout="@layout/material_selector_item_local"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/local_file"
+        app:layout_constraintEnd_toStartOf="@id/baidu_netdisk"
+        app:layout_constraintStart_toEndOf="@id/local_file"
+        app:layout_constraintTop_toTopOf="@id/local_file" />
+
+    <include
+        android:id="@+id/baidu_netdisk"
+        layout="@layout/material_selector_item_local"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@id/local_file"
+        app:layout_constraintEnd_toEndOf="@id/usb_devices"
+        app:layout_constraintStart_toEndOf="@id/material_file"
+        app:layout_constraintTop_toTopOf="@id/local_file" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/usb_devices"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="20dp"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/local_file"
+        tools:itemCount="2"
+        tools:listitem="@layout/material_selector_home_item" />
+
+    <TextView
+        android:id="@+id/unmount_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="5dp"
+        android:gravity="center"
+        android:text="@string/unmount_tips"
+        android:textColor="#FF808080"
+        android:textSize="9sp"
+        app:drawableStartCompat="@drawable/icon_tips_deep_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usb_devices"
+        tools:ignore="SmallSp" />
+
+
+    <TextView
+        android:id="@+id/tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="@string/material_tips_title"
+        android:textColor="@color/black"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toTopOf="@id/display_mode_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bottom_guideline"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/display_mode_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/display_mode"
+        android:textColor="@color/blue2A82E4"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tips" />
+
+    <FrameLayout
+        android:id="@+id/region_non_net_disk"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/manage_files"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:paddingHorizontal="5dp"
+        android:text="@string/manage_files"
+        android:textColor="@color/deep_blue"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@id/top_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fast_transport"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:gravity="center"
+        android:paddingHorizontal="5dp"
+        android:text="@string/fast_transport"
+        android:textColor="@color/deep_blue"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@id/top_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="45dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="85dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

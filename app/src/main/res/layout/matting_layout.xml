@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="250dp"
+    android:layout_height="170dp"
+    android:background="@drawable/background_shadow_white_drawable"
+    android:elevation="2dp"
+    android:orientation="vertical"
+    android:paddingHorizontal="10dp">
+
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/matting_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:checked="false"
+        android:gravity="center"
+        android:maxHeight="20dp"
+        android:scaleX="0.7"
+        android:scaleY="0.7"
+        android:thumb="@drawable/switch_thumb_normal"
+        app:layout_constraintBottom_toTopOf="@id/matting_intensity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:track="@drawable/switch_track_normal"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/matting_switch"
+        android:textColor="@color/color_enable_blue2a82e4_dis_a6"
+        android:textSize="@dimen/wb_matting_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/matting_switch"
+        app:layout_constraintStart_toEndOf="@id/matting_switch"
+        app:layout_constraintTop_toTopOf="@id/matting_switch"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/reset_matting_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:text="@string/reset"
+        android:textColor="@color/color_enable_blue2a82e4_dis_a6"
+        android:textSize="@dimen/wb_matting_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/matting_switch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/matting_switch" />
+
+    <include
+        android:id="@+id/matting_intensity"
+        layout="@layout/matting_item_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toTopOf="@id/matting_smoothly"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/matting_switch" />
+
+    <include
+        android:id="@+id/matting_smoothly"
+        layout="@layout/matting_item_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toTopOf="@id/matting_color_suppression"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/matting_intensity" />
+
+    <include
+        android:id="@+id/matting_color_suppression"
+        layout="@layout/matting_item_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toTopOf="@id/blue_switch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/matting_smoothly" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/blue_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:checked="false"
+        android:gravity="center"
+        android:maxHeight="20dp"
+        android:scaleX="0.7"
+        android:scaleY="0.7"
+        android:thumb="@drawable/switch_thumb_normal"
+        app:layout_constraintBottom_toTopOf="@id/matting_bg_switch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/matting_color_suppression"
+        app:track="@drawable/switch_track_normal"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/blue_switch"
+        android:textColor="@color/color_enable_blue2a82e4_dis_a6"
+        android:textSize="@dimen/wb_matting_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/blue_switch"
+        app:layout_constraintStart_toEndOf="@id/blue_switch"
+        app:layout_constraintTop_toTopOf="@id/blue_switch"
+        tools:ignore="SmallSp" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/matting_bg_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:checked="false"
+        android:gravity="center"
+        android:maxHeight="20dp"
+        android:scaleX="0.7"
+        android:scaleY="0.7"
+        android:thumb="@drawable/switch_thumb_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/blue_switch"
+        app:track="@drawable/switch_track_normal"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/virtual_background_portrait"
+        android:textColor="@color/color_enable_blue2a82e4_dis_a6"
+        android:textSize="@dimen/wb_matting_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/matting_bg_switch"
+        app:layout_constraintStart_toEndOf="@id/matting_bg_switch"
+        app:layout_constraintTop_toTopOf="@id/matting_bg_switch"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/change_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/view_span"
+        android:layout_marginEnd="3dp"
+        android:text="@string/change_background"
+        android:textColor="@color/color_enable_blue2a82e4_dis_a6"
+        android:textSize="@dimen/wb_matting_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/matting_bg_switch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/matting_bg_switch" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+        android:id="@+id/colorButton"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_marginBottom="@dimen/button_margin_top_bottom"
+        android:background="@drawable/button_background">
+
+        <ImageView
+            android:id="@+id/colorButtonImage"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/controller_background_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_background_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/colorButtonImage" />
+    </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+        android:id="@+id/openVideos"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_marginVertical="@dimen/button_margin_top_bottom"
+        android:background="@drawable/button_background">
+
+        <ImageView
+            android:id="@+id/openVideoImage"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_video_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_video_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/openVideoImage" />
+    </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+        android:id="@+id/openDocuments"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_marginVertical="@dimen/button_margin_top_bottom"
+        android:background="@drawable/button_background">
+
+        <ImageView
+            android:id="@+id/openDocumentsImage"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_document_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_document_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/openDocumentsImage" />
+    </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+        android:id="@+id/openPictures"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_marginVertical="@dimen/button_margin_top_bottom"
+        android:background="@drawable/button_background">
+
+        <ImageView
+            android:id="@+id/openPicturesImage"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_image_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_picture_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/openPicturesImage" />
+    </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+        android:id="@+id/paster"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_marginVertical="@dimen/button_margin_top_bottom"
+        android:background="@drawable/button_background">
+
+        <ImageView
+            android:id="@+id/pasterImage"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/controller_paster_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_paster_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pasterImage" />
+    </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+        android:id="@+id/open_projection"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_marginVertical="@dimen/button_margin_top_bottom"
+        android:background="@drawable/button_background">
+
+        <ImageView
+            android:id="@+id/open_projectionImage"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/controller_video_background_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_video_background_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/open_projectionImage" />
+    </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+        android:id="@+id/template"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_marginVertical="@dimen/button_margin_top_bottom"
+        android:background="@drawable/button_background">
+
+        <ImageView
+            android:id="@+id/templateImage"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/controller_template_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_template_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/templateImage" />
+    </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+        android:id="@+id/recorder"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_marginVertical="@dimen/button_margin_top_bottom"
+        android:background="@drawable/button_background">
+
+        <ImageView
+            android:id="@+id/recorderImage"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/controller_recorder_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_recorder_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recorderImage" />
+    </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+        android:id="@+id/app_live_common"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_marginVertical="@dimen/button_margin_top_bottom"
+        android:background="@drawable/button_background">
+
+        <ImageView
+            android:id="@+id/app_live_common_image"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/controller_live_platform_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_live_platform_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_live_common_image" />
+    </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+        android:id="@+id/app_entry"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_marginVertical="@dimen/button_margin_top_bottom"
+        android:background="@drawable/button_background">
+
+        <ImageView
+            android:id="@+id/app_entry_image"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/controller_application_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_application_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_entry_image" />
+    </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+        android:id="@+id/transparentRegionButton"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+        android:layout_marginVertical="@dimen/button_margin_top_bottom"
+        android:background="@drawable/button_background">
+
+        <ImageView
+            android:id="@+id/transparentRegionButtonImage"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/controller_transparent_region_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_transparent_region_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transparentRegionButtonImage" />
+    </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+
+</LinearLayout>

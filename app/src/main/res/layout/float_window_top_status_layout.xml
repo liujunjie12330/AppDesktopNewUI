@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/top_status_layout"
+    android:layout_width="match_parent"
+    android:layout_height="25dp"
+    android:background="@color/black_a40"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/top_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="15dp"
+        android:textColor="@color/top_status_wifi_time_color"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="12:00" />
+
+    <TextView
+        android:id="@+id/notification"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_weight="1"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:singleLine="true"
+        android:textColor="@color/top_status_wifi_time_color"
+        android:textSize="@dimen/top_status_text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="new notification" />
+
+    <TextView
+        android:id="@+id/cpu_usage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/top_status_text_size" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/network_speed_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/top_upload_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:background="@drawable/ic_upload_20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/top_upload_speed_text"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/top_upload_speed_text"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="88.8Mb/s"
+            android:textColor="@color/top_status_speed_color"
+            android:textSize="@dimen/top_status_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/top_download_icon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/top_download_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:background="@drawable/ic_download_20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/top_download_speed_text"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/top_download_speed_text"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="88.8Mb/s"
+            android:textColor="@color/top_status_speed_color"
+            android:textSize="@dimen/top_status_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ImageView
+        android:id="@+id/top_network_status_icon"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_offline_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <cn.synway.module_sdirector_ui.ui.topStatusFloatWindow.PowerView
+        android:id="@+id/power_view"
+        android:layout_width="58dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="5dp"
+        android:drawableEnd="@drawable/ic_power_status"
+        android:drawablePadding="5dp"
+        android:gravity="center|end"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="100%" />
+</LinearLayout>

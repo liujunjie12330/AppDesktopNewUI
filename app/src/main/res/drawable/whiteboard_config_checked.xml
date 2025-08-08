@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:width="@dimen/whiteboard_config_radio_button_size"
+        android:height="@dimen/whiteboard_config_radio_button_size"
+        android:drawable="@drawable/icon_wb_config_selected"/>
+</layer-list>

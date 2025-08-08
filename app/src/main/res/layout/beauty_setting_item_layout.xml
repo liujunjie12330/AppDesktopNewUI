@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="20dp"
+    android:layout_marginHorizontal="3dp"
+    android:layout_marginVertical="4dp">
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintDimensionRatio="1"
+        android:src="@drawable/ic_button_beauty_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.popwindow.beauty.SeekTouchView
+        android:id="@+id/seek"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon"
+        app:layout_constraintEnd_toStartOf="@id/progress"/>
+
+    <EditText
+        android:id="@+id/progress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="4:3"
+        android:background="@drawable/bg_stroke_1dp_corner_3_e5"
+        android:gravity="center"
+        android:textSize="7sp"
+        android:inputType="number"
+        android:imeOptions="actionDone"
+        android:textColor="@color/color_enable_black_dis_a6"
+        android:maxLength="3"
+        app:layout_constraintBottom_toBottomOf="@id/seek"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/seek"
+        tools:text="100"
+        tools:ignore="Autofill,LabelFor,SmallSp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

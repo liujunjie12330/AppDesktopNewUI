@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/ui_color_white_corner_5"
+    tools:layout_height="400dp"
+    tools:layout_width="360dp">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/file_chosen"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="45dp"
+        android:background="@color/guide_black_e5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/back_to_home"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:paddingHorizontal="10dp"
+        android:text="@string/home_page"
+        android:textColor="@color/color_blue_deepblue_selector"
+        android:textSize="12sp"
+        app:drawableStartCompat="@drawable/disk_back"
+        app:drawableTint="@color/color_blue_deepblue_selector"
+        app:layout_constraintBottom_toBottomOf="@id/divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/arrange_style"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_arrange_style"
+        app:layout_constraintBottom_toBottomOf="@id/divider"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/color_blue_deepblue_selector"
+        tools:ignore="ContentDescription" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/path"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@id/convenient_organization_tips"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        tools:itemCount="1"
+        tools:listitem="@layout/item_path_list" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/path">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/file_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            tools:listitem="@layout/material_list_item" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/empty_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/refresh"
+        app:layout_constraintEnd_toEndOf="@id/refresh"
+        app:layout_constraintStart_toStartOf="@id/refresh"
+        app:layout_constraintTop_toTopOf="@id/refresh">
+
+        <ImageView
+            android:id="@+id/icon_empty"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/folder_empty" />
+
+        <TextView
+            android:id="@+id/empty_folder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/disk_item_folder_empty"
+            android:textColor="#FFA6A6A6"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/empty_to_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/back_to_parent"
+            android:textColor="@color/blue2A82E4"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/convenient_organization"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:thumb="@drawable/switch_thumb_normal"
+        app:layout_constraintBottom_toBottomOf="@id/path"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:track="@drawable/switch_track_normal" />
+
+    <TextView
+        android:id="@+id/convenient_organization_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/convenient_organization"
+        android:textColor="#FF5E5E5E"
+        android:textSize="6sp"
+        android:translationX="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/convenient_organization"
+        app:layout_constraintEnd_toStartOf="@id/convenient_organization"
+        app:layout_constraintTop_toTopOf="@id/convenient_organization"
+        tools:ignore="SmallSp" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/convenient_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="convenient_organization,convenient_organization_tips" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

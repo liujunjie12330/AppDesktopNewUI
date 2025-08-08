@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background_shadow_white_drawable"
+    android:elevation="2dp"
+    android:paddingHorizontal="5dp"
+    android:paddingBottom="2dp"
+    android:layout_width="250dp"
+    android:layout_height="155dp">
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/beauty_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="5dp"
+        android:background="@null"
+        android:checked="true"
+        android:elevation="2dp"
+        android:maxHeight="20dp"
+        android:scaleX="0.7"
+        android:scaleY="0.7"
+        android:thumb="@drawable/switch_thumb_normal"
+        app:track="@drawable/switch_track_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/switch_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:gravity="center"
+        android:text="开启美颜"
+        android:textColor="@color/color_enable_blue2a82e4_dis_a6"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@id/beauty_switch"
+        app:layout_constraintStart_toEndOf="@id/beauty_switch"
+        app:layout_constraintTop_toTopOf="@id/beauty_switch"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:elevation="2dp"
+        android:text="重置"
+        android:textColor="@color/color_enable_blue2a82e4_dis_a6"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@id/beauty_switch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/beauty_switch"
+        tools:ignore="HardcodedText" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginBottom="3dp"
+        android:elevation="2dp"
+        android:padding="2dp"
+        android:scrollbarSize="2dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/beauty_switch"
+        tools:layoutmanager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/beauty_setting_item_layout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

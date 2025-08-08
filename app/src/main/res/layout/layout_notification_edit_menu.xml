@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="370dp"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/box_padding_margin"
+    tools:layout_gravity="center">
+
+    <View
+        android:id="@+id/menu_box"
+        android:layout_width="350dp"
+        android:layout_height="@dimen/box_height"
+        android:layout_margin="@dimen/box_padding_margin"
+        android:background="@drawable/ui_color_white_corner_5"
+        android:elevation="@dimen/box_elevation"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/box_item_start"
+        android:background="@drawable/button_background"
+        android:clickable="false"
+        android:elevation="@dimen/box_elevation"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/box_item_padding"
+        app:layout_constraintBottom_toBottomOf="@id/menu_box"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toStartOf="@+id/button_text_font"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/menu_box"
+        app:layout_constraintTop_toTopOf="@id/menu_box">
+
+        <ImageView
+            android:id="@+id/label2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_n_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/button_color_38"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/drag_title"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/box_item_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/button_text_font"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="3dp"
+        android:background="@drawable/button_background"
+        android:elevation="@dimen/box_elevation"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="默认字体"
+        android:textColor="@color/button_color"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@id/menu_box"
+        app:layout_constraintStart_toEndOf="@+id/label"
+        app:layout_constraintTop_toTopOf="@id/menu_box" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_text_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/box_item_start"
+        android:background="@drawable/button_background"
+        android:elevation="@dimen/box_elevation"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/box_item_padding"
+        app:layout_constraintBottom_toBottomOf="@id/menu_box"
+        app:layout_constraintStart_toEndOf="@+id/button_text_font"
+        app:layout_constraintTop_toTopOf="@id/menu_box">
+
+        <ImageView
+            android:id="@+id/button_text_color2"
+            android:layout_width="15dp"
+            android:layout_height="14dp"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_n_text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/button_color_38"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:id="@+id/text_color_indicator"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="2dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_text_color2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/color_title"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/box_item_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_color_indicator" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/box_item_start"
+        android:background="@drawable/button_background"
+        android:elevation="@dimen/box_elevation"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/box_item_padding"
+        app:layout_constraintBottom_toBottomOf="@id/menu_box"
+        app:layout_constraintStart_toEndOf="@+id/button_text_color"
+        app:layout_constraintTop_toTopOf="@id/menu_box">
+
+        <ImageView
+            android:id="@+id/button_text_size2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:padding="3dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_n_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/button_color_38"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/text_size_title"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/box_item_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_text_size2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_background_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/box_item_start"
+        android:background="@drawable/button_background"
+        android:elevation="@dimen/box_elevation"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/box_item_padding"
+        app:layout_constraintBottom_toBottomOf="@id/menu_box"
+        app:layout_constraintStart_toEndOf="@+id/button_text_size"
+        app:layout_constraintTop_toTopOf="@id/menu_box">
+
+        <ImageView
+            android:id="@+id/button_background_color2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_n_bg_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/button_color_38"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/border"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/box_item_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_background_color2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/box_item_start"
+        android:background="@drawable/button_background"
+        android:elevation="@dimen/box_elevation"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/box_item_padding"
+        app:layout_constraintBottom_toBottomOf="@id/menu_box"
+        app:layout_constraintStart_toEndOf="@+id/button_background_color"
+        app:layout_constraintTop_toTopOf="@id/menu_box">
+
+        <ImageView
+            android:id="@+id/button_text_style2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_n_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/button_color_38"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/text_style_title"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/box_item_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_text_style2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_scroll_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/box_item_start"
+        android:background="@drawable/button_background"
+        android:elevation="@dimen/box_elevation"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/box_item_padding"
+        app:layout_constraintBottom_toBottomOf="@id/menu_box"
+        app:layout_constraintStart_toEndOf="@+id/button_text_style"
+        app:layout_constraintTop_toTopOf="@id/menu_box">
+
+        <ImageView
+            android:id="@+id/button_scroll_mode2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_n_no_scroll"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/scroll_title"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/box_item_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_scroll_mode2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_back_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/box_item_start"
+        android:background="@drawable/button_background"
+        android:elevation="@dimen/box_elevation"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/box_item_padding"
+        app:layout_constraintBottom_toBottomOf="@id/menu_box"
+        app:layout_constraintStart_toEndOf="@+id/button_scroll_mode"
+        app:layout_constraintTop_toTopOf="@id/menu_box">
+
+        <ImageView
+            android:id="@+id/button_back_mode2"
+            android:layout_width="17dp"
+            android:layout_height="14dp"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/button_place_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/make_down_title"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/box_item_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_back_mode2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/box_item_start"
+        android:background="@drawable/button_background"
+        android:elevation="@dimen/box_elevation"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/box_item_padding"
+        app:layout_constraintBottom_toBottomOf="@id/menu_box"
+        app:layout_constraintStart_toEndOf="@+id/button_back_mode"
+        app:layout_constraintTop_toTopOf="@id/menu_box">
+
+        <ImageView
+            android:id="@+id/button_save2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_n_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/button_color_38"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/button_save3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/save"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/box_item_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_save2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_lock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/box_item_start"
+        android:background="@drawable/button_background"
+        android:elevation="@dimen/box_elevation"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/box_item_padding"
+        app:layout_constraintBottom_toBottomOf="@id/menu_box"
+        app:layout_constraintStart_toEndOf="@+id/button_save"
+        app:layout_constraintTop_toTopOf="@id/menu_box">
+
+        <ImageView
+            android:id="@+id/button_lock2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_lock"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/button_color_38"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/lock_title"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/box_item_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_lock2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/box_item_start"
+        android:background="@drawable/button_background"
+        android:elevation="@dimen/box_elevation"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/box_item_padding"
+        app:layout_constraintBottom_toBottomOf="@id/menu_box"
+        app:layout_constraintStart_toEndOf="@+id/button_lock"
+        app:layout_constraintTop_toTopOf="@id/menu_box">
+
+        <ImageView
+            android:id="@+id/button_delete2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_n_delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/button_color_38"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/delete"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/box_item_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_delete2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.notification.NotificationSecondaryEditView
+        android:id="@+id/secondary_editor"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu_box" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

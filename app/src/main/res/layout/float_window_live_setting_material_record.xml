@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/record_setting_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <Spinner
+            android:id="@+id/source_select_spinner"
+            android:layout_width="@dimen/material_spinner_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/material_spinner_margin_start"
+            android:dropDownWidth="@dimen/material_spinner_width"
+            android:background="@drawable/live_setting_spinner_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <Spinner
+            android:id="@+id/audio_select_spinner"
+            android:layout_width="@dimen/material_spinner_width"
+            android:layout_height="wrap_content"
+            android:dropDownWidth="@dimen/material_spinner_width"
+            android:layout_marginStart="@dimen/material_spinner_margin_start"
+            android:background="@drawable/live_setting_spinner_background"
+            app:layout_constraintTop_toTopOf="@id/source_select_spinner"
+            app:layout_constraintStart_toEndOf="@id/source_select_spinner"
+            />
+
+        <Spinner
+            android:id="@+id/resolution_select_spinner"
+            android:layout_width="@dimen/material_spinner_width"
+            android:layout_height="wrap_content"
+            android:dropDownWidth="@dimen/material_spinner_width"
+            android:layout_marginTop="@dimen/material_spinner_margin_top"
+            android:background="@drawable/live_setting_spinner_background"
+            app:layout_constraintTop_toBottomOf="@id/source_select_spinner"
+            app:layout_constraintStart_toStartOf="@id/source_select_spinner"
+            />
+
+        <Spinner
+            android:id="@+id/save_path_select"
+            android:layout_width="@dimen/material_spinner_width"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:dropDownWidth="@dimen/material_spinner_width"
+            android:background="@drawable/live_setting_record_btn_background"
+            android:layout_marginStart="@dimen/material_spinner_margin_start"
+            app:layout_constraintStart_toEndOf="@id/resolution_select_spinner"
+            app:layout_constraintTop_toTopOf="@id/resolution_select_spinner"/>
+
+        <Spinner
+            android:id="@+id/frame_rate_select_spinner"
+            android:layout_width="@dimen/material_spinner_width"
+            android:layout_height="wrap_content"
+            android:dropDownWidth="@dimen/material_spinner_width"
+            android:background="@drawable/live_setting_spinner_background"
+            android:layout_marginTop="@dimen/material_spinner_margin_top"
+            app:layout_constraintTop_toBottomOf="@id/resolution_select_spinner"
+            app:layout_constraintStart_toStartOf="@id/resolution_select_spinner"
+            />
+
+        <TextView
+            android:id="@+id/free_storage_text"
+            android:layout_width="@dimen/material_spinner_width"
+            android:layout_height="wrap_content"
+            android:text="@string/free_storage_text"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:padding="5dp"
+            android:layout_marginStart="@dimen/material_spinner_margin_start"
+            app:layout_constraintStart_toEndOf="@id/frame_rate_select_spinner"
+            app:layout_constraintTop_toTopOf="@id/frame_rate_select_spinner"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/mask_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@color/black_a40"
+        app:layout_constraintStart_toStartOf="@id/record_setting_layout"
+        app:layout_constraintEnd_toStartOf="@id/divider_line"/>
+    <View
+        android:id="@+id/divider_line"
+        android:layout_width="1dp"
+        android:layout_height="100dp"
+        android:background="@color/white"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@id/record_setting_layout"
+        app:layout_constraintTop_toTopOf="@id/record_setting_layout"
+        app:layout_constraintBottom_toBottomOf="@id/record_setting_layout"
+        />
+
+    <TextView
+        android:id="@+id/start_btn"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/record_start_stop_btn"
+        android:layout_marginStart="20dp"
+        android:text="@string/start"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/divider_line"
+        app:layout_constraintTop_toTopOf="@id/divider_line"
+        app:layout_constraintBottom_toBottomOf="@id/divider_line"
+        />
+
+    <TextView
+        android:id="@+id/stop_btn"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/record_start_stop_btn"
+        android:layout_marginStart="20dp"
+        android:text="@string/end"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@id/divider_line"
+        app:layout_constraintTop_toTopOf="@id/divider_line"
+        app:layout_constraintBottom_toBottomOf="@id/divider_line"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

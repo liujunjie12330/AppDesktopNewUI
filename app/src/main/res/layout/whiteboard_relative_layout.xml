@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.EglSurfaceViewContainer
+        android:id="@+id/eglSurfaceContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent" />
+
+    <FrameLayout
+        android:id="@+id/app_ui_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:visibility="gone">
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.custom.FloatImageView2
+            android:id="@+id/return_to_whiteboard"
+            android:layout_width="@dimen/float_ball_size"
+            android:layout_height="@dimen/float_ball_size"
+            android:src="@drawable/logo_white_full"
+            android:padding="1dp"
+            android:translationY="160dp" />
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.custom.RealCameraConfigView
+            android:id="@+id/real_camera_config"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="20dp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <include
+        android:id="@+id/camera_control_root"
+        layout="@layout/camera_debug_layout" />
+
+    <RelativeLayout
+        android:id="@+id/whiteboard_ui_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent">
+
+        <FrameLayout
+            android:id="@+id/board_event_interceptor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:visibility="gone" />
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.reader.view.NeverGoneFrameLayout
+            android:id="@+id/reader_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent" />
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.reader.view.MiniView
+            android:id="@+id/mini_reader_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <FrameLayout
+            android:id="@+id/operation_bar_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.notification.NotificationLocationView
+            android:id="@+id/notification_location"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:id="@+id/template_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="20dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/template_tips_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    tools:text="开启场景快捷键模式，请继续操作" />
+
+                <TextView
+                    android:id="@+id/template_tips_count_down"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    tools:text="(3)" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ViewPredictionLayout
+            android:id="@+id/wb_operation_rtl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent">
+
+            <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ThirdAppJumpView2
+                android:id="@+id/thirdAppJumpView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <cn.synway.module_sdirector_ui.whiteboard.ui.custom.FloatImageView
+                android:id="@+id/floatBallWhiteBoard"
+                android:layout_width="@dimen/expand_side_bar_btn_width"
+                android:layout_height="@dimen/expand_side_bar_btn_height"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/side_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" />
+
+            <cn.synway.module_sdirector_ui.ui.sidebarfw.LiveSidebar
+                android:id="@+id/liveSideBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="10dp" />
+
+            <FrameLayout
+                android:id="@+id/help_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/view_span" />
+
+            <FrameLayout
+                android:id="@+id/reader_control_container"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/view_span"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/transparent"
+                android:elevation="@dimen/wb_document_optional_elevation" />
+
+            <FrameLayout
+                android:id="@+id/recorder_control_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@color/transparent"
+                android:elevation="@dimen/wb_recording_box_elevation" />
+
+            <cn.synway.module_sdirector_ui.whiteboard.ui.custom.RtmpPushView
+                android:id="@+id/push_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="85dp"
+                android:elevation="@dimen/wb_recording_box_elevation"
+                android:visibility="gone" />
+
+            <!--    测试帧率显示 -->
+            <TextView
+                android:id="@+id/frameCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:gravity="center"
+                android:textColor="@color/blue"
+                android:textSize="55sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/sink_frameCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/frameCount"
+                android:gravity="center"
+                android:textColor="@color/red3"
+                android:textSize="55sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/slave_frameCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/sink_frameCount"
+                android:gravity="center"
+                android:textColor="@color/green"
+                android:textSize="55sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/seek_container"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <SeekBar
+                    android:id="@+id/seek_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="500" />
+
+                <SeekBar
+                    android:id="@+id/seek_right"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="500" />
+
+                <SeekBar
+                    android:id="@+id/seek_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="800" />
+
+                <SeekBar
+                    android:id="@+id/seek_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="800" />
+            </LinearLayout>
+
+        </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ViewPredictionLayout>
+
+    </RelativeLayout>
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.guide.GuidePageView
+        android:id="@+id/guide_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+<!--    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.LaunchAnimatorView-->
+<!--        android:id="@+id/launch_animator"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:elevation="100dp"-->
+<!--        tools:visibility="gone" />-->
+
+</FrameLayout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/ui_color_white_corner_5"
+    android:elevation="2dp"
+    android:paddingBottom="10dp"
+    android:paddingEnd="40dp"
+    android:paddingStart="0dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/ai_matting_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:thumb="@drawable/switch_thumb_normal"
+        app:track="@drawable/switch_track_normal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/ai_matting_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/open_ai_matting"
+        android:textSize="@dimen/wb_matting_text_size"
+        android:textColor="@color/color_enable_blue2a82e4_dis_a6"
+        app:layout_constraintTop_toTopOf="@id/ai_matting_switch"
+        app:layout_constraintBottom_toBottomOf="@id/ai_matting_switch"
+        app:layout_constraintStart_toEndOf="@id/ai_matting_switch"
+        tools:ignore="SmallSp" />
+
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/ai_fine_matting_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:thumb="@drawable/switch_thumb_normal"
+        app:track="@drawable/switch_track_normal"
+        app:layout_constraintTop_toBottomOf="@id/ai_matting_switch"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/ai_fine_matting_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/using_fine_mode"
+        android:textSize="@dimen/wb_matting_text_size"
+        android:textColor="@color/color_enable_blue2a82e4_dis_a6"
+        app:layout_constraintTop_toTopOf="@id/ai_fine_matting_switch"
+        app:layout_constraintBottom_toBottomOf="@id/ai_fine_matting_switch"
+        app:layout_constraintStart_toEndOf="@id/ai_fine_matting_switch"
+        tools:ignore="SmallSp" />
+
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/bg_matting_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:thumb="@drawable/switch_thumb_normal"
+        app:track="@drawable/switch_track_normal"
+        app:layout_constraintTop_toBottomOf="@id/ai_fine_matting_switch"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/bg_matting_switch_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/virtual_background_portrait"
+        android:textSize="@dimen/wb_matting_text_size"
+        android:textColor="@color/color_enable_blue2a82e4_dis_a6"
+        app:layout_constraintTop_toTopOf="@id/bg_matting_switch"
+        app:layout_constraintBottom_toBottomOf="@id/bg_matting_switch"
+        app:layout_constraintStart_toEndOf="@id/bg_matting_switch"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/change_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/change_background"
+        android:textSize="8sp"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/color_enable_blue2a82e4_dis_a6"
+        app:layout_constraintTop_toTopOf="@id/bg_matting_switch_text"
+        app:layout_constraintBottom_toBottomOf="@id/bg_matting_switch_text"
+        app:layout_constraintStart_toEndOf="@id/bg_matting_switch_text"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="8sp"
+        android:text="@string/ai_matting_tips"
+        android:layout_marginStart="10dp"
+        android:layout_marginVertical="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bg_matting_switch"
+        tools:ignore="SmallSp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

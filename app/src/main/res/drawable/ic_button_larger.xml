@@ -1,0 +1,11 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="35dp"
+    android:height="35dp"
+    android:viewportWidth="35"
+    android:viewportHeight="35"
+    android:tint="@color/button_color_white_a75_blue_a75">
+  <path
+      android:pathData="M8.82,18.2L4.3,18.2L4.3,4.3L18.2,4.3L18.2,8.83L11.88,8.83L26.17,23.12L26.17,16.8L30.7,16.8L30.7,30.7L16.8,30.7L16.8,26.18L23.12,26.18L8.82,11.88L8.82,18.2Z"
+      android:fillColor="#000000"
+      android:fillType="evenOdd"/>
+</vector>

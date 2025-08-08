@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="28dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="左"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/weight_x_left"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/button_background_border_small_corner_gray"
+            android:padding="3dp"
+            android:src="@drawable/ic_minus"
+            app:tint="@color/button_color_38" />
+
+        <SeekBar
+            android:id="@+id/weight_x_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:max="200"
+            android:min="0"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:progress="100"
+            android:progressBackgroundTint="@color/blue2A82E4"
+            android:progressDrawable="@drawable/seekbar_progress_drawable_grey_blue"
+            android:splitTrack="false"
+            android:thumb="@drawable/seekbar_thumb_16" />
+
+        <ImageView
+            android:id="@+id/weight_x_right"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/button_background_border_small_corner_gray"
+            android:padding="3dp"
+            android:src="@drawable/ic_plus_"
+            app:tint="@color/button_color_38" />
+
+        <TextView
+            android:layout_width="28dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="右"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="28dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="下"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/weight_y_bottom"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/button_background_border_small_corner_gray"
+            android:padding="3dp"
+            android:src="@drawable/ic_minus"
+            app:tint="@color/button_color_38" />
+
+        <SeekBar
+            android:id="@+id/weight_y_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:max="200"
+            android:min="0"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:progress="100"
+            android:progressBackgroundTint="@color/blue2A82E4"
+            android:progressDrawable="@drawable/seekbar_progress_drawable_grey_blue"
+            android:splitTrack="false"
+            android:thumb="@drawable/seekbar_thumb_16" />
+
+        <ImageView
+            android:id="@+id/weight_y_top"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/button_background_border_small_corner_gray"
+            android:padding="3dp"
+            android:src="@drawable/ic_plus_"
+            app:tint="@color/button_color_38" />
+
+        <TextView
+            android:layout_width="28dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="上"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="28dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="小"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/scale_minus"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/button_background_border_small_corner_gray"
+            android:padding="3dp"
+            android:src="@drawable/ic_minus"
+            app:tint="@color/button_color_38" />
+
+        <SeekBar
+            android:id="@+id/scale_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:max="200"
+            android:min="100"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:progress="120"
+            android:progressDrawable="@drawable/seekbar_progress_drawable_grey_blue"
+            android:splitTrack="false"
+            android:thumb="@drawable/seekbar_thumb_16" />
+
+        <ImageView
+            android:id="@+id/scale_plus"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/button_background_border_small_corner_gray"
+            android:padding="3dp"
+            android:src="@drawable/ic_plus_"
+            app:tint="@color/button_color_38" />
+
+        <TextView
+            android:layout_width="28dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="大"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/select_picture"
+            android:layout_width="70dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_background_border_small_corner"
+            android:gravity="center"
+            android:text="选择图片"
+            android:textColor="@color/button_color_blue_white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/clear_picture"
+            android:layout_width="70dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/button_background_border_small_corner_red"
+            android:gravity="center"
+            android:text="清除图片"
+            android:textColor="@color/button_color_red_white"
+            android:textSize="12sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

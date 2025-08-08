@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/common_file"
+        android:layout_width="@dimen/live_setting_text_btn_width_english"
+        android:layout_height="@dimen/live_setting_text_btn_height"
+        android:background="@drawable/live_setting_btn_box_left"
+        android:padding="5dp"
+        android:text="@string/common_file"
+        android:textAlignment="center"
+        android:textColor="@drawable/live_setting_title_btn_color"
+        android:textSize="@dimen/live_setting_default_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/user_file"
+        android:layout_width="@dimen/live_setting_text_btn_width"
+        android:layout_height="@dimen/live_setting_text_btn_height"
+        android:background="@drawable/live_setting_btn_box_center"
+        android:padding="5dp"
+        android:text="@string/user_file"
+        android:textAlignment="center"
+        android:textColor="@drawable/live_setting_title_btn_color"
+        android:textSize="@dimen/live_setting_default_text"
+        app:layout_constraintStart_toEndOf="@id/common_file"
+        app:layout_constraintTop_toTopOf="@id/common_file" />
+
+    <TextView
+        android:id="@+id/usb_file"
+        android:layout_width="@dimen/live_setting_text_btn_width"
+        android:layout_height="@dimen/live_setting_text_btn_height"
+        android:background="@drawable/live_setting_btn_box_right"
+        android:padding="5dp"
+        android:text="@string/usb_file"
+        android:textAlignment="center"
+        android:textColor="@drawable/live_setting_title_btn_color"
+        android:textSize="@dimen/live_setting_default_text"
+        app:layout_constraintStart_toEndOf="@id/user_file"
+        app:layout_constraintTop_toTopOf="@id/user_file" />
+
+    <TextView
+        android:id="@+id/wx_program_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="@string/wx_program_code2"
+        android:textColor="@color/live_setting_main_color"
+        android:textSize="@dimen/live_setting_default_text"
+        app:layout_constraintBottom_toBottomOf="@id/usb_file"
+        app:layout_constraintEnd_toStartOf="@+id/reselect"
+        app:layout_constraintTop_toTopOf="@id/usb_file" />
+
+    <TextView
+        android:id="@+id/reselect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="@string/reselect"
+        android:textColor="@color/live_setting_main_color"
+        android:textSize="@dimen/live_setting_default_text"
+        app:layout_constraintBottom_toBottomOf="@id/wx_program_code"
+        app:layout_constraintEnd_toStartOf="@+id/delete_mode"
+        app:layout_constraintTop_toTopOf="@id/wx_program_code" />
+
+    <TextView
+        android:id="@+id/delete_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:text="@string/delete"
+        android:textColor="@drawable/delete_text_color"
+        android:textSize="@dimen/live_setting_default_text"
+        app:layout_constraintBottom_toBottomOf="@id/reselect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/reselect" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/user_img_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/common_file" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/common_img_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/common_file" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/usb_img_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/common_file" />
+
+    <TextView
+        android:id="@+id/no_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/material_tip"
+        android:textColor="@color/live_setting_default_text"
+        android:textSize="@dimen/live_setting_default_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/common_file"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/no_image_usb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/material_usb_tip"
+        android:textColor="@color/live_setting_default_text"
+        android:textSize="@dimen/live_setting_default_text"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/common_file"
+        app:layout_constraintVertical_bias="0.3" />
+</androidx.constraintlayout.widget.ConstraintLayout>

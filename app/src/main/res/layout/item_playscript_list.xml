@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/play_script_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="middle"
+        android:maxLines="1"
+        android:textColor="#FF383838"
+        android:textSize="@dimen/play_script_title_size"
+        app:layout_constraintEnd_toStartOf="@id/end_divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="测试" />
+
+    <View
+        android:id="@+id/end_divider"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1.6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/play_script_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFA6A6A6"
+        android:textSize="@dimen/play_script_time_size"
+        app:layout_constraintStart_toStartOf="@id/play_script_title"
+        app:layout_constraintTop_toBottomOf="@id/play_script_title"
+        tools:text="2021-12-07" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/play_script_content_show_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:maxHeight="20dp"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:thumb="@drawable/switch_thumb_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/play_script_title"
+        app:layout_constraintVertical_bias="0.4"
+        app:track="@drawable/switch_track_normal" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/selection"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="10dp"
+        android:button="@drawable/state_checkable_round"
+        android:padding="@dimen/dp_5"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

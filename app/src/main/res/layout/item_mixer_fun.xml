@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.synway.module_sdirector_ui.ui.sidebarfw.layout.NoInterceptConstrainLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="5dp"
+    android:paddingTop="5dp"
+    android:paddingEnd="10dp"
+    android:paddingBottom="5dp">
+
+    <TextView
+        android:id="@+id/tvFunName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试"
+        android:textColor="@color/mixer_theme"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@id/audio_setting_recycler"
+        app:layout_constraintTop_toBottomOf="@id/audio_setting_recycler" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchFun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="20dp"
+        android:scaleX="0.7"
+        android:scaleY="0.7"
+        android:thumb="@drawable/switch_thumb_normal"
+        app:track="@drawable/switch_track_normal"
+        app:layout_constraintBottom_toBottomOf="@id/tvFunName"
+        app:layout_constraintStart_toEndOf="@id/tvFunName"
+        app:layout_constraintTop_toTopOf="@id/tvFunName" />
+
+</cn.synway.module_sdirector_ui.ui.sidebarfw.layout.NoInterceptConstrainLayout>

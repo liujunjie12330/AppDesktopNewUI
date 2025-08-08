@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:padding="3dp">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.reader.view.InterceptFrameLayout
+            android:id="@+id/ppt_container"
+            android:layout_width="160px"
+            android:layout_height="480px"
+            tools:ignore="PxUsage" />
+    </FrameLayout>
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.reader.ppt.PPTHighlightView
+        android:id="@+id/ppt_highlight"
+        android:layout_width="160px"
+        android:layout_height="480px"
+        tools:ignore="PxUsage" />
+
+
+</FrameLayout>

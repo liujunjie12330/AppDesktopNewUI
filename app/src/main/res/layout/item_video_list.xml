@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/video_item"
+        android:layout_width="@dimen/video_source_view_width"
+        android:layout_height="@dimen/video_source_view_height"
+        android:layout_margin="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mask"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#80000000"
+        android:gravity="center"
+        android:text="@string/wb_hdmi_invalid_by_proj"
+        android:textColor="@color/white"
+        android:textSize="@dimen/video_source_text_size"
+        android:textStyle="bold|italic"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/video_item"
+        app:layout_constraintEnd_toEndOf="@id/video_item"
+        app:layout_constraintStart_toStartOf="@id/video_item"
+        app:layout_constraintTop_toTopOf="@+id/video_item" />
+
+    <cn.synway.module_sdirector_ui.ui.sidebarfw.BorderTextView
+        android:id="@+id/video_item_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="2dp"
+        app:layout_constraintBottom_toBottomOf="@id/video_item"
+        app:layout_constraintEnd_toEndOf="@id/video_item"
+        app:layout_constraintStart_toStartOf="@id/video_item"
+        tools:text="标题" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/layout_border_video_source"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

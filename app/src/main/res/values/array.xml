@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="chroma_type">
+        <item>幕布</item>
+        <item>AI</item>
+    </string-array>
+
+    <string-array name="background_loop_type">
+        <item>关闭</item>
+        <item>3s</item>
+        <item>5s</item>
+        <item>10s</item>
+    </string-array>
+
+    <array
+        name="auto_keyboard_btn_text_sizes">
+        <item>6sp</item>
+        <item>10sp</item>
+    </array>
+
+    <array name="auto_keyboard_setting_text_sizes">
+        <item>8sp</item>
+        <item>12sp</item>
+    </array>
+</resources>

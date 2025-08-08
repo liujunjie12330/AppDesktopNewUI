@@ -1,0 +1,346 @@
+<resources>
+    <string name="device_storage_full">The storage space is used up \n Please go to the device storage to clear the storage space</string>
+    <!--    直播界面-->
+    <string name="back">Back</string>
+    <string name="bit_rate">Bit rate</string>
+    <string name="frame_rate">Frame rate</string>
+    <string name="packet_loss_rate">Lose rate</string>
+    <string name="timer">Timing</string>
+    <string name="start_live">Go live</string>
+    <string name="resolution_select">Resolution</string>
+    <string name="subtitle">Subtitle</string>
+    <string name="share">Share</string>
+    <string name="menu">Menu</string>
+    <string name="contrast">Contrast</string>
+    <string name="sharpness">Sharpness</string>
+    <string name="luminance">Luminance</string>
+
+    <!--    创建直播页面-->
+    <string name="create_live">Create live</string>
+    <string name="live_name">Live name</string>
+    <string name="live_time">Live time</string>
+
+    <!--    直播活动页面-->
+    <string name="live_activity">Activity</string>
+
+    <!--    媒体库-->
+    <string name="media_storage">Material library</string>
+    <string name="gif">GIF</string>
+
+    <!--    悬浮栏-->
+    <string name="show">Show</string>
+    <string name="home">Home</string>
+    <string name="float_back">Back</string>
+    <string name="hide">Hide</string>
+    <string name="video_source">Video</string>
+    <string name="audio_source">Audio</string>
+    <string name="live_pull">Push</string>
+    <string name="watermark">Watermark</string>
+    <string name="material">Material</string>
+    <string name="background_loop">Round play\nbackground</string>
+    <string name="float_subtitle">Text</string>
+    <string name="whiteboard">Whiteboard</string>
+    <string name="announcement">Announcement</string>
+    <string name="expand">Expand</string>
+    <string name="edit">Edit</string>
+    <string name="delete">DEL</string>
+    <string name="delete_cancel">Cancel delete</string>
+    <string name="next_page">Next</string>
+    <string name="previous_page">Last</string>
+    <string name="no_content">No Text</string>
+    <string name="pick_up">Put away</string>
+    <string name="setting">Setting</string>
+    <!--    悬浮栏-音频源-->
+    <string name="hdmi1">HDMI1</string>
+    <string name="hdmi2">HDMI2</string>
+    <string name="usb">USB</string>
+    <string name="lan">Network</string>
+    <string name="remote">Remote</string>
+    <string name="line_in">Line in</string>
+    <string name="mic">Mic</string>
+    <string name="audio_monitor">Monitor</string>
+    <string name="audio_media">Media</string>
+    <string name="audio_noise_reduction">Denoise</string>
+    <string name="no_text">No Text</string>
+    <string name="one_selected">*Only one HDMI is supported</string>
+    <!--    推流设置-->
+    <string name="push_setting_ip">Address</string>
+    <string name="push_setting_resolution">Clarity</string>
+    <string name="push_setting_tips">Please set the push address</string>
+    <string name="push_setting_error_disconnect">The push-flow is interrupted abnormally. Check the network or server address.</string>
+    <string name="push_setting_failure">Failed to enable the push stream. Check the network or server address</string>
+    <string name="push_setting_change_parm">tips:Please turn off the push stream and change it again.</string>
+    <string name="push_setting_change_parm2">tips:Please wait for the push stream to close before changing.</string>
+    <string name="push_setting_change_push">tips:The push stream is on or off, please try again later</string>
+    <string name="push_setting_refresh_success">tips:Refreshing the push address succeeded. </string>
+    <string name="push_setting_refresh">tips:Please turn off the push stream before refreshing.</string>
+
+    <!--    推流弹窗-->
+    <string name="push_tips_content">Please click on "Add Info" or web page：live.synway.cn\nFill in the address of the push stream, to achieve multi-platform broadcasting at the same time!</string>
+
+
+    <!--    设置页面-->
+    <string name="slave_setting">Subimage setting</string>
+    <string name="background_setting">Background setting</string>
+    <string name="chrome_setting">Matting setting</string>
+    <string name="chroma_info_item">Matting instruction</string>
+    <string name="chroma_info">(Click the screen to choose to remove the color)</string>
+    <string name="chroma_color">Color stripping</string>
+    <string name="enable_chroma">Enable</string>
+    <string name="enable_chroma_on">Show modification</string>
+    <string name="enable_chroma_off">Hidden modification</string>
+    <string name="chroma_key">Matting color</string>
+    <string name="green_key">Green</string>
+    <string name="blue_key">Blue</string>
+    <string name="red_key">Red</string>
+    <string name="chroma_setting_1">Strength</string>
+    <string name="chroma_setting_2">Brightness</string>
+    <string name="chroma_setting_3">Smooth</string>
+    <string name="chroma_setting_4">Similarity</string>
+    <string name="chroma_setting_5">Smoothness</string>
+    <string name="chroma_setting_6">Leakage reduction</string>
+    <string name="change_chroma_color">Modify color</string>
+    <string name="reset">Reset</string>
+    <string name="chroma_reset">Restore default</string>
+    <string name="background_select">Background type</string>
+    <string name="image_background">Image</string>
+    <string name="slave_background">Camera</string>
+    <string name="slave_select">Source</string>
+    <string name="slave_hdmi1">HDMI1</string>
+    <string name="slave_hdmi2">HDMI2</string>
+    <string name="slave_usb">USB</string>
+    <string name="slave_operation">Operation</string>
+    <string name="slave_horizontal_flip">Flip Horizontally</string>
+    <string name="slave_vertical_flip">Flip Vertical</string>
+    <string name="image_select">Select</string>
+    <string name="image_select_button">Image</string>
+    <string name="image_operation">Operation</string>
+    <string name="image_adapt">Adaptive screen</string>
+    <string name="image_horizontal_flip">Flip Horizontally</string>
+    <string name="image_vertical_flip">Flip Vertical</string>
+    <string name="image_full">Overspread</string>
+    <string name="image_rotation">Rotation</string>
+    <string name="set_size">Proportional size</string>
+    <string name="set_alpha">Opacity</string>
+    <string name="set_play_speed">Playback speed</string>
+    <string name="set_alpha_diy">Customize</string>
+    <string name="confirm">Confirm</string>
+    <string name="save">Save</string>
+    <string name="cancel_save">Cancel Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="add">Add</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="image_background_tips">suggest using\n9:16</string>
+    <string name="content_text_size_setting_text">Text size</string>
+    <string name="content_text_transparent_setting_text">Opacity</string>
+    <string name="content_text_scroll_speed_setting_text">Rolling speed</string>
+    <string name="content_background_setting_title_text">Background</string>
+    <string name="content_text_box_width_setting_text">Text box width</string>
+    <string name="clear_background">clear</string>
+    <string name="watermark_tips">*Drag the image anywhere in the box</string>
+    <string name="storage_tips">Use wechat applet to upload material</string>
+    <string name="view_QR_code"><u>Show QR code</u></string>
+    <string name="not_selected_image">Unselected image</string>
+    <string name="user_update_file">Upload</string>
+    <string name="system_upload_file">System template</string>
+    <string name="video">Video</string>
+    <string name="watermark_setting">Watermark setting</string>
+    <string name="protect_switch_text">Safe</string>
+    <string name="protect_size_select">Sizing</string>
+    <string name="protect_color_text">Protection yellow</string>
+    <string name="dealing">In process…</string>
+    <string name="loading">Loading…</string>
+    <string name="gif_limit">Limited to 3 GIFs</string>
+    <string name="pip_zoom_tip">Drag with two fingers to zoom</string>
+    <string name="matting">Matting</string>
+    <string name="camera_layout_select">Picture layout</string>
+    <string name="foreground_source">Foreground</string>
+    <string name="background_source">Background</string>
+    <string name="matting_color">Deduction</string>
+    <string name="matting_intensity">Strength</string>
+    <string name="matting_smooth">Smooth</string>
+    <string name="matting_excessive">Inhibition</string>
+    <string name="up_down_layout_tip_1">Select Picture/Video/Camera</string>
+    <string name="up_down_layout_tip_2">Select camera</string>
+    <string name="material_tip">No material is currently uploaded</string>
+    <string name="material_usb_tip">The USB flash drive is not inserted or the USB flash drive has no material</string>
+    <string name="close">Close</string>
+
+    <string name="background_material">Background</string>
+    <string name="background_material_space">Picture</string>
+    <string name="background_image">Background</string>
+    <string name="watermark_image">Watermark</string>
+    <string name="watermark_image_space">Sticker</string>
+    <string name="play_script">Text</string>
+    <string name="document_text">PPT/PDF</string>
+    <string name="template">Template</string>
+    <string name="record_screen">Record</string>
+    <string name="common_file">Template</string>
+    <string name="user_file">User</string>
+    <string name="usb_file">U Disk</string>
+    <string name="wx_program_code">1.Mini Program</string>
+    <string name="wx_program_code2">Add</string>
+    <string name="reselect">Reselect</string>
+    <string name="save_template">Update</string>
+    <string name="save_as_other_template">Save</string>
+    <string name="make_rotate">Spin</string>
+    <string name="make_top">Top</string>
+    <string name="bg_type_video">VIDEO</string>
+    <string name="bg_type_image">IMAGE</string>
+    <string name="save_path_select">Select save directory</string>
+    <string name="free_storage_text">Idle：</string>
+    <string name="source_select_spinner">Select screen</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
+    <string name="record_save">saved\nFile assistant to view</string>
+    <string name="nginx_open">Open</string>
+    <string name="nginx_tips">Please refresh the QR code after changing the network</string>
+    <string name="rtmp_step_one">①：The network must be on the same LAN as the mobile network</string>
+    <string name="rtmp_step_two">②：Scan code entry"Confluence assistant"Small program</string>
+    <string name="rtmp_step_three">③："Camera thrust"Scan the code to obtain the configuration</string>
+    <string name="rtmp_connect_info">Connected</string>
+    <string name="next_step">Next step</string>
+    <string name="pre_step">Last step</string>
+    <string name="pull_setting">Pull Settings</string>
+    <string name="connect_info_refresh"><u>Refresh</u></string>
+    <string name="qr_code_refresh"><u>Refresh</u></string>
+
+    <string name="audio_input_error">Audio exception disconnected\nPlease reinsert and try again</string>
+    <string name="record_storage_no_free">Insufficient storage space</string>
+    <string name="record_wait">Recording initialization, please try again later</string>
+    <string name="record_prepare_fail">Recording initialization failed. Please try again later</string>
+    <string name="record_error">Recording error</string>
+    <string name="watermark_limit">Only 10 watermarks are supported</string>
+    <string name="watermark_limit_pip">The watermark has reached the maximum of 10 sheets\nPlease reselect</string>
+    <string name="watermark_gif_limit">A maximum of 3 GIFs are supported</string>
+    <string name="watermark_gif_limit_pip">GIF 3 sheet limit\nPlease reselect</string>
+    <string name="watermark_setwindow_limit">Post-paste watermarking\nDo this when using picture-in-picture</string>
+    <string name="watermark_is_setting">Please finish the watermark editing operation</string>
+    <string name="pip_background_limit">Please switch video reapply material</string>
+    <string name="is_pip_used">Post or not</string>
+    <string name="top_watermark">pre-pasting</string>
+    <string name="under_watermark">post</string>
+    <string name="watermark_edit_warning">Please edit before applying</string>
+    <string name="watermark_setting_title">Watermark setting</string>
+    <string name="background">Background</string>
+    <string name="slave">Subroutine</string>
+    <string name="template_is_loading">Template loading</string>
+    <string name="template_is_loading_pushing">(tips:Switching templates will cause the live screen to change.)</string>
+    <string name="pip_background_rotate_limit">Please rotate after the top screen</string>
+    <string name="pip_setting_tips">Please switch to portrait settings PIP</string>
+    <string name="template_update_success">Template updated successfully</string>
+    <string name="template_save_other_limit_fail">The limit of 20 templates has been reached</string>
+    <string name="template_save_other_complate">Template saved successfully</string>
+    <string name="template_need_save">Whether to update the template configuration</string>
+    <string name="remember_text">Remember to select, no more prompts</string>
+    <string name="file_dealing">File processing</string>
+    <string name="pull_qr_refresh_text">Operation will disconnect pull current\nAre you sure?</string>
+    <string name="please_wait">Please try again later</string>
+
+    <string name="audioSys_setting_name">Media</string>
+    <string name="audioSys_setting_delay">Delay</string>
+    <string name="picture_in_picture">PIP</string>
+    <string name="auto_save">(Autosave)</string>
+    <string name="please_input_new_name">Please enter a new name</string>
+
+    <!--    拉流-->
+    <string name="pull_setting_link_not">Unconnected</string>
+    <string name="pull_setting_link_wifi">Connected WIFI:</string>
+    <string name="pull_setting_link_4g">Connected 4G</string>
+    <string name="pull_setting_link_wired">Connected Wired</string>
+
+    <!--    画中画键位-->
+    <string name="pip_key_borad_hdmi1">HDMI1</string>
+    <string name="pip_key_borad_hdmi2">HDMI2</string>
+    <string name="pip_key_borad_usb">USB</string>
+    <string name="pip_key_borad_lan">LAN</string>
+    <string name="pip_key_borad_pip">PIP</string>
+    <string name="pip_key_borad_change_bg">Switch Bg</string>
+    <string name="pip_key_borad_start_hide">Script start/hide</string>
+    <string name="pip_key_borad_play_stop">Pause/continue</string>
+    <string name="pip_key_borad_go_top">Top</string>
+    <string name="pip_key_borad_last">Previous</string>
+    <string name="pip_key_borad_next">Next</string>
+    <string name="pip_key_borad_text_big">Font enlarge</string>
+    <string name="pip_key_borad_text_small">Font shrink</string>
+    <string name="pip_key_borad_change_bg_color">Switch Bg color</string>
+
+    <!--    侧边栏-->
+    <string name="sidebar_vertical">Vertical</string>
+    <string name="sidebar_horizontal">Horizontal</string>
+    <string name="sidebar_black_font">Black letter</string>
+    <string name="sidebar_white_font">White letter</string>
+    <string name="scan_the_qr_code">Scan and enter the mini program to add a notebook</string>
+    <string name="exit_full_screen">Exit full screen</string>
+    <string name="full_screen_vs">Full screen video feed</string>
+    <string name="third_app">Tripartite App</string>
+
+    <!--    悬浮栏-调音台-->
+    <string name="mixer_table">Tune</string>
+    <string name="mixer_mic">Mode</string>
+    <string name="mixer_mic_original">Original</string>
+    <string name="mixer_mic_popular">Popular</string>
+    <string name="mixer_mic_major">Major</string>
+    <string name="mixer_mic_equilibrium">Equalizer</string>
+    <string name="mixer_setting_sound">Microphone</string>
+    <string name="mixer_setting_fun">Function</string>
+    <string name="mixer_setting_play">Voice</string>
+    <string name="mixer_mic_reset">Reset</string>
+    <string name="mixer_mic_equilibrium_content">Microphone equalizer</string>
+    <string name="mixer_wait_msg">Mode switching</string>
+    <string name="mixer_audio_error">Chip anomaly\nPlease contact after-sales service</string>
+    <string name="mixer_setting_failre">Failed to set, please try again</string>
+
+    <string name="document">Document</string>
+    <string name="picture">Picture</string>
+    <string name="mind_map">Mind Map</string>
+    <string name="baidu_net_disk">Baidu Net Disk</string>
+    <string name="other">Other</string>
+    <string name="file_category">File class</string>
+    <string name="move_to_recycle_bin">The file has been moved to the recycle bin</string>
+    <string name="using_fine_mode">Using Fine Mode</string>
+    <string name="open_ai_matting">Enable intelligent image cutout</string>
+    <string name="clear_up_background_ask">Do you want to clear the added materials?</string>
+    <string name="play_script_from_net">Mini program version</string>
+    <string name="play_script_from_local">Local version</string>
+    <string name="download_material_package">Download material</string>
+    <string name="source_of_pushing_address">Source of streaming address:</string>
+    <string name="type_in_address">Enter address</string>
+    <string name="type_in_address_hint">Please enter the address</string>
+    <string name="type_in_password_hint">Please input a secret key</string>
+    <string name="type_in_password">Input secret key</string>
+    <string name="obtain_from_applet">Obtained from Mini Programs</string>
+    <string name="manual_input">Manual input</string>
+    <string name="forbiden_empty_address">Address cannot be empty</string>
+    <string name="speed_slowly">Slow</string>
+    <string name="fast">Fast</string>
+    <string name="display_percent">Display Scale</string>
+    <string name="display_space">Space</string>
+    <string name="picture_scroll">Picture scrolling</string>
+    <string name="downloaded">Downloaded</string>
+    <string name="download">Download</string>
+    <string name="upload">Upload</string>
+    <string name="task_list">Task list</string>
+    <string name="log_out">Log out</string>
+    <string name="display_mode">Display Mode</string>
+    <string name="access_display_mode">Display Mode accessible</string>
+    <string name="inaccessable_display_mode">Display Mode inaccessible</string>
+    <string name="choose_app_platform">Choose a platform</string>
+    <string name="beyond_app_tips">Currently only supports three platforms</string>
+    <string name="append_common_app">Add application</string>
+    <string name="recycle_bin">RecycleBin</string>
+    <string name="record_alias">Screen Recording</string>
+
+
+    <!--    文件路径-->
+    <string name="recorder_path">/Recorder</string>
+    <string name="recycle_bin_path">/whiteboard/RecycleBin</string>
+    <string name="dcim_path">/DCIM</string>
+    <string name="download_path">/Download</string>
+    <string name="pictures_path">/Pictures</string>
+
+    <string name="start_streaming">start streaming</string>
+    <string name="fast_transport">fast transport</string>
+
+</resources>

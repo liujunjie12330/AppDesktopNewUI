@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/box"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/box_height"
+        android:layout_margin="@dimen/box_padding_margin"
+        android:background="@drawable/color_white_corner_3"
+        android:elevation="@dimen/box_elevation"
+        android:padding="@dimen/box_padding_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/shape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/shape2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/button_color_38"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/shape"
+                android:textColor="@color/button_color_38"
+                android:textSize="6sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/shape2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/corner_radius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/box_item_start"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/box_item_padding">
+
+            <ImageView
+                android:id="@+id/corner_radius2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:padding="1dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_projection_corner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/button_color_38"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="圆角"
+                android:textColor="@color/button_color_38"
+                android:textSize="@dimen/box_item_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/corner_radius2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/split_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/box_item_start"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/box_item_padding">
+
+            <ImageView
+                android:id="@+id/split_location2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:padding="1dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/wb_ic_split_top"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/button_color_38"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/up_down_change_title"
+                android:textColor="@color/button_color_38"
+                android:textSize="@dimen/box_item_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/split_location2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+            android:id="@+id/ai_matting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/box_item_start"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/box_item_padding">
+
+            <ImageView
+                android:id="@+id/ai_matting2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/button_background"
+                android:padding="1dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ai_matting_state_drawable"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/ai_matting_title"
+                android:textColor="@color/button_color_38"
+                android:textSize="@dimen/box_item_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ai_matting2" />
+        </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+            android:id="@+id/matting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/box_item_start"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/box_item_padding">
+
+            <ImageView
+                android:id="@+id/matting2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/button_background"
+                android:padding="1dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_matting"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/matting"
+                android:textColor="@color/button_color_38"
+                android:textSize="@dimen/box_item_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/matting2" />
+        </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+            android:id="@+id/beauty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/box_item_start"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/box_item_padding">
+
+            <ImageView
+                android:id="@+id/beauty2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/button_background"
+                android:padding="1dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_button_beauty_entry"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/beauty_title"
+                android:textColor="@color/button_color_38"
+                android:textSize="@dimen/box_item_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/beauty2" />
+        </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/box_item_start"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/box_item_padding">
+
+            <ImageView
+                android:id="@+id/background2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:padding="1dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_n_bg_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/button_color_38"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/border"
+                android:textColor="@color/button_color_38"
+                android:textSize="@dimen/box_item_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/background2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/division"
+            android:layout_width="1dp"
+            android:layout_height="@dimen/button_size"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="2dp"
+            android:layout_toEndOf="@id/matting"
+            android:background="@color/gray"
+            android:padding="@dimen/view_span" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/flip_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/box_item_start"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/box_item_padding">
+
+            <ImageView
+                android:id="@+id/flip_horizontal2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:padding="1dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/wb_button_video_source_flip_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/button_color_38"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/image_horizontal_flip"
+                android:textColor="@color/button_color_38"
+                android:textSize="@dimen/box_item_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/flip_horizontal2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rotate_vs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/box_item_start"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/box_item_padding">
+
+            <ImageView
+                android:id="@+id/rotate_vs2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:padding="1dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/wb_button_video_source_rotate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/button_color_38"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/make_rotate"
+                android:textColor="@color/button_color_38"
+                android:textSize="@dimen/box_item_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rotate_vs2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <View
+            android:id="@+id/division2"
+            android:layout_width="1dp"
+            android:layout_height="@dimen/button_size"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="2dp"
+            android:background="@color/gray"
+            android:padding="@dimen/view_span" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/box_item_start"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/box_item_padding">
+
+            <ImageView
+                android:id="@+id/lock2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:padding="1dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_lock"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/button_color_38"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/lock_title"
+                android:textColor="@color/button_color_38"
+                android:textSize="@dimen/box_item_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lock2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+            android:id="@+id/split_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/box_item_start"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/box_item_padding">
+
+            <ImageView
+                android:id="@+id/split_screen2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/button_background"
+                android:padding="1dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/button_up_down_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/spilt_screen_title"
+                android:textColor="@color/button_color_38"
+                android:textSize="@dimen/box_item_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/split_screen2" />
+        </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable
+            android:id="@+id/place_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/box_item_start"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/box_item_padding">
+
+            <ImageView
+                android:id="@+id/place_bottom2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:padding="1dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/button_place_bottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/button_color_38"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/make_down_title"
+                android:textColor="@color/button_color_38"
+                android:textSize="@dimen/box_item_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/place_bottom2" />
+        </cn.synway.module_sdirector_ui.whiteboard.ui.custom.ConstraintLayoutDisable>
+
+    </LinearLayout>
+</FrameLayout>

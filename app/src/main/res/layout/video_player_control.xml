@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_a40"
+    android:clipToPadding="false"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="5dp">
+
+
+    <ImageView
+        android:id="@+id/backward_seek"
+        android:layout_width="@dimen/video_button_size"
+        android:layout_height="@dimen/video_button_size"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/icon_backward_15"
+        app:layout_constraintTop_toTopOf="@id/start_pause"
+        app:layout_constraintBottom_toBottomOf="@id/start_pause"
+        app:layout_constraintEnd_toStartOf="@id/start_pause"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
+
+
+    <ImageView
+        android:id="@+id/start_pause"
+        android:layout_width="@dimen/video_button_size"
+        android:layout_height="@dimen/video_button_size"
+        android:padding="9dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_video_play"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
+
+
+    <ImageView
+        android:id="@+id/forward_seek"
+        android:layout_width="@dimen/video_button_size"
+        android:layout_height="@dimen/video_button_size"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/icon_forward_15"
+        app:tint="@color/white"
+        app:layout_constraintTop_toTopOf="@id/start_pause"
+        app:layout_constraintBottom_toBottomOf="@id/start_pause"
+        app:layout_constraintStart_toEndOf="@id/start_pause"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription" />
+
+
+    <SeekBar
+        android:id="@+id/seek"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:progressBackgroundTint="#686868"
+        android:progressTint="@color/light_blue"
+        android:thumbTint="@color/light_blue"
+        app:layout_constraintBottom_toTopOf="@id/duration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:gravity="center"
+        android:text="00:00"
+        android:textColor="@color/white"
+        android:textSize="7sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/seek" />
+
+    <TextView
+        android:id="@+id/current"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/dp_10"
+        android:gravity="center"
+        android:text="00:00"
+        android:textColor="@color/white"
+        android:textSize="7sp"
+        app:layout_constraintBottom_toBottomOf="@id/duration"
+        app:layout_constraintStart_toStartOf="@id/seek" />
+
+    <cn.synway.module_sdirector_ui.ui.mixertable.widget.VerticalSeekBar
+        android:id="@+id/audio_seek"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:max="100"
+        android:progressBackgroundTint="#686868"
+        android:progressTint="@color/light_blue"
+        android:thumbTint="@color/light_blue"
+        app:layout_constraintBottom_toTopOf="@id/seek"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_max="200dp"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/audio_button"
+        android:layout_width="@dimen/video_button_size"
+        android:layout_height="@dimen/video_button_size"
+        android:background="@color/transparent"
+        android:padding="@dimen/dp_10"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_audio_level"
+        app:layout_constraintBottom_toBottomOf="@id/audio_seek"
+        app:layout_constraintEnd_toEndOf="@id/audio_seek"
+        app:layout_constraintStart_toStartOf="@id/audio_seek"
+        app:layout_constraintTop_toBottomOf="@id/audio_seek"
+        tools:ignore="ContentDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/whiteboard_pop_content_width"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingHorizontal="@dimen/dp_20"
+    android:paddingVertical="@dimen/dp_10"
+    android:layout_margin="2dp"
+    android:elevation="@dimen/whiteboard_pop_elevation"
+    android:background="@drawable/shadow_popup_window">
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.paint.GradeSelection
+        android:id="@+id/eraser_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:grade_height="20dp"
+        app:quantity="3"
+        app:grade_div="20"
+        app:incremental="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

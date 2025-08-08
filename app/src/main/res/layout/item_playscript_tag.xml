@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_play_script_tag_shape"
+    android:layout_margin="2dp"
+    android:gravity="start"
+    android:padding="3dp">
+
+    <TextView
+        android:id="@+id/content_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/play_script_content_tag_size"
+        android:text="tttt"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        />
+
+</LinearLayout>

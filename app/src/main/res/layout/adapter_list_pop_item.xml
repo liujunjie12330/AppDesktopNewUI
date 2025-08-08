@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent_list_popup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:paddingHorizontal="5dp"
+    android:paddingVertical="2dp"
+    android:background="@drawable/list_pop_item_bg">
+
+    <TextView
+        android:id="@+id/item_list_popup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:textColor="@color/button_color"
+        android:paddingVertical="2dp"
+        android:textSize="11sp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        tools:text="111111" />
+</FrameLayout>

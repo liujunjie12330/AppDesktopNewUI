@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:id="@+id/box"
+        android:layout_width="60dp"
+        android:layout_height="180dp"
+        android:layout_margin="3dp"
+        android:elevation="2dp"
+        android:clickable="true"
+        android:background="@drawable/color_white_corner_3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/shut_down"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="2dp"
+        android:layout_marginHorizontal="12dp"
+        android:gravity="center|bottom"
+        android:text="@string/shut_down"
+        android:textSize="8sp"
+        app:drawableTint="@color/button_color_38"
+        android:background="@drawable/button_background"
+        android:textColor="@color/button_color"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="@id/box"
+        app:layout_constraintTop_toTopOf="@id/box"
+        app:layout_constraintEnd_toEndOf="@id/box"
+        app:layout_constraintBottom_toTopOf="@id/restart"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/restart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="2dp"
+        android:clickable="true"
+        android:text="@string/restart"
+        android:textSize="8sp"
+        app:drawableTint="@color/button_color_38"
+        android:gravity="center|bottom"
+        android:background="@drawable/button_background"
+        android:textColor="@color/button_color"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintStart_toStartOf="@id/shut_down"
+        app:layout_constraintEnd_toEndOf="@id/shut_down"
+        app:layout_constraintTop_toBottomOf="@id/shut_down"
+        app:layout_constraintBottom_toTopOf="@id/screen_shot"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/screen_shot"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="2dp"
+        android:clickable="true"
+        android:text="@string/snapshot_on_screen"
+        android:textSize="8sp"
+        app:drawableTint="@color/button_color_38"
+        android:gravity="center|bottom"
+        android:background="@drawable/button_background"
+        android:textColor="@color/button_color"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintStart_toStartOf="@id/restart"
+        app:layout_constraintEnd_toEndOf="@id/restart"
+        app:layout_constraintTop_toBottomOf="@id/restart"
+        app:layout_constraintBottom_toTopOf="@id/live_screen_adjust"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/live_screen_adjust"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="2dp"
+        android:clickable="true"
+        android:text="@string/screen_judgment"
+        android:textSize="8sp"
+        android:gravity="center|bottom"
+        android:background="@drawable/button_background"
+        android:textColor="@color/button_color"
+        app:layout_constraintStart_toStartOf="@id/shut_down"
+        app:layout_constraintEnd_toEndOf="@id/shut_down"
+        app:layout_constraintBottom_toBottomOf="@id/box"
+        app:layout_constraintTop_toBottomOf="@id/screen_shot"
+        tools:ignore="SmallSp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

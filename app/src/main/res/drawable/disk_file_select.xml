@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="10dp"
+    android:height="10dp"
+    android:viewportWidth="10"
+    android:viewportHeight="10">
+
+    <group>
+        <path
+            android:fillColor="@color/disk_blue_2a"
+            android:pathData="M1,5 A4,4 0 1 1 9,5A4,4 0 1 1 1,5 Z"
+            android:strokeWidth="1"
+            android:strokeColor="@color/disk_blue_2a" />
+
+        <path
+            android:pathData=" M2,5 L4,7 lL8,3
+                "
+            android:strokeWidth="1"
+            android:strokeColor="@color/white"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+    </group>
+</vector>

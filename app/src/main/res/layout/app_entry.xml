@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="2dp"
+    android:clipToPadding="false">
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.desktop.DesktopView
+        android:id="@+id/desktop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ui_color_white_corner_5"
+        android:elevation="2dp"/>
+</FrameLayout>

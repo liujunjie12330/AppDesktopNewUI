@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.FloatImageView2
+        android:id="@+id/floatBall"
+        android:layout_width="@dimen/expand_side_bar_btn_width"
+        android:layout_height="@dimen/expand_side_bar_btn_height"
+        android:elevation="5dp"
+        android:padding="4dp"
+        android:src="@drawable/wb_icon_expand_side_bar"
+        android:background="@drawable/expand_right_side_bar_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <cn.synway.module_sdirector_ui.ui.sidebarfw.LiveSidebarButtonList
+        android:id="@+id/sidebar_button_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="2dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <cn.synway.module_sdirector_ui.ui.sidebarfw.VideoListView
+        android:id="@+id/video_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/sidebar_button_list"
+        app:layout_constraintTop_toTopOf="@id/sidebar_button_list"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <cn.synway.module_sdirector_ui.ui.sidebarfw.RtmpInstructionView
+        android:id="@+id/rtmp_instruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/video_list"
+        app:layout_constraintTop_toTopOf="@id/video_list" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/video_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="video_list,rtmp_instruction" />
+
+    <cn.synway.module_sdirector_ui.ui.sidebarfw.AudioSettingListView
+        android:id="@+id/audio_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/sidebar_button_list"
+        app:layout_constraintTop_toTopOf="@id/sidebar_button_list" />
+
+    <cn.synway.module_sdirector_ui.ui.sidebarfw.PlayScriptView
+        android:id="@+id/play_script_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/sidebar_button_list"
+        app:layout_constraintTop_toTopOf="@id/sidebar_button_list" />
+
+    <cn.synway.module_sdirector_ui.ui.mixertable.MixerWindowLayout
+        android:id="@+id/mixertable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/sidebar_button_list"
+        app:layout_constraintTop_toTopOf="@id/sidebar_button_list" />
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.popwindow.visible.VisibilityManagerView
+        android:id="@+id/visibility_manager_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/sidebar_button_list"
+        app:layout_constraintTop_toTopOf="@id/sidebar_button_list" />
+
+    <cn.synway.module_sdirector_ui.whiteboard.ui.popwindow.LiveScreenAdjust
+        android:id="@+id/live_screen_adjust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toBottomOf="@id/sidebar_button_list"
+        app:layout_constraintEnd_toStartOf="@id/sidebar_button_list" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

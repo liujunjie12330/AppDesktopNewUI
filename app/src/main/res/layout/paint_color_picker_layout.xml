@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="2dp"
+    android:clipToPadding="false"
+    android:background="@color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:layout_width="150dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ui_color_white_corner_5"
+        android:elevation="@dimen/whiteboard_pop_elevation"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:id="@+id/tv_picker_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="7dp"
+            android:text="@string/choose_picker_color"
+            android:textColor="@color/black"
+            android:textSize="@dimen/paint_config_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ColorPickerView
+            android:id="@+id/color_picker"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="7dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_picker_color" />
+
+        <TextView
+            android:id="@+id/color_format"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/paint_config_button_size"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
+            android:paddingStart="5dp"
+            android:paddingEnd="20dp"
+            android:textColor="@color/black"
+            android:textSize="8sp"
+            app:layout_constraintStart_toStartOf="@id/color_picker"
+            app:layout_constraintTop_toBottomOf="@id/color_picker"
+            tools:ignore="SmallSp"
+            tools:text="format" />
+
+        <ImageView
+            android:layout_width="@dimen/paint_config_button_size"
+            android:layout_height="@dimen/paint_config_button_size"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_arrow_2"
+            app:layout_constraintBottom_toBottomOf="@id/color_format"
+            app:layout_constraintEnd_toEndOf="@id/color_format"
+            app:layout_constraintTop_toTopOf="@id/color_format"
+            app:tint="@color/black" />
+
+        <TextView
+            android:id="@+id/hex_hash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="#"
+            android:textColor="@color/black"
+            android:textSize="@dimen/paint_edit_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/hex_format"
+            app:layout_constraintStart_toStartOf="@id/hex_format"
+            app:layout_constraintTop_toTopOf="@id/hex_format" />
+
+        <EditText
+            android:id="@+id/hex_format"
+            android:layout_width="50dp"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginEnd="13dp"
+            android:background="@drawable/bg_round_conor"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:inputType="textVisiblePassword"
+            android:maxLength="6"
+            android:padding="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="0dp"
+            android:textSize="8sp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@id/color_format"
+            app:layout_constraintEnd_toEndOf="@id/color_picker"
+            app:layout_constraintTop_toTopOf="@id/color_format"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="Autofill,LabelFor,SmallSp"
+            tools:text="FFFFFF" />
+
+        <EditText
+            android:id="@+id/rgb_R"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/bg_round_conor"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="3"
+            android:padding="3dp"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@id/color_format"
+            app:layout_constraintEnd_toStartOf="@id/rgb_G"
+            app:layout_constraintTop_toTopOf="@id/color_format"
+            tools:ignore="Autofill,LabelFor,SmallSp"
+            tools:text="255" />
+
+        <EditText
+            android:id="@+id/rgb_G"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/bg_round_conor"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="3"
+            android:padding="3dp"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@id/color_format"
+            app:layout_constraintEnd_toStartOf="@id/rgb_B"
+            app:layout_constraintTop_toTopOf="@id/color_format"
+            tools:ignore="Autofill,LabelFor,SmallSp"
+            tools:text="255" />
+
+        <EditText
+            android:id="@+id/rgb_B"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="13dp"
+            android:background="@drawable/bg_round_conor"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="3"
+            android:padding="3dp"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@id/color_format"
+            app:layout_constraintEnd_toEndOf="@id/color_picker"
+            app:layout_constraintTop_toTopOf="@id/color_format"
+            tools:ignore="Autofill,LabelFor,SmallSp"
+            tools:text="255" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/rgb_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="rgb_R,rgb_G,rgb_B" />
+
+        <TextView
+            android:id="@+id/invalid_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/invalid_color"
+            android:textColor="@color/red"
+            android:textSize="@dimen/paint_edit_text_size"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/color_format"
+            tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

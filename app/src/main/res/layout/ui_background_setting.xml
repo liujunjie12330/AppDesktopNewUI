@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="210dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_shadow_white_drawable"
+    android:elevation="@dimen/whiteboard_pop_elevation"
+    android:paddingHorizontal="5dp"
+    android:paddingVertical="10dp">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabBackground="@color/transparency"
+        app:tabGravity="fill"
+        app:tabIndicatorAnimationDuration="@integer/material_motion_duration_short_2"
+        app:tabIndicatorAnimationMode="linear"
+        app:tabIndicatorColor="@color/black"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorGravity="bottom"
+        app:tabIndicatorHeight="1dp"
+        app:tabMaxWidth="70dp"
+        app:tabMode="fixed"
+        app:tabRippleColor="@color/transparency"
+        app:tabSelectedTextColor="@color/black"
+        app:tabTextAppearance="@style/tab_text_style"
+        app:tabTextColor="@color/gray">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/picture" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/video" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pure_color" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="130dp"
+        android:layout_height="0.75dp"
+        android:background="@color/lightgray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+
+    <FrameLayout
+        android:id="@+id/list_bin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        tools:visibility="visible">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/image_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/item_background_optional"
+            app:spanCount="2"
+            tools:itemCount="4" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/video_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/item_background_optional"
+            app:spanCount="2"
+            tools:itemCount="4"
+            tools:visibility="gone" />
+
+    </FrameLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/image_seek_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/list_bin"
+        app:layout_constraintStart_toStartOf="@id/list_bin"
+        app:layout_constraintTop_toBottomOf="@id/list_bin">
+
+        <TextView
+            android:id="@+id/virtual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/virtualization"
+            android:textColor="@color/black"
+            android:textSize="@dimen/paster_item_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SeekBar
+            android:id="@+id/image_blur_seek"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:progressBackgroundTint="@color/gray"
+            android:progressTint="@color/deep_blue"
+            android:progressTintMode="src_over"
+            android:splitTrack="false"
+            android:thumb="@drawable/wb_seekbar_thumb"
+            android:thumbTint="@color/deep_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/clear_up_image"
+            app:layout_constraintStart_toEndOf="@id/virtual"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/clear_up_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="5dp"
+            android:text="@string/clear_up"
+            android:textColor="@color/deep_blue"
+            android:textSize="@dimen/paster_item_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/video_seek_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/list_bin"
+        app:layout_constraintStart_toStartOf="@id/list_bin"
+        app:layout_constraintTop_toBottomOf="@id/list_bin"
+        tools:visibility="gone">
+
+        <TextView
+            android:id="@+id/volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/volume"
+            android:textColor="@color/black"
+            android:textSize="@dimen/paster_item_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SeekBar
+            android:id="@+id/video_volume_seek"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:progressBackgroundTint="@color/gray"
+            android:progressTint="@color/deep_blue"
+            android:progressTintMode="src_over"
+            android:splitTrack="false"
+            android:thumb="@drawable/wb_seekbar_thumb"
+            android:thumbTint="@color/deep_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/clear_up_video"
+            app:layout_constraintStart_toEndOf="@id/volume"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/clear_up_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="5dp"
+            android:text="@string/clear_up"
+            android:textColor="@color/deep_blue"
+            android:textSize="@dimen/paster_item_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/color_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tab_layout"
+        app:layout_constraintStart_toStartOf="@id/tab_layout"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout"
+        tools:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_color_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/color_selection"
+            android:layout_marginTop="10dp"
+            android:textColor="#FF383838"
+            android:textSize="8sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SmallSp" />
+
+        <RadioGroup
+            android:id="@+id/is_grid_radio_group"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/tv_color_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_color_type"
+            app:layout_constraintTop_toTopOf="@id/tv_color_type">
+
+            <RadioButton
+                android:id="@+id/regular_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:background="@null"
+                android:button="@null"
+                android:checked="true"
+                android:drawableStart="@drawable/whiteboard_config_radio_style"
+                android:drawablePadding="5dp"
+                android:text="@string/regular"
+                android:textColor="#FF383838"
+                android:textSize="8sp"
+                tools:ignore="SmallSp" />
+
+            <RadioButton
+                android:id="@+id/grid_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginStart="20dp"
+                android:background="@null"
+                android:button="@null"
+                android:drawableStart="@drawable/whiteboard_config_radio_style"
+                android:drawablePadding="5dp"
+                android:text="@string/grid"
+                android:textColor="#FF383838"
+                android:textSize="8sp"
+                tools:ignore="SmallSp" />
+        </RadioGroup>
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ColorPaletteView
+            android:id="@+id/color_palette_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/is_grid_radio_group" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

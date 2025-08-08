@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:left="10dp"
+        android:top="6dp"
+        android:right="10dp"
+        android:bottom="5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/switch_track_blue2a82e4_light_grey" />
+            <corners android:radius="10dp" />
+            <size
+                android:width="26dp"
+                android:height="13dp" />
+        </shape>
+    </item>
+</layer-list>

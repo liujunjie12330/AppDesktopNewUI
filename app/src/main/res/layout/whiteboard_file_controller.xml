@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/make_windowed"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_exit_full_video"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:padding="@dimen/view_span"
+        android:scaleType="fitCenter"
+        android:src="@drawable/wb_ic_shrink"
+        app:tint="@color/white"
+        android:contentDescription="@string/make_windowed" />
+
+    <TextView
+        android:id="@+id/close_file"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/close_document"
+        android:background="@drawable/background_exit_full_video"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        android:gravity="center"
+        android:paddingStart="@dimen/view_span"
+        android:paddingEnd="@dimen/view_span"/>
+
+</LinearLayout>

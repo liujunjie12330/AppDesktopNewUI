@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.synway.module_sdirector_ui.ui.sidebarfw.layout.NoInterceptConstrainLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="50dp"
+    android:layout_height="wrap_content"
+    android:paddingStart="1dp"
+    android:paddingTop="2dp"
+    android:paddingEnd="1dp"
+    android:paddingBottom="2dp">
+
+    <TextView
+        android:id="@+id/tvMixerBarMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/mixer_theme"
+        android:textSize="6sp"
+        app:layout_constraintEnd_toStartOf="@id/seekBarMixer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/seekBarMixer" />
+
+    <TextView
+        android:id="@+id/tvMixerBarMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/mixer_theme"
+        android:textSize="6sp"
+        app:layout_constraintBottom_toBottomOf="@id/seekBarMixer"
+        app:layout_constraintEnd_toStartOf="@id/seekBarMixer"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvMixerBarMiddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/mixer_deep3"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@id/seekBarMixer"
+        app:layout_constraintEnd_toStartOf="@id/seekBarMixer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/seekBarMixer" />
+
+    <cn.synway.module_sdirector_ui.ui.mixertable.widget.VerticalSeekBar
+        android:id="@+id/seekBarMixer"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:maxHeight="3dp"
+        android:paddingStart="9dp"
+        android:paddingEnd="9dp"
+        android:progressDrawable="@drawable/seekbar_progress_mixer"
+        android:splitTrack="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvMixerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:textColor="@color/mixer_theme"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@id/seekBarMixer"
+        app:layout_constraintStart_toStartOf="@id/seekBarMixer"
+        app:layout_constraintTop_toBottomOf="@id/seekBarMixer" />
+
+</cn.synway.module_sdirector_ui.ui.sidebarfw.layout.NoInterceptConstrainLayout>

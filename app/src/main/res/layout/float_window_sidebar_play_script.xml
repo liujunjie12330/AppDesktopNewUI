@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="200dp"
+    android:layout_height="@dimen/float_second_list_height"
+    android:background="@drawable/background_shadow_white_drawable"
+    android:elevation="2dp"
+    android:padding="15dp">
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="
+        back_from_delete,
+        deleting_ps,
+        delete_confirm" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="
+        update_ps,
+        addition,
+        delete" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_addition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="
+        view_script_example,
+        title_from_net,
+        qr_code_tips,
+        qr_code,
+        title_from_local,
+        tips_for_local,
+        add_from_local,
+        icon_folder,
+        back_from_addition" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_addition_not_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="
+        view_script_example,
+        title_from_net,
+        qr_code_tips,
+        qr_code,
+        title_from_local,
+        tips_for_local,
+        add_from_local,
+        icon_folder," />
+
+
+    <TextView
+        android:id="@+id/title_from_net"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ps_insert_from_net"
+        android:textColor="#FF808080"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/qr_code_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="@string/scan_the_qr_code"
+        android:textAlignment="center"
+        android:textColor="#2A82E4"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_from_net"
+        tools:ignore="SmallSp" />
+
+    <ImageView
+        android:id="@+id/qr_code"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:src="@mipmap/applet_qr_code"
+        android:visibility="visible"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/qr_code_tips"
+        tools:ignore="ContentDescription" />
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <cn.synway.module_sdirector_ui.ui.sidebarfw.layout.NoInterceptRecyclerView
+            android:id="@+id/recycler_play_script"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:itemCount="50"
+            android:divider="#00000000" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <TextView
+        android:id="@+id/title_from_local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/ps_insert_from_local"
+        android:textColor="#FF808080"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/qr_code"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/tips_for_local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:lineHeight="10dp"
+        android:text="@string/local_play_script_addition_tips"
+        android:textColor="#383838"
+        android:textSize="7sp"
+        app:layout_constraintStart_toStartOf="@id/title_from_local"
+        app:layout_constraintTop_toBottomOf="@id/title_from_local"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/add_from_local"
+        android:layout_width="135dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/color_white_corner_3"
+        android:backgroundTint="#FFF0F0F0"
+        android:gravity="center_vertical"
+        android:paddingStart="32dp"
+        android:text="@string/local_file"
+        android:textColor="@color/black_383838"
+        android:textSize="7sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tips_for_local"
+        tools:ignore="SmallSp" />
+
+    <ImageView
+        android:id="@+id/icon_folder"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_folder"
+        app:layout_constraintBottom_toBottomOf="@id/add_from_local"
+        app:layout_constraintStart_toStartOf="@id/add_from_local"
+        app:layout_constraintTop_toTopOf="@id/add_from_local"
+        tools:ignore="ContentDescription" />
+
+
+    <TextView
+        android:id="@+id/addition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_underline"
+        android:textColor="@color/disk_blue_2a"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_underline"
+        android:textColor="#FFD43030"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/back_from_addition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back_underline"
+        android:textColor="@color/disk_blue_2a"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SmallSp" />
+
+
+    <TextView
+        android:id="@+id/back_from_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back_underline"
+        android:textColor="@color/disk_blue_2a"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SmallSp" />
+
+
+    <TextView
+        android:id="@+id/deleting_ps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deleting_play_script"
+        android:textColor="@color/disk_blue_2a"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/update_ps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/update_play_script"
+        android:textColor="#FF808080"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SmallSp" />
+
+
+    <TextView
+        android:id="@+id/delete_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm_underline"
+        android:textColor="#FFD43030"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SmallSp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical">
+    <TextView
+        android:id="@+id/item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="45dp"
+        android:gravity="center|start"
+        tools:text="抠图标题:"
+        android:textColor="@color/color_enable_black_dis_a6"
+        android:textSize="@dimen/wb_matting_text_size"
+        tools:ignore="RtlSymmetry" />
+    <ImageView
+        android:id="@+id/minor"
+        android:src="@drawable/ic_minor"
+        android:layout_width="20dp"
+        android:layout_height="15dp"
+        android:scaleType="fitCenter"
+        tools:ignore="ContentDescription" />
+    <androidx.appcompat.widget.AppCompatSeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="0dp"
+        android:layout_weight="6"
+        android:layout_height="20dp"
+        android:maxHeight="2dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:thumb="@drawable/shape_oval_round_stroke"
+        android:progressTintMode="src_over"
+        android:progressTint="@color/color_enable_blue2a82e4_dis_80"
+        android:progressBackgroundTint="@color/gray_e5e5e5"
+        tools:progress="50"
+        android:max="100"/>
+    <ImageView
+        android:id="@+id/plus"
+        android:src="@drawable/ic_plus"
+        android:layout_width="20dp"
+        android:layout_height="15dp"
+        android:scaleType="fitCenter"
+        tools:ignore="ContentDescription" />
+    <TextView
+        android:id="@+id/seek_display"
+        android:layout_width="wrap_content"
+        android:minWidth="30dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/color_enable_black_dis_a6"
+        android:textSize="@dimen/wb_matting_text_size"
+        tools:text="0.99"/>
+
+</LinearLayout>

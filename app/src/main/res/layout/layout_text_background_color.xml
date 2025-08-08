@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        app:tabGravity="fill"
+        app:tabIndicatorAnimationDuration="@integer/material_motion_duration_short_2"
+        app:tabIndicatorAnimationMode="linear"
+        app:tabIndicatorColor="@color/blue2A82E4"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorGravity="bottom"
+        app:tabIndicatorHeight="1dp"
+        app:tabRippleColor="@color/transparent"
+        app:tabSelectedTextColor="@color/black"
+        app:tabTextAppearance="@style/tab_text_style"
+        app:tabTextColor="@color/gray">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="颜色" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="图片" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/light_gray" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/color_root"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_width="200dp">
+
+        <TextView
+            android:id="@+id/alpha_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="3dp"
+            android:text="不透明度"
+            android:textColor="@color/black"
+            android:textSize="6sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SeekBar
+            android:id="@+id/alpha_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:layout_marginVertical="3dp"
+            android:background="@null"
+            android:max="100"
+            android:min="20"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:progress="20"
+            android:progressDrawable="@drawable/seekbar_progress_drawable_grey_blue"
+            android:splitTrack="false"
+            android:thumb="@drawable/seekbar_thumb_16"
+            app:layout_constraintTop_toTopOf="@id/alpha_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/alpha_label"
+            app:layout_constraintStart_toEndOf="@id/alpha_label"/>
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/alpha_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="alpha_label,alpha_seekbar" />
+
+        <cn.synway.module_sdirector_ui.whiteboard.ui.custom.ColorPaletteView
+            android:id="@+id/color_view"
+            android:layout_width="90dp"
+            android:layout_marginHorizontal="5dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/alpha_seekbar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/image_root"
+        layout="@layout/layout_background_image" />
+
+</LinearLayout>

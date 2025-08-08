@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:divider="@drawable/linear_middle_divider_v"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:showDividers="middle">
+
+    <Spinner
+        android:id="@+id/spinner_video_source"
+        android:backgroundTint="@color/template_content_color"
+        android:popupBackground="@color/lightgray"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/video_config_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/flip_horizontal"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
+            android:scaleType="fitCenter"
+            android:padding="@dimen/view_span"
+            android:background="@color/transparent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/wb_flip_horizontal_blue_grey"/>
+
+        <ImageButton
+            android:id="@+id/flip_vertical"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
+            android:background="@color/transparent"
+            android:scaleType="fitCenter"
+            android:padding="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/flip_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/wb_flip_vertical_blue_grey"/>
+
+        <ImageButton
+            android:id="@+id/rotate"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:background="@color/transparent"
+            app:layout_constraintTop_toTopOf="@id/flip_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/wb_rotate_90_blue_grey"/>
+
+        <TextView
+            android:id="@+id/text_matting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="绿幕抠图"
+            android:layout_marginTop="@dimen/dp_20"
+            android:textColor="@color/template_content_color"
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@id/flip_horizontal"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_matting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxHeight="20dp"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:thumb="@drawable/switch_thumb_normal"
+            app:track="@drawable/switch_track_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_matting"/>
+
+        <TextView
+            android:id="@+id/text_intensity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/matting_intensity"
+            android:textColor="@color/template_content_color"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_matting"/>
+
+        <include
+            android:id="@+id/matting_tensity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/matting_item_layout"
+            android:layout_marginTop="@dimen/view_span"
+            app:layout_constraintTop_toBottomOf="@id/text_intensity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/text_smooth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/matting_smooth"
+            android:textColor="@color/template_content_color"
+            android:layout_marginTop="@dimen/view_span"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/matting_tensity"/>
+
+        <include
+            android:id="@+id/matting_smooth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/matting_item_layout"
+            android:layout_marginTop="@dimen/view_span"
+            app:layout_constraintTop_toBottomOf="@id/text_smooth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/text_excessive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/matting_excessive"
+            android:textSize="12sp"
+            android:textColor="@color/template_content_color"
+            android:layout_marginTop="@dimen/view_span"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/matting_smooth"/>
+
+        <include
+            android:id="@+id/matting_excessive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/matting_item_layout"
+            android:layout_marginTop="@dimen/view_span"
+            app:layout_constraintTop_toBottomOf="@id/text_excessive"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reset"
+            android:textSize="12sp"
+            android:textColor="@color/deep_blue"
+            android:layout_marginTop="@dimen/view_span"
+            android:layout_marginEnd="@dimen/view_span"
+            app:layout_constraintTop_toBottomOf="@id/matting_excessive"
+            app:layout_constraintEnd_toEndOf="@id/matting_excessive"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="wb_control_bar_elevation">3dp</dimen>
+    <dimen name="wb_document_container_elevation">20dp</dimen>
+    <dimen name="wb_document_optional_elevation">25dp</dimen>
+    <dimen name="wb_recording_box_elevation">30dp</dimen>
+    <dimen name="wb_living_box_elevation">30dp</dimen>
+    <dimen name="wb_record_count_down_elevation">30dp</dimen>
+    <dimen name="wb_loading_view_elevation">40dp</dimen>
+</resources>

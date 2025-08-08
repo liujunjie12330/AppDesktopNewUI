@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/button_background_color" />
+            <stroke
+                android:width="1dp"
+                android:color="@color/color_80_2_blue" />
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/ic_spinner_arrow"
+        android:end="5dp"
+        android:gravity="end|center_vertical" />
+</layer-list>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2.5dp"
+    android:background="@color/color_lightgray_transparent_selector"
+    android:padding="5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutIv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/fileType"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/fileSelect"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/disk_file_select"
+        app:layout_constraintBottom_toBottomOf="@id/layoutIv"
+        app:layout_constraintEnd_toEndOf="@id/layoutIv"
+        app:layout_constraintStart_toStartOf="@id/layoutIv"
+        app:layout_constraintTop_toTopOf="@id/layoutIv" />
+
+    <TextView
+        android:id="@+id/fileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxWidth="50dp"
+        android:maxLines="2"
+        android:text="LexarDatShield1.0.39"
+        android:textColor="@color/disk_black_38"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@id/layoutIv"
+        app:layout_constraintStart_toStartOf="@id/layoutIv"
+        app:layout_constraintTop_toBottomOf="@id/layoutIv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 选中状态（实心） -->
+    <item android:state_selected="true" android:drawable="@drawable/inuse_dot_solid" />
+    <!-- 默认状态（空心） -->
+    <item android:drawable="@drawable/inuse_dot_hollow" />
+</selector>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingTop="40dp"
+    android:paddingStart="@dimen/view_span"
+    android:paddingEnd="@dimen/view_span"
+    android:layout_gravity="start"
+    android:gravity="center">
+
+
+    <ImageView
+        android:id="@+id/jumpToLiveApp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/third_app"
+        android:src="@mipmap/ic_launcher"/>
+
+
+    <TextView
+        android:id="@+id/closeThirdApp"
+        android:layout_width="18dp"
+        android:layout_height="30dp"
+        android:text="@string/close"
+        android:maxEms="1"
+        android:layout_marginStart="@dimen/view_span"
+        android:background="@drawable/close_third_app_back"
+        android:padding="2dp"
+        android:gravity="center"
+        android:textSize="@dimen/close_third_app_text_size"
+        android:textColor="@color/white"
+        />
+
+
+</LinearLayout>

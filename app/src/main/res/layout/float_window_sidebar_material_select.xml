@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="200dp"
+    android:layout_height="300dp"
+    android:background="@drawable/background_shadow_white_drawable"
+    android:elevation="2dp"
+    android:padding="@dimen/window_layout_padding">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/select_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/background_image_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/background_image"
+            android:textAlignment="center"
+            android:textColor="@drawable/material_select_text_btn_color"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/watermark_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/watermark_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/watermark"
+            android:textAlignment="center"
+            android:textColor="@drawable/material_select_text_btn_color"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/background_video_btn"
+            app:layout_constraintStart_toEndOf="@id/background_image_btn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/background_video_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/video"
+            android:textAlignment="center"
+            android:textColor="@drawable/material_select_text_btn_color"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/watermark_btn"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/white_a40"
+        app:layout_constraintTop_toBottomOf="@id/select_layout" />
+
+    <TextView
+        android:id="@+id/background_loop_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/background_loop"
+        android:textColor="@drawable/material_select_text_btn_color"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_line" />
+
+    <Spinner
+        android:id="@+id/background_loop_spinner"
+        android:layout_width="@dimen/material_spinner_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/live_setting_spinner_background"
+        android:dropDownWidth="@dimen/material_spinner_width"
+        app:layout_constraintBottom_toBottomOf="@+id/background_loop_text"
+        app:layout_constraintStart_toEndOf="@id/background_loop_text"
+        app:layout_constraintTop_toTopOf="@id/background_loop_text" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/background_image_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/background_loop_text" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/watermark_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_line">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/watermark_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+
+        <View
+            android:id="@+id/watermark_mask_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/background_video_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_line" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toast_layout"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/toast_box"
+            layout="@layout/toast_logo_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

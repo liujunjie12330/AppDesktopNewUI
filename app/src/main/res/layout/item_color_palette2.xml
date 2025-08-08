@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <cn.synway.module_sdirector_ui.whiteboard.ui.custom.CircleView2
+        android:id="@+id/color_card"
+        android:layout_width="@dimen/color_size"
+        android:layout_height="@dimen/color_size"
+        android:layout_margin="@dimen/color_span"/>
+    <ImageButton
+        android:id="@+id/remove_btn"
+        android:layout_width="@dimen/color_size"
+        android:layout_height="@dimen/color_size"
+        android:padding="2.5dp"
+        android:elevation="1dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/wb_icon_waste_bin"
+        android:layout_gravity="center"
+        android:background="@drawable/background_color_palette_remove_btn"
+        tools:ignore="ContentDescription" />
+</FrameLayout>

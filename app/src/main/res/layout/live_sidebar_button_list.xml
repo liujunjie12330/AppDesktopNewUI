@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/button_list"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/pack_up_right_side"
+        android:layout_width="0dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/color_white_corner_3"
+        android:elevation="@dimen/wb_control_bar_elevation"
+        android:padding="@dimen/view_span"
+        android:src="@drawable/wb_icon_pack_up_side_bar"
+        app:layout_constraintEnd_toEndOf="@id/box"
+        app:layout_constraintStart_toStartOf="@id/box"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:id="@+id/box"
+        android:layout_width="30dp"
+        android:layout_height="240dp"
+        android:layout_marginHorizontal="3dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/color_white_corner_3"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pack_up_right_side" />
+
+    <ImageView
+        android:id="@+id/setting"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="3dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/user_center_background"
+        android:elevation="2dp"
+        android:padding="@dimen/side_bar_padding_1"
+        android:scaleType="fitCenter"
+        android:src="@drawable/wb_ic_user_center"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="@id/box"
+        app:layout_constraintStart_toStartOf="@id/box"
+        app:layout_constraintTop_toTopOf="@id/box"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:id="@+id/divider"
+        style="@style/divider"
+        android:layout_marginTop="5dp"
+        android:elevation="2dp"
+        app:layout_constraintEnd_toEndOf="@id/setting"
+        app:layout_constraintStart_toStartOf="@id/setting"
+        app:layout_constraintTop_toBottomOf="@id/setting" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_video_source"
+        android:layout_width="@dimen/live_sidebar_button_size"
+        android:layout_height="@dimen/live_sidebar_button_size"
+        android:paddingVertical="2dp"
+        android:background="@drawable/button_background"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@id/button_audio_source"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        >
+
+        <ImageView
+            android:id="@+id/button_video_source_image"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/controller_video_source_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_video_source_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_video_source_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_audio_source"
+        android:layout_width="@dimen/live_sidebar_button_size"
+        android:layout_height="@dimen/live_sidebar_button_size"
+        android:paddingVertical="2dp"
+        android:background="@drawable/button_background"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@id/button_play_script"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_video_source"
+        >
+
+        <ImageView
+            android:id="@+id/button_audio_source_image"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/controller_audio_source_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_audio_source_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_audio_source_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_play_script"
+        android:layout_width="@dimen/live_sidebar_button_size"
+        android:layout_height="@dimen/live_sidebar_button_size"
+        android:paddingVertical="2dp"
+        android:background="@drawable/button_background"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@id/button_mixer_table"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_audio_source"
+        >
+
+        <ImageView
+            android:id="@+id/button_play_script_image"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/controller_play_script_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_play_script_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_play_script_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_mixer_table"
+        android:layout_width="@dimen/live_sidebar_button_size"
+        android:layout_height="@dimen/live_sidebar_button_size"
+        android:paddingVertical="2dp"
+        android:background="@drawable/button_background"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@id/layer_control"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_play_script"
+        >
+
+        <ImageView
+            android:id="@+id/button_mixer_table_image"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/controller_mixer_table_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_mixer_table_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_mixer_table_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layer_control"
+        android:layout_width="@dimen/live_sidebar_button_size"
+        android:layout_height="@dimen/live_sidebar_button_size"
+        android:paddingVertical="2dp"
+        android:background="@drawable/button_background"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@id/adjust_output"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_mixer_table"
+        >
+
+        <ImageView
+            android:id="@+id/layer_control_image"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/controller_layer_control_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_layer_control_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layer_control_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/adjust_output"
+        android:layout_width="@dimen/live_sidebar_button_size"
+        android:layout_height="@dimen/live_sidebar_button_size"
+        android:paddingVertical="2dp"
+        android:background="@drawable/button_background"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@id/clear_screen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layer_control"
+        >
+
+        <ImageView
+            android:id="@+id/adjust_output_image"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/button_live_rate_adjust"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_adjust_output_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adjust_output_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clear_screen"
+        android:layout_width="@dimen/live_sidebar_button_size"
+        android:layout_height="@dimen/live_sidebar_button_size"
+        android:paddingVertical="2dp"
+        android:background="@drawable/button_background"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="@id/box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/adjust_output"
+        >
+
+
+        <ImageView
+            android:id="@+id/clear_screen_image"
+            android:layout_width="@dimen/controller_button_size"
+            android:layout_height="@dimen/controller_button_size"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/controller_clear_screen_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controller_clear_screen_btn"
+            android:textAlignment="center"
+            android:textColor="@color/button_color_38"
+            android:textSize="@dimen/controller_button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clear_screen_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

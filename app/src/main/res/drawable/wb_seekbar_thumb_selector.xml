@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true"
+        android:drawable="@drawable/wb_seek_bar_slider_blue"/>
+    <item android:state_enabled="false"
+        android:drawable="@drawable/wb_seek_bar_slider_grey"/>
+</selector>
