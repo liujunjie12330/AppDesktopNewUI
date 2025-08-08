@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:id="@+id/tint">
+    <item>
         <bitmap
-            android:src="@drawable/paint_shape_1_tint"
+            android:src="@drawable/paint_brush_not_selected_one_arrow_color"
             android:tint="@color/Blue" />
     </item>
-
     <item>
-        <bitmap android:src="@drawable/paint_shape_shell" />
+        <bitmap android:src="@drawable/paint_brush_not_selected_bg" />
     </item>
-
 </layer-list>

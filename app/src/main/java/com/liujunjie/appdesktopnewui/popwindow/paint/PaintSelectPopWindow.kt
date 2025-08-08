@@ -1,10 +1,13 @@
 package com.liujunjie.appdesktopnewui.popwindow.paint
 
 import android.content.Context
+import android.graphics.Rect
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.liujunjie.appdesktopnewui.adapter.PaintSelectAdapter
 import com.liujunjie.appdesktopnewui.adapter.PaintSelectEvent
 import com.liujunjie.appdesktopnewui.databinding.PaintSelectPopWindowLayoutBinding
@@ -46,9 +49,33 @@ class PaintSelectPopWindow(
         width = 772
         height = 110
         isTouchable = true
-        adapter.apply {
-            binding.paintList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.paintList.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = this@PaintSelectPopWindow.adapter
+            addItemDecoration(object : RecyclerView.ItemDecoration() {
+                override fun getItemOffsets(
+                    outRect: Rect,
+                    view: View,
+                    parent: RecyclerView,
+                    state: RecyclerView.State
+                ) {
+                    val totalWidth = parent.width
+                    val itemCount = parent.adapter?.itemCount ?: 1
+                    val position = parent.getChildAdapterPosition(view)
+
+                    if (itemCount == 0) return
+
+                    // 计算每个 item 之间应该留多少间距
+                    val spacing = (totalWidth / itemCount) - view.layoutParams.width
+
+                    val halfSpace = spacing / 2
+
+                    outRect.left = if (position == 0) 0 else halfSpace
+                    outRect.right = if (position == itemCount - 1) 0 else halfSpace
+                }
+            })
         }
+
     }
     override fun createContentView(inflater: LayoutInflater, parent: ViewGroup?): ViewGroup {
         return binding.root

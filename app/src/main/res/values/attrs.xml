@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ProgressSettingBar">
+        <attr name="title" format="string" />
+        <attr name="max" format="integer" />
+        <attr name="min" format="integer" />
+        <attr name="ratio" format="integer" />
+        <attr name="is_float" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="DateView">
+        <attr name="delimiter" format="string" />
+        <attr name="fancyText" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="GradeSelection">
+        <attr name="grade_height" format="dimension" />
+        <attr name="quantity" format="integer" />
+        <attr name="incremental" format="boolean" />
+        <attr name="grade_div" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="PaintView">
+        <attr name="view_count" format="integer" />
+        <attr name="divider_span" format="dimension" />
+        <attr name="movable_ratio" format="float" />
+        <attr name="movable_origin_ratio" format="float" />
+        <attr name="single_width" format="dimension" />
+        <attr name="single_height" format="dimension" />
+        <attr name="move_orientation" format="enum">
+            <enum name="left_to_right" value="0" />
+            <enum name="right_to_left" value="1" />
+            <enum name="top_to_bottom" value="2" />
+            <enum name="bottom_to_top" value="3" />
+        </attr>
+        <attr name="animDuration" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="Icon">
+        <attr name="icon" format="reference" />
+        <attr name="iconSize" format="dimension" />
+        <attr name="label" format="string" />
+        <attr name="label2" format="string" />
+    </declare-styleable>
+</resources>

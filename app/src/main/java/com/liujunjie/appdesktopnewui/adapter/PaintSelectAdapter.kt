@@ -68,6 +68,7 @@ class PaintSelectAdapter(
         private val binding: SelectPaintItemLayoutBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: PaintItem, onItemClick: (item: PaintItem) -> Unit, colorSetting: (item: PaintItem) -> Unit) {
+            Log.d(TAG, "bind: ${item.type}")
             binding.paint.setImageResource(Brush.getResId(item.type))
             binding.root.setOnClickListener {
                 onItemClick(item)
