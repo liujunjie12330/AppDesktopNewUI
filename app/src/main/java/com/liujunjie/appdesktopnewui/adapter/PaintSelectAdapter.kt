@@ -49,11 +49,13 @@ class PaintSelectAdapter(
                 paintSelectEvent.onItemClickOnce(item)
             }
             if (item.isSelected){
+                Log.d(TAG,"${item.index} 选中了")
                 binding.root.animate()
                     .translationY(-binding.root.context.dpToPx(25f))
                     .setDuration(200)
                     .start()
             }else{
+                Log.d(TAG,"${item.index} 没选中")
                 binding.root.animate()
                     .translationY(binding.root.context.dpToPx(25f))
                     .setDuration(200)
