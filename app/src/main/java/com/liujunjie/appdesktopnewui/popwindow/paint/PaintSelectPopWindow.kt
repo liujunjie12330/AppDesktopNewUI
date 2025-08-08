@@ -17,33 +17,15 @@ import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
 
 class PaintSelectPopWindow(
     val context: Context,
-    val cancel:()-> Unit
-) : BasePopupWindow<MutableList<PaintItem>>(context,cancel) {
+    val cancel:()-> Unit,
+    val paintSelectEvent: PaintSelectEvent
+) : BasePopupWindow<List<PaintItem>>(context,cancel) {
     companion object{
         const val TAG = "PaintSelectPopWindow"
     }
     private val binding = PaintSelectPopWindowLayoutBinding.inflate(LayoutInflater.from(context))
 
-    private val adapter = PaintSelectAdapter( object : PaintSelectEvent {
-        override fun onItemClickOnce(item: PaintItem) {
-
-        }
-
-        override fun eraserSetting(item: PaintItem) {
-            TODO("Not yet implemented")
-        }
-
-        override fun smartLineSetting(item: PaintItem) {
-            TODO("Not yet implemented")
-        }
-
-        override fun commonLineSetting(item: PaintItem) {
-            TODO("Not yet implemented")
-        }
-
-
-    }
-    )
+    private val adapter = PaintSelectAdapter( paintSelectEvent)
 
     init {
         width = 772
@@ -80,7 +62,7 @@ class PaintSelectPopWindow(
         return binding.root
     }
 
-    override fun onStateChanged(state: MutableList<PaintItem>) {
+    override fun onStateChanged(state: List<PaintItem>) {
         Log.d(TAG, "onStateChanged: $state")
         adapter.submitList(state)
     }

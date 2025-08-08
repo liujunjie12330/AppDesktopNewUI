@@ -12,17 +12,31 @@ import kotlinx.coroutines.flow.asStateFlow
 import com.liujunjie.appdesktopnewui.R
 
 class PaintViewModel(application: Application) : AndroidViewModel(application) {
-    private val _paintList = MutableStateFlow<MutableList<PaintItem>?>(null)
+    private val _paintList = MutableStateFlow<List<PaintItem>?>(null)
     val paintList = _paintList.asStateFlow()
 
+    private val _selectedPaint = MutableStateFlow<PaintItem?>(null)
+    val selectedPaint = _selectedPaint.asStateFlow()
+    /**
+     * 这里的数据后面到业务去拿
+     */
     private val paints = listOf(
-        PaintItem(false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK),R.drawable.paint_brush_selected_ellipse_head),
-        PaintItem(false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), Brush.getResId(TrackType.STRAIGHT_LINE)),
-        PaintItem(false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), Brush.getResId(TrackType.STRAIGHT_LINE)),
-        PaintItem(false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), Brush.getResId(TrackType.STRAIGHT_LINE)),
-        PaintItem(false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), Brush.getResId(TrackType.STRAIGHT_LINE)),
-        PaintItem(false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), Brush.getResId(TrackType.STRAIGHT_LINE))
+        PaintItem(0,false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK),R.drawable.paint_brush_selected_ellipse_head),
+        PaintItem(1,false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), R.drawable.paint_brush_selected_ellipse_head),
+        PaintItem(2,false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), R.drawable.paint_brush_selected_ellipse_head),
+        PaintItem(3,false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), R.drawable.paint_brush_selected_ellipse_head),
+        PaintItem(4,false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), R.drawable.paint_brush_selected_ellipse_head),
+        PaintItem(5,false, TrackType.SMART_LINE, 1.00f, ColorConfig(Color.BLACK), R.drawable.paint_brush_selected_ellipse_head)
     )
+
+
+    fun selectPaint(item: PaintItem){
+       if (_selectedPaint.value!=null && _selectedPaint.value!!.index == item.index){
+           return
+       }
+       _selectedPaint.value = item
+        updatePaintItems(item)
+    }
 
     fun addPaints() {
         _paintList.value = mutableListOf<PaintItem>().apply {
@@ -34,5 +48,12 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
         _paintList.value = null
     }
 
+    private fun updatePaintItems(item: PaintItem){
+        if (_paintList.value==null) return
+        val list = _paintList.value!!.map {
+            it.copy(isSelected = it.index == item.index)
+        }
+        _paintList.value = list
+    }
 
 }

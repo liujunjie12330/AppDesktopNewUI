@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.liujunjie.appdesktopnewui.databinding.SelectPaintItemLayoutBinding
+import com.liujunjie.appdesktopnewui.dpToPx
 import com.liujunjie.appdesktopnewui.enums.TrackType
 import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
 
@@ -19,15 +20,6 @@ class PaintSelectAdapter(
         const val TAG = "PaintSelectAdapter"
     }
 
-    private var selectedIndex = -1
-
-    private fun updateSelected() {
-        //直接进行替换
-        if (selectedIndex == -1) {
-            Log.d(TAG, "点击了切换动画")
-        }
-        //通知旧的进行更新，然后更新新的
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaintItemViewHolder {
         return PaintItemViewHolder(
@@ -43,32 +35,38 @@ class PaintSelectAdapter(
         val item = getItem(position)
         val type = getItemViewType(position)
         when (type) {
-            TrackType.SMART_LINE.ordinal->holder.bind(
+            TrackType.SMART_LINE.ordinal -> holder.bind(
                 item = item,
                 onItemClick = { paintSelectEvent.onItemClickOnce(it) },
                 colorSetting = { paintSelectEvent.eraserSetting(it) }
             )
-            TrackType.ERASER.ordinal->holder.bind(
+
+            TrackType.ERASER.ordinal -> holder.bind(
                 item = item,
                 onItemClick = { paintSelectEvent.onItemClickOnce(it) },
                 colorSetting = { paintSelectEvent.eraserSetting(it) }
             )
+
             else -> holder.bind(
                 item = item,
                 onItemClick = { paintSelectEvent.onItemClickOnce(it) },
                 colorSetting = { paintSelectEvent.commonLineSetting(it) }
-                )
+            )
         }
     }
 
     override fun getItemViewType(position: Int): Int = getItem(position).type.ordinal
-
-    class PaintItemViewHolder(
+    inner class PaintItemViewHolder(
         private val binding: SelectPaintItemLayoutBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: PaintItem, onItemClick: (item: PaintItem) -> Unit, colorSetting: (item: PaintItem) -> Unit) {
             Log.d(TAG, "bind: ${item.type}")
             binding.paint.setImageResource(item.icon)
+            val targetTranslation = if (item.isSelected) 0f else binding.root.context.dpToPx(20f)
+            binding.itemContainer.animate()
+                .translationY(targetTranslation)
+                .setDuration(200)
+                .start()
             binding.root.setOnClickListener {
                 onItemClick(item)
             }
@@ -80,7 +78,6 @@ class PaintSelectAdapter(
         }
     }
 
-
 }
 
 
@@ -89,9 +86,8 @@ object PaintDiffCallback : DiffUtil.ItemCallback<PaintItem>() {
         return oldItem == newItem
     }
 
-    @SuppressLint("DiffUtilEquals")
     override fun areContentsTheSame(oldItem: PaintItem, newItem: PaintItem): Boolean {
-        return oldItem == newItem
+        return oldItem.isSelected == newItem.isSelected && oldItem.thickness== newItem.thickness && oldItem.colorConfig == newItem.colorConfig
     }
 
 }

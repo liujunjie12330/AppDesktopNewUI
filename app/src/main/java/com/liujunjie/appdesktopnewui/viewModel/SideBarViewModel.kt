@@ -29,7 +29,6 @@ class SideBarViewModel(application: Application) : AndroidViewModel(application)
             it.copy(isSelect = it.index == item.index)
         }
         _sideBarItems.value = updatedList
-        _selectedItem.value = item
     }
 
 }
