@@ -45,4 +45,38 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
+    // ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+// ViewModel utilities for Compose
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+// LiveData
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+// Lifecycles only (without ViewModel or LiveData)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+// Lifecycle utilities for Compose
+    implementation(libs.androidx.lifecycle.runtime.compose)
+
+// Saved state module for ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.savedstate)
+
+// ViewModel integration with Navigation3
+    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+
+
+// optional - helpers for implementing LifecycleOwner in a Service
+    implementation(libs.androidx.lifecycle.service)
+
+// optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
+    implementation(libs.androidx.lifecycle.process)
+
+// optional - ReactiveStreams support for LiveData
+    implementation(libs.androidx.lifecycle.reactivestreams.ktx)
+
+// optional - Test helpers for LiveData
+    testImplementation(libs.androidx.core.testing)
+
+// optional - Test helpers for Lifecycle runtime
+    testImplementation(libs.androidx.lifecycle.runtime.testing)
+
+
 }

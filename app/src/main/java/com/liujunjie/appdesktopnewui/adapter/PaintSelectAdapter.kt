@@ -1,7 +1,6 @@
 package com.liujunjie.appdesktopnewui.adapter
 
 import android.content.res.ColorStateList
-import android.graphics.Paint
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
 import android.graphics.drawable.StateListDrawable

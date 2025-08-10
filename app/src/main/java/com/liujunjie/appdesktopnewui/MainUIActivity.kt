@@ -56,7 +56,7 @@ class MainUIActivity : AppCompatActivity() {
                 }
 
                 override fun eraserSetting(item: PaintItem) {
-                    TODO("Not yet implemented")
+                    paintViewModel.selectPaint(item)
                 }
 
                 override fun smartLineSetting(item: PaintItem) {
