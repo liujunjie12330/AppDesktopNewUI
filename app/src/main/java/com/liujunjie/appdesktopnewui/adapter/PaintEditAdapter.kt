@@ -23,7 +23,7 @@ class PaintEditAdapter(
                 )
             )
 
-            PaintEditType.SHAPE.ordinal, PaintEditType.THICK.ordinal -> ShapeThickViewHolder(
+            PaintEditType.SHAPE.ordinal, PaintEditType.THICK.ordinal, PaintEditType.OPERATION.ordinal -> ShapeThickViewHolder(
                 ColorSettingShapeThickBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -49,6 +49,7 @@ class PaintEditAdapter(
             PaintEditType.SHAPE.ordinal -> (holder as ShapeThickViewHolder).bind(getItem(position) as PaintShape)
             PaintEditType.THICK.ordinal -> (holder as ShapeThickViewHolder).bind(getItem(position) as PaintThick)
             PaintEditType.COLOR.ordinal -> (holder as ColorViewHolder).bind(getItem(position) as PaintColor)
+            PaintEditType.OPERATION.ordinal->(holder as ShapeThickViewHolder).bind(getItem(position) as PaintOperation)
             else -> throw IllegalArgumentException("Invalid view type")
         }
     }
@@ -80,6 +81,9 @@ class PaintEditAdapter(
 
         fun bind(item: PaintThick){
             binding.shape.setImageResource(item.thickIcon)
+        }
+        fun bind(item: PaintOperation){
+            binding.shape.setImageResource(item.addIcon)
         }
     }
 

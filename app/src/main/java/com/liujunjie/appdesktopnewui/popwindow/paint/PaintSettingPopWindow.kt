@@ -1,6 +1,7 @@
 package com.liujunjie.appdesktopnewui.popwindow.paint
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
@@ -8,7 +9,6 @@ import com.liujunjie.appdesktopnewui.adapter.PaintEditAdapter
 import com.liujunjie.appdesktopnewui.adapter.PaintEditEvent
 import com.liujunjie.appdesktopnewui.adapter.PaintEditItem
 import com.liujunjie.appdesktopnewui.databinding.PaintColorSelectPopBinding
-import com.liujunjie.appdesktopnewui.databinding.PaintSelectPopWindowLayoutBinding
 import com.liujunjie.appdesktopnewui.popwindow.BasePopupWindow
 
 class PaintSettingPopWindow(
@@ -21,13 +21,14 @@ class PaintSettingPopWindow(
         const val TAG = "PaintSettingPopWindow"
     }
     private val binding = PaintColorSelectPopBinding.inflate(LayoutInflater.from(context))
-    private val adapter = PaintEditAdapter(paintEditEvent)
+    private val paintEditAdapter = PaintEditAdapter(paintEditEvent)
 
     init {
         width = 339
+        height = 549
         binding.settingRecycle.apply {
-            adapter = this.adapter
-            layoutManager = GridLayoutManager(context,5,GridLayoutManager.HORIZONTAL,false)
+            adapter = paintEditAdapter
+            layoutManager = GridLayoutManager(context,5,GridLayoutManager.VERTICAL,false)
         }
     }
 
@@ -36,7 +37,8 @@ class PaintSettingPopWindow(
     }
 
     override fun onStateChanged(state: List<PaintEditItem>) {
-        adapter.submitList(state)
+        Log.d(TAG, "onStateChanged: $state")
+        paintEditAdapter.submitList(state)
     }
 
 }
