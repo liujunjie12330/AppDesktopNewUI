@@ -7,12 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.liujunjie.appdesktopnewui.adapter.PaintEditEvent
 import com.liujunjie.appdesktopnewui.adapter.PaintSelectEvent
 import com.liujunjie.appdesktopnewui.adapter.SideBarAdapter
 import com.liujunjie.appdesktopnewui.viewModel.SideBarViewModel
 import com.liujunjie.appdesktopnewui.adapter.SideBarEvent
 import com.liujunjie.appdesktopnewui.databinding.ActivityMainUiLayoutBinding
 import com.liujunjie.appdesktopnewui.popwindow.paint.PaintSelectPopWindow
+import com.liujunjie.appdesktopnewui.popwindow.paint.PaintSettingPopWindow
 import com.liujunjie.appdesktopnewui.uimodel.SideBarItem
 import com.liujunjie.appdesktopnewui.uimodel.SideBarItems
 import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
@@ -56,17 +58,27 @@ class MainUIActivity : AppCompatActivity() {
                 }
 
                 override fun eraserSetting(item: PaintItem) {
-                    paintViewModel.selectPaint(item)
+                    paintViewModel.setShapeList()
                 }
 
                 override fun smartLineSetting(item: PaintItem) {
-                    TODO("Not yet implemented")
+                    paintViewModel.setShapeList()
                 }
 
                 override fun commonLineSetting(item: PaintItem) {
-                    TODO("Not yet implemented")
+                    paintViewModel.setShapeList()
                 }
 
+
+            }
+        )
+    }
+
+    private val paintSettingPop by lazy {
+        PaintSettingPopWindow(
+            context = this,
+            onCancel = {},
+            paintEditEvent = object : PaintEditEvent {
 
             }
         )
@@ -94,6 +106,10 @@ class MainUIActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             paintPopWindow.collectState(paintViewModel.paintList, binding.root)
+        }
+
+        lifecycleScope.launch {
+            paintSettingPop.collectState(paintViewModel.smartLineUiData,binding.root)
         }
     }
 
