@@ -49,6 +49,24 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
     private val _selectedPaintRect = MutableStateFlow(Rect(0, 0, 1920, 1080))
     val selectedPaintRect = _selectedPaintRect.asStateFlow()
 
+
+
+    private val _colorConfig = MutableStateFlow<ColorConfig?>(null)
+    val colorConfig = _colorConfig.asStateFlow()
+
+    private val _shapeConfig = MutableStateFlow<PaintShape?>(null)
+    val shapeConfig = _shapeConfig.asStateFlow()
+
+
+    //颜色和形状的更改都会影响ui,对于2--6 可以更改类型
+
+
+
+
+
+    fun setColorConfig(colorConfig: ColorConfig?) {
+        _colorConfig.value = colorConfig
+    }
     fun setSelectedRect(rect: Rect?) {
         _selectedPaintRect.value = rect ?: Rect(0, 0, 0, 0)
     }
