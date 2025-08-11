@@ -8,22 +8,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.liujunjie.appdesktopnewui.adapter.PaintColor
-import com.liujunjie.appdesktopnewui.adapter.PaintEditEvent
-import com.liujunjie.appdesktopnewui.adapter.PaintOperateEvent
-import com.liujunjie.appdesktopnewui.adapter.PaintSelectEvent
-import com.liujunjie.appdesktopnewui.adapter.SideBarAdapter
-import com.liujunjie.appdesktopnewui.viewModel.SideBarViewModel
-import com.liujunjie.appdesktopnewui.adapter.SideBarEvent
+import com.liujunjie.appdesktopnewui.adapter.*
 import com.liujunjie.appdesktopnewui.databinding.ActivityMainUiLayoutBinding
+import com.liujunjie.appdesktopnewui.popwindow.PopupState
 import com.liujunjie.appdesktopnewui.popwindow.paint.ColorSettingPopWindow
 import com.liujunjie.appdesktopnewui.popwindow.paint.PaintSelectPopWindow
 import com.liujunjie.appdesktopnewui.popwindow.paint.PaintSettingPopWindow
 import com.liujunjie.appdesktopnewui.uimodel.SideBarItem
 import com.liujunjie.appdesktopnewui.uimodel.SideBarItems
 import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
+import com.liujunjie.appdesktopnewui.viewModel.SideBarViewModel
 import com.liujunjie.appdesktopnewui.viewModel.paint.PaintViewModel
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 
 
@@ -52,20 +49,24 @@ class MainUIActivity : AppCompatActivity() {
         ViewModelProvider(this)[PaintViewModel::class.java]
     }
 
-    private val paintPopWindow by lazy {
+    private val paintSelectPopWindow by lazy {
         PaintSelectPopWindow(
-            context = this,
+            content = binding.root,
             cancel = {},
             paintSelectEvent = object : PaintSelectEvent {
                 override fun onItemClickOnce(item: PaintItem) {
+
                     paintViewModel.selectPaint(item)
                 }
 
                 override fun eraserSetting(item: PaintItem) {
+
+                    Log.d("MainUIActivity", "eraserSetting: ${item}")
                     paintViewModel.setShapeList()
                 }
 
                 override fun smartLineSetting(item: PaintItem) {
+                    Log.d("MainUIActivity", "eraserSetting: ${item}")
                     paintViewModel.setShapeList()
                 }
 
@@ -74,7 +75,7 @@ class MainUIActivity : AppCompatActivity() {
                 }
 
             },
-            paintOperateEvent = object : PaintOperateEvent{
+            paintOperateEvent = object : PaintOperateEvent {
                 override fun clearUp() {
                     Log.d("MainUIActivity", "clearUp")
                 }
@@ -101,7 +102,7 @@ class MainUIActivity : AppCompatActivity() {
 
     private val paintSettingPop by lazy {
         PaintSettingPopWindow(
-            context = this,
+            content = binding.root,
             onCancel = {},
             paintEditEvent = object : PaintEditEvent {
                 override fun colorSetting(item: PaintColor) {
@@ -113,7 +114,7 @@ class MainUIActivity : AppCompatActivity() {
 
     private val colorSettingPop by lazy {
         ColorSettingPopWindow(
-            context = this,
+            content = binding.root,
             onCancel = {})
     }
 
@@ -136,14 +137,10 @@ class MainUIActivity : AppCompatActivity() {
 
             }
         }
-
         lifecycleScope.launch {
-            paintPopWindow.collectState(paintViewModel.paintList, binding.root)
+            paintSelectPopWindow.collectState(PopupState<List<PaintItem>>(paintViewModel.paintList,paintViewModel.getSelectedRect()))
         }
 
-        lifecycleScope.launch {
-            paintSettingPop.collectState(paintViewModel.smartLineUiData,binding.root)
-        }
     }
 
 

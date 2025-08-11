@@ -2,7 +2,9 @@ package com.liujunjie.appdesktopnewui.viewModel.paint
 
 import android.app.Application
 import android.graphics.Color
+import android.graphics.Rect
 import android.graphics.drawable.shapes.Shape
+import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.liujunjie.appdesktopnewui.config.ColorConfig
@@ -42,6 +44,21 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _paintColorList = MutableStateFlow<List<PaintColor>?>(null)
     private val paintColorList = _paintColorList.asStateFlow()
+
+    private var _selectedPaintRect: Rect? = null
+    fun getSelectedRect(): Rect {
+        val rect = _selectedPaintRect ?: Rect(0, 0, 1920, 1080)
+        clearRect()
+        return rect
+    }
+
+    fun setSelectedRect(rect: Rect) {
+        _selectedPaintRect = rect
+    }
+
+    fun clearRect() {
+        _selectedPaintRect = null
+    }
 
     private val mutex = Mutex()
     val smartLineUiData =

@@ -2,7 +2,10 @@ package com.liujunjie.appdesktopnewui.popwindow.paint
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Rect
+import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.isInvisible
@@ -10,23 +13,24 @@ import androidx.core.view.isVisible
 import com.liujunjie.appdesktopnewui.config.ColorConfig
 import com.liujunjie.appdesktopnewui.databinding.PaintColorPickerLayoutBinding
 import com.liujunjie.appdesktopnewui.popwindow.BasePopupWindow
+import com.liujunjie.appdesktopnewui.popwindow.PopupState
 import com.liujunjie.appdesktopnewui.util.isValidColor
 import com.liujunjie.appdesktopnewui.util.preMeasure
 
-class ColorSettingPopWindow(
-    val  context: Context,
-    val onCancel:()->Unit
-): BasePopupWindow<ColorConfig>(context,onCancel) {
-    private  var colorConfig = ColorConfig()
-    private val binding = PaintColorPickerLayoutBinding.inflate(LayoutInflater.from(context))
-    var colorPickerChanged: ((colorConfig: ColorConfig) -> Unit)? = null
 
+class ColorSettingPopWindow(
+    val content: View,
+    val onCancel: () -> Unit
+) : BasePopupWindow<ColorConfig>(content, onCancel) {
+    private var colorConfig = ColorConfig()
+    private val binding = PaintColorPickerLayoutBinding.inflate(LayoutInflater.from(content.context))
+    var colorPickerChanged: ((colorConfig: ColorConfig) -> Unit)? = null
 
 
     init {
         binding.root.preMeasure()
         contentView = binding.root
-        val rootWidth =150
+        val rootWidth = 150
         val rootHeight = binding.root.measuredHeight
         height = rootHeight
         width = rootWidth
@@ -39,12 +43,36 @@ class ColorSettingPopWindow(
     }
 
     override fun createContentView(inflater: LayoutInflater, parent: ViewGroup?): ViewGroup {
-       return binding.root
+        return binding.root
     }
+
+    override fun showAtLocation(anchor: Rect) {
+        // 测量弹窗宽高
+        contentView.measure(
+            View.MeasureSpec.UNSPECIFIED,
+            View.MeasureSpec.UNSPECIFIED
+        )
+        val popupWidth = contentView.measuredWidth
+        val popupHeight = contentView.measuredHeight
+
+        // 目标中心X坐标
+        val centerX = anchor.left + anchor.width() / 2
+
+        // 计算弹窗左上角X坐标，保证水平居中对齐
+        val x = centerX - popupWidth / 2
+
+        // 计算弹窗左上角Y坐标，弹窗底部和目标顶部对齐
+        val y = anchor.top - popupHeight
+
+        // 显示弹窗，使用根布局做anchor，Gravity.NO_GRAVITY表示自定义坐标
+        showAtLocation(content, Gravity.NO_GRAVITY, x, y)
+    }
+
 
     override fun onStateChanged(state: ColorConfig) {
         colorConfig = state
     }
+
 
     private fun initView() {
         binding.colorPicker.setColorSelect { color, fromUser ->

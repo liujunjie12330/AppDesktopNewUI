@@ -1,8 +1,8 @@
 package com.liujunjie.appdesktopnewui.popwindow.paint
 
-import android.content.Context
 import android.graphics.Rect
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,19 +15,19 @@ import com.liujunjie.appdesktopnewui.databinding.PaintSelectPopWindowLayoutBindi
 import com.liujunjie.appdesktopnewui.popwindow.BasePopupWindow
 import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
 
-
 class PaintSelectPopWindow(
-    val context: Context,
-    val cancel:()-> Unit,
+    val content: View,
+    val cancel: () -> Unit,
     val paintSelectEvent: PaintSelectEvent,
     val paintOperateEvent: PaintOperateEvent
-) : BasePopupWindow<List<PaintItem>>(context,cancel) {
-    companion object{
+) : BasePopupWindow<List<PaintItem>>(content, cancel) {
+    companion object {
         const val TAG = "PaintSelectPopWindow"
     }
-    private val binding = PaintSelectPopWindowLayoutBinding.inflate(LayoutInflater.from(context))
 
-    private val adapter = PaintSelectAdapter( paintSelectEvent)
+    private val binding = PaintSelectPopWindowLayoutBinding.inflate(LayoutInflater.from(content.context))
+
+    private val adapter = PaintSelectAdapter(paintSelectEvent)
 
     init {
         width = 772
@@ -55,7 +55,7 @@ class PaintSelectPopWindow(
             })
         }
         binding.paintEraser.setOnClickListener {
-              paintOperateEvent.clearUp()
+            paintOperateEvent.clearUp()
         }
         binding.paintRevoke.setOnClickListener {
             paintOperateEvent.revoke()
@@ -64,19 +64,47 @@ class PaintSelectPopWindow(
             paintOperateEvent.restore()
         }
         binding.paintExit.setOnClickListener {
-           paintOperateEvent.exit()
+            paintOperateEvent.exit()
         }
         binding.paintRetract.setOnClickListener {
             paintOperateEvent.retract()
         }
     }
+
     override fun createContentView(inflater: LayoutInflater, parent: ViewGroup?): ViewGroup {
         return binding.root
     }
 
     override fun onStateChanged(state: List<PaintItem>) {
-        Log.d(TAG, "onStateChanged: $state")
         adapter.submitList(state)
+    }
+
+
+    override fun showAtLocation(anchor: Rect) {
+        // 目标容器的宽高和坐标
+        val anchorWidth = anchor.width()
+        val anchorHeight = anchor.height()
+        val anchorLeft = anchor.left
+        val anchorTop = anchor.top
+
+        // 弹窗宽高（必须先测量PopupWindow的contentView，否则width/height拿不到准确值）
+        contentView.measure(
+            View.MeasureSpec.UNSPECIFIED,
+            View.MeasureSpec.UNSPECIFIED
+        )
+        val popupWidth = contentView.measuredWidth
+        val popupHeight = contentView.measuredHeight
+
+        // 计算弹窗显示的x坐标: 底部中间 => 目标左侧 + (目标宽度 - 弹窗宽度) / 2
+        val x = anchorLeft + (anchorWidth - popupWidth) / 2
+
+        // 计算弹窗显示的y坐标: 底部 => 目标底部 - 弹窗高度
+        // 如果你想弹窗紧贴目标底部的外部，可以用 anchorTop + anchorHeight
+        val y = anchorTop + anchorHeight - popupHeight
+
+        // 使用 PopupWindow 自带的 showAtLocation(view, gravity, x, y) 方法
+        // 这里传入一个根布局或者任何可用的view作为参考view，Gravity.NO_GRAVITY表示坐标已计算好
+        showAtLocation(content, Gravity.NO_GRAVITY, x, y)
     }
 
 
