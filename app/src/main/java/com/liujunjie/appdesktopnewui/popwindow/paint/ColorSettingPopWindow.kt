@@ -6,12 +6,14 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.liujunjie.appdesktopnewui.config.ColorConfig
 import com.liujunjie.appdesktopnewui.databinding.PaintColorPickerLayoutBinding
 import com.liujunjie.appdesktopnewui.popwindow.BasePopupWindow
+import com.liujunjie.appdesktopnewui.util.DisplayUtil
 import com.liujunjie.appdesktopnewui.util.isValidColor
 import com.liujunjie.appdesktopnewui.util.preMeasure
 
@@ -44,27 +46,41 @@ class ColorSettingPopWindow(
         return binding.root
     }
 
+    private var isFirstShow = true
+
     override fun showAtLocation(anchor: Rect) {
-//        // 测量弹窗宽高
-//        contentView.measure(
-//            View.MeasureSpec.UNSPECIFIED,
-//            View.MeasureSpec.UNSPECIFIED
-//        )
-//        val popupWidth = contentView.measuredWidth
-//        val popupHeight = contentView.measuredHeight
-//
-//        // 目标中心X坐标
-//        val centerX = anchor.left + anchor.width() / 2
-//
-//        // 计算弹窗左上角X坐标，保证水平居中对齐
-//        val x = centerX - popupWidth / 2
-//
-//        // 计算弹窗左上角Y坐标，弹窗底部和目标顶部对齐
-//        val y = anchor.top - popupHeight
-//
-//        // 显示弹窗，使用根布局做anchor，Gravity.NO_GRAVITY表示自定义坐标
-//        showAtLocation(content, Gravity.NO_GRAVITY, x, y)
+        val popupWidth = DisplayUtil.dp2px(content.context, 150)
+        if (isFirstShow) {
+            val offscreenX = -10000
+            val offscreenY = -10000
+            showAtLocation(content, Gravity.NO_GRAVITY, offscreenX, offscreenY)
+
+            contentView.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    contentView.viewTreeObserver.removeOnGlobalLayoutListener(this)
+
+                    val popupHeight = contentView.height
+                    val x = anchor.right
+                    val y = anchor.top
+
+                    update(x, y, popupWidth, popupHeight)
+                    isFirstShow = false
+                }
+            })
+
+        } else {
+            contentView.measure(
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+            )
+            val popupHeight = contentView.measuredHeight
+            val x = anchor.right
+            val y = anchor.top
+
+            showAtLocation(content, Gravity.NO_GRAVITY, x, y)
+        }
     }
+
 
 
     override fun onStateChanged(state: ColorConfig) {

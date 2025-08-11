@@ -141,23 +141,19 @@ class MainUIActivity : AppCompatActivity() {
             sideBarViewModel.sideBarItems.collectLatest {
                 sideBarAdapter.submitList(it)
             }
-        }
-        lifecycleScope.launch {
+
             sideBarViewModel.selectedItem.collectLatest {
                 if (it == SideBarItems.DrawPaintItem) paintViewModel.addPaints()
                 else paintViewModel.clear()
             }
-        }
-        lifecycleScope.launch {
+
             paintSelectPopWindow.collectState(
                 PopupState<List<PaintItem>>(
                     paintViewModel.paintList,
                     paintViewModel.selectedPaintRect
                 )
             )
-        }
 
-        lifecycleScope.launch {
             paintSettingPop.collectState(
                 PopupState<List<PaintEditItem>>(
                     paintViewModel.smartLineUiData,
@@ -165,10 +161,7 @@ class MainUIActivity : AppCompatActivity() {
                 )
             )
         }
-
     }
-
-
 }
 
 
