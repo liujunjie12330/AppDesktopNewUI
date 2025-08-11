@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.liujunjie.appdesktopnewui.adapter.PaintOperateEvent
 import com.liujunjie.appdesktopnewui.adapter.PaintSelectAdapter
 import com.liujunjie.appdesktopnewui.adapter.PaintSelectEvent
 import com.liujunjie.appdesktopnewui.databinding.PaintSelectPopWindowLayoutBinding
@@ -18,7 +19,8 @@ import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
 class PaintSelectPopWindow(
     val context: Context,
     val cancel:()-> Unit,
-    val paintSelectEvent: PaintSelectEvent
+    val paintSelectEvent: PaintSelectEvent,
+    val paintOperateEvent: PaintOperateEvent
 ) : BasePopupWindow<List<PaintItem>>(context,cancel) {
     companion object{
         const val TAG = "PaintSelectPopWindow"
@@ -44,18 +46,28 @@ class PaintSelectPopWindow(
                     val totalWidth = parent.width
                     val itemCount = parent.adapter?.itemCount ?: 1
                     val position = parent.getChildAdapterPosition(view)
-
                     if (itemCount == 0) return
-
-                    // 计算每个 item 之间应该留多少间距
                     val spacing = (totalWidth / itemCount) - view.layoutParams.width
-
                     val halfSpace = spacing / 2
-
                     outRect.left = if (position == 0) 0 else halfSpace
                     outRect.right = if (position == itemCount - 1) 0 else halfSpace
                 }
             })
+        }
+        binding.paintEraser.setOnClickListener {
+              paintOperateEvent.clearUp()
+        }
+        binding.paintRevoke.setOnClickListener {
+            paintOperateEvent.revoke()
+        }
+        binding.paintRestore.setOnClickListener {
+            paintOperateEvent.restore()
+        }
+        binding.paintExit.setOnClickListener {
+           paintOperateEvent.exit()
+        }
+        binding.paintRetract.setOnClickListener {
+            paintOperateEvent.retract()
         }
     }
     override fun createContentView(inflater: LayoutInflater, parent: ViewGroup?): ViewGroup {

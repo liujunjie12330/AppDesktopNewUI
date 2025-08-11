@@ -22,6 +22,10 @@ import com.liujunjie.appdesktopnewui.adapter.PaintTitle
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withLock
 
 class PaintViewModel(application: Application) : AndroidViewModel(application) {
     private val _paintList = MutableStateFlow<List<PaintItem>?>(null)
@@ -39,28 +43,29 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
     private val _paintColorList = MutableStateFlow<List<PaintColor>?>(null)
     private val paintColorList = _paintColorList.asStateFlow()
 
-
+    private val mutex = Mutex()
     val smartLineUiData =
         combine(_paintShapeList, _paintThickList, _paintColorList) { shapes, thicks, colors ->
-            if (shapes == null && thicks == null && colors == null) return@combine null
-
-            val mergedList = mutableListOf<PaintEditItemBase>()
-            mergedList.add(shapeTitle)
-            shapes?.let { mergedList.addAll(shapes) }
-            mergedList.add(thickTitle)
-            thicks?.let { mergedList.addAll(thicks) }
-            mergedList.add(colorTitle)
-            colors?.let { mergedList.addAll(colors) }
-            mergedList.add(paintOperation)
-            //重排序
-            mergedList.mapIndexed { idx, item ->
-                when (item) {
-                    is PaintShape -> item.copy(index = idx)
-                    is PaintThick -> item.copy(index = idx)
-                    is PaintColor -> item.copy(index = idx)
-                    is PaintTitle -> item.copy(index = idx)
-                    is PaintOperation -> item.copy(index = idx)
-                    else -> item
+            mutex.withLock {
+                if (shapes == null && thicks == null && colors == null) return@combine null
+                val mergedList = mutableListOf<PaintEditItemBase>()
+                mergedList.add(shapeTitle)
+                shapes?.let { mergedList.addAll(shapes) }
+                mergedList.add(thickTitle)
+                thicks?.let { mergedList.addAll(thicks) }
+                mergedList.add(colorTitle)
+                colors?.let { mergedList.addAll(colors) }
+                mergedList.add(paintOperation)
+                //重排序
+                mergedList.mapIndexed { idx, item ->
+                    when (item) {
+                        is PaintShape -> item.copy(index = idx)
+                        is PaintThick -> item.copy(index = idx)
+                        is PaintColor -> item.copy(index = idx)
+                        is PaintTitle -> item.copy(index = idx)
+                        is PaintOperation -> item.copy(index = idx)
+                        else -> item
+                    }
                 }
             }
         }.stateIn(
@@ -70,9 +75,15 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
         )
 
     fun setShapeList() {
-        _paintShapeList.value = paintShapes
-        _paintThickList.value = paintThicks
-        _paintColorList.value = paintColors
+        viewModelScope
+            .launch {
+                mutex.withLock {
+                    _paintShapeList.value = paintShapes
+                    _paintThickList.value = paintThicks
+                    _paintColorList.value = paintColors
+                }
+            }
+
     }
 
 
@@ -174,7 +185,6 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
     )
 
     private val paintThicks = listOf(
-        PaintThick(0, 1.00f, R.drawable.icon_thick_1, false),
         PaintThick(0, 1.00f, R.drawable.icon_thick_1, false),
         PaintThick(0, 1.00f, R.drawable.icon_thick_1, false),
         PaintThick(0, 1.00f, R.drawable.icon_thick_1, false),

@@ -33,23 +33,23 @@ abstract class BasePopupWindow<T>(
     abstract fun onStateChanged(state: T)
 
 
-    suspend fun collectState(state: Flow<T?>,anchorView: View, gravity: Int = Gravity.CENTER) {
+    suspend fun collectState(state: Flow<T?>, anchorView: View, gravity: Int = Gravity.CENTER, x: Int = 0, y: Int = 0) {
         try {
             state.collectLatest {
-                withContext(Dispatchers.Main.immediate){
-                    updateState(it,anchorView,gravity)
+                withContext(Dispatchers.Main.immediate) {
+                    updateState(it, anchorView, gravity, x, y)
                 }
             }
-        }finally {
+        } finally {
             dismiss()
         }
     }
 
-    private fun updateState(state: T?, anchorView: View, gravity: Int) {
+    private fun updateState(state: T?, anchorView: View, gravity: Int, x: Int, y: Int) {
         if (state != null) {
             if (!isShowing) {
                 contentView = createContentView(LayoutInflater.from(context), null)
-                showAtLocation(anchorView, gravity, 0, 0)
+                showAtLocation(anchorView, gravity, x, y)
             }
             onStateChanged(state)
         } else {

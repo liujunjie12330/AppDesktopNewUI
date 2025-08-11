@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.liujunjie.appdesktopnewui.adapter.PaintEditAdapter
 import com.liujunjie.appdesktopnewui.adapter.PaintEditEvent
 import com.liujunjie.appdesktopnewui.adapter.PaintEditItem
+import com.liujunjie.appdesktopnewui.adapter.PaintEditType
 import com.liujunjie.appdesktopnewui.databinding.PaintColorSelectPopBinding
 import com.liujunjie.appdesktopnewui.popwindow.BasePopupWindow
 
@@ -25,10 +26,21 @@ class PaintSettingPopWindow(
 
     init {
         width = 339
-        height = 549
+        height = ViewGroup.LayoutParams.WRAP_CONTENT
         binding.settingRecycle.apply {
             adapter = paintEditAdapter
-            layoutManager = GridLayoutManager(context,5,GridLayoutManager.VERTICAL,false)
+            layoutManager = GridLayoutManager(context,20,GridLayoutManager.VERTICAL,false).apply {
+                spanSizeLookup  =  object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return when(adapter!!.getItemViewType(position)){
+                            PaintEditType.TITLE.ordinal->20
+                            PaintEditType.SHAPE.ordinal-> 5
+                            PaintEditType.COLOR.ordinal,PaintEditType.THICK.ordinal,PaintEditType.OPERATION.ordinal-> 4
+                            else -> 0
+                        }
+                    }
+                }
+            }
         }
     }
 

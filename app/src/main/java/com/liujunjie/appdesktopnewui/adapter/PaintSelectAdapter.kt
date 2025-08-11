@@ -126,6 +126,14 @@ interface PaintSelectEvent {
     fun commonLineSetting(item: PaintItem)
 }
 
+interface PaintOperateEvent{
+    fun clearUp()
+    fun revoke()
+    fun restore()
+    fun exit()
+    fun retract()
+}
+
 
 private val EMPTY = arrayOf(IntArray(0))
 fun Drawable.setTintColor(color: Int) {

@@ -3,16 +3,20 @@ package com.liujunjie.appdesktopnewui
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.liujunjie.appdesktopnewui.adapter.PaintColor
 import com.liujunjie.appdesktopnewui.adapter.PaintEditEvent
+import com.liujunjie.appdesktopnewui.adapter.PaintOperateEvent
 import com.liujunjie.appdesktopnewui.adapter.PaintSelectEvent
 import com.liujunjie.appdesktopnewui.adapter.SideBarAdapter
 import com.liujunjie.appdesktopnewui.viewModel.SideBarViewModel
 import com.liujunjie.appdesktopnewui.adapter.SideBarEvent
 import com.liujunjie.appdesktopnewui.databinding.ActivityMainUiLayoutBinding
+import com.liujunjie.appdesktopnewui.popwindow.paint.ColorSettingPopWindow
 import com.liujunjie.appdesktopnewui.popwindow.paint.PaintSelectPopWindow
 import com.liujunjie.appdesktopnewui.popwindow.paint.PaintSettingPopWindow
 import com.liujunjie.appdesktopnewui.uimodel.SideBarItem
@@ -69,6 +73,27 @@ class MainUIActivity : AppCompatActivity() {
                     paintViewModel.setShapeList()
                 }
 
+            },
+            paintOperateEvent = object : PaintOperateEvent{
+                override fun clearUp() {
+                    Log.d("MainUIActivity", "clearUp")
+                }
+
+                override fun revoke() {
+                    Log.d("MainUIActivity", "revoke")
+                }
+
+                override fun restore() {
+                    Log.d("MainUIActivity", "restore")
+                }
+
+                override fun exit() {
+                    Log.d("MainUIActivity", "exit")
+                }
+
+                override fun retract() {
+                    Log.d("MainUIActivity", "retract")
+                }
 
             }
         )
@@ -79,9 +104,17 @@ class MainUIActivity : AppCompatActivity() {
             context = this,
             onCancel = {},
             paintEditEvent = object : PaintEditEvent {
-
+                override fun colorSetting(item: PaintColor) {
+                    colorSettingPop.showAtLocation(binding.root, Gravity.BOTTOM, 0, 0)
+                }
             }
         )
+    }
+
+    private val colorSettingPop by lazy {
+        ColorSettingPopWindow(
+            context = this,
+            onCancel = {})
     }
 
 
