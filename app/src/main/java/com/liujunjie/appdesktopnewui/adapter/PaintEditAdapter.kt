@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.liujunjie.appdesktopnewui.databinding.ColorSettingColorBinding
+import com.liujunjie.appdesktopnewui.databinding.ColorSettingOperationLayoutBinding
 import com.liujunjie.appdesktopnewui.databinding.ColorSettingShapeThickBinding
 import com.liujunjie.appdesktopnewui.databinding.ColorSettingTitleBinding
 import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
@@ -25,7 +26,7 @@ class PaintEditAdapter(
                 )
             )
 
-            PaintEditType.SHAPE.ordinal, PaintEditType.THICK.ordinal, PaintEditType.OPERATION.ordinal -> ShapeThickViewHolder(
+            PaintEditType.SHAPE.ordinal, PaintEditType.THICK.ordinal-> ShapeThickViewHolder(
                 ColorSettingShapeThickBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -41,6 +42,10 @@ class PaintEditAdapter(
                 )
             )
 
+            PaintEditType.OPERATION.ordinal-> OperationViewHolder(
+                binding = ColorSettingOperationLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+            )
+
             else -> throw IllegalArgumentException("Invalid view type")
         }
     }
@@ -50,10 +55,8 @@ class PaintEditAdapter(
             PaintEditType.TITLE.ordinal -> (holder as TitleViewHolder).bind(getItem(position) as PaintTitle)
             PaintEditType.SHAPE.ordinal -> (holder as ShapeThickViewHolder).bind(getItem(position) as PaintShape)
             PaintEditType.THICK.ordinal -> (holder as ShapeThickViewHolder).bind(getItem(position) as PaintThick)
-            PaintEditType.COLOR.ordinal -> (holder as ColorViewHolder).bind(
-                getItem(position) as PaintColor
-            ) { paintEditEvent.colorSetting(getItem(position) as PaintColor) }
-            PaintEditType.OPERATION.ordinal -> (holder as ShapeThickViewHolder).bind(getItem(position) as PaintOperation)
+            PaintEditType.COLOR.ordinal -> (holder as ColorViewHolder).bind(getItem(position) as PaintColor) { paintEditEvent.colorSetting(getItem(position) as PaintColor) }
+            PaintEditType.OPERATION.ordinal -> (holder as OperationViewHolder).bind(getItem(position) as PaintOperation)
             else -> throw IllegalArgumentException("Invalid view type")
         }
     }
@@ -89,6 +92,14 @@ class PaintEditAdapter(
 
         fun bind(item: PaintOperation) {
             binding.shape.setImageResource(item.addIcon)
+        }
+    }
+
+    class OperationViewHolder(
+        val binding: ColorSettingOperationLayoutBinding
+    ): RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: PaintOperation) {
+            binding.operate.setImageResource(item.addIcon)
         }
     }
 

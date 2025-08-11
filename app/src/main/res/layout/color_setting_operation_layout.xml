@@ -5,21 +5,17 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:background="@color/blue_press"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-            android:id="@+id/shape"
+            android:id="@+id/operate"
             android:layout_width="46dp"
             android:layout_height="46dp"
-            android:scaleType="fitCenter"
-            android:background="@drawable/grade_item_bg_selector"
-            app:layout_constraintDimensionRatio="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:src="@drawable/icon_shape_straight_line"
+            tools:src="@drawable/icon_addition"
             tools:ignore="ContentDescription"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

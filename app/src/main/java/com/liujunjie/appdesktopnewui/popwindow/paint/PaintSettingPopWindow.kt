@@ -2,28 +2,27 @@ package com.liujunjie.appdesktopnewui.popwindow.paint
 
 import android.graphics.Rect
 import android.util.Log
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.liujunjie.appdesktopnewui.adapter.PaintEditAdapter
 import com.liujunjie.appdesktopnewui.adapter.PaintEditEvent
 import com.liujunjie.appdesktopnewui.adapter.PaintEditItem
 import com.liujunjie.appdesktopnewui.adapter.PaintEditType
 import com.liujunjie.appdesktopnewui.databinding.PaintColorSelectPopBinding
 import com.liujunjie.appdesktopnewui.popwindow.BasePopupWindow
-import com.liujunjie.appdesktopnewui.popwindow.PopupState
+import com.liujunjie.appdesktopnewui.util.DisplayUtil
 
 class PaintSettingPopWindow(
     val content: View,
-    val onCancel:()-> Unit,
+    val onCancel: () -> Unit,
     val paintEditEvent: PaintEditEvent
-): BasePopupWindow<List<PaintEditItem>>(content,onCancel){
+) : BasePopupWindow<List<PaintEditItem>>(content, onCancel) {
 
-    companion object{
+    companion object {
         const val TAG = "PaintSettingPopWindow"
     }
+
     private val binding = PaintColorSelectPopBinding.inflate(LayoutInflater.from(content.context))
     private val paintEditAdapter = PaintEditAdapter(paintEditEvent)
 
@@ -32,18 +31,28 @@ class PaintSettingPopWindow(
         height = ViewGroup.LayoutParams.WRAP_CONTENT
         binding.settingRecycle.apply {
             adapter = paintEditAdapter
-            layoutManager = GridLayoutManager(context,20,GridLayoutManager.VERTICAL,false).apply {
-                spanSizeLookup  =  object : GridLayoutManager.SpanSizeLookup() {
+            layoutManager = GridLayoutManager(context, 20, GridLayoutManager.VERTICAL, false).apply {
+                spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                     override fun getSpanSize(position: Int): Int {
-                        return when(adapter!!.getItemViewType(position)){
-                            PaintEditType.TITLE.ordinal->20
-                            PaintEditType.SHAPE.ordinal-> 5
-                            PaintEditType.COLOR.ordinal,PaintEditType.THICK.ordinal,PaintEditType.OPERATION.ordinal-> 4
+                        return when (adapter!!.getItemViewType(position)) {
+                            PaintEditType.TITLE.ordinal -> 20
+                            PaintEditType.SHAPE.ordinal -> 5
+                            PaintEditType.COLOR.ordinal, PaintEditType.THICK.ordinal, PaintEditType.OPERATION.ordinal -> 4
                             else -> 0
                         }
                     }
                 }
             }
+            addItemDecoration(object : RecyclerView.ItemDecoration() {
+                override fun getItemOffsets(
+                    outRect: Rect,
+                    view: View,
+                    parent: RecyclerView,
+                    state: RecyclerView.State
+                ) {
+                    outRect.bottom = 30
+                }
+            })
         }
     }
 
@@ -57,24 +66,38 @@ class PaintSettingPopWindow(
         paintEditAdapter.submitList(state)
     }
 
+    private var isFirstShow = true
+
     override fun showAtLocation(anchor: Rect) {
-        // 测量弹窗宽高
-        contentView.measure(
-            View.MeasureSpec.UNSPECIFIED,
-            View.MeasureSpec.UNSPECIFIED
-        )
-        val popupWidth = contentView.measuredWidth
+        val centerX = anchor.left + anchor.width() / 2
+        val popupWidth = DisplayUtil.dp2px(content.context, 339)
+        if (isFirstShow) {
+            val offscreenX = -10000
+            val offscreenY = -10000
+            showAtLocation(content, Gravity.NO_GRAVITY, offscreenX, offscreenY)
+            contentView.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    contentView.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    val popupHeight = contentView.height
+                    val x = centerX - popupWidth / 2
+                    val y = anchor.top - popupHeight
+                    update(x, y-15, popupWidth, popupHeight)
+                    isFirstShow = false
+                }
+            })
 
-        // 获取屏幕宽度
-        val screenWidth = contentView.resources.displayMetrics.widthPixels
-
-        val x = screenWidth - popupWidth
-        val y = 0
-
-        showAtLocation(contentView, Gravity.NO_GRAVITY, x, y)
+        } else {
+            // 非第一次直接显示
+            contentView.measure(
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+            )
+            val popupHeight = contentView.measuredHeight
+            val x = centerX - popupWidth / 2
+            val y = anchor.top - popupHeight
+            showAtLocation(content, Gravity.NO_GRAVITY, x, y-15)
+        }
     }
-
-
 
 
 }

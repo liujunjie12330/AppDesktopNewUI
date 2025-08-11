@@ -7,6 +7,7 @@
         android:background="@drawable/color_select_pop_bg">
 
     <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/setting_recycle"

@@ -1,9 +1,11 @@
 package com.liujunjie.appdesktopnewui
 
 import android.content.Context
+import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -20,7 +22,6 @@ import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
 import com.liujunjie.appdesktopnewui.viewModel.SideBarViewModel
 import com.liujunjie.appdesktopnewui.viewModel.paint.PaintViewModel
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 
 
@@ -55,23 +56,34 @@ class MainUIActivity : AppCompatActivity() {
             cancel = {},
             paintSelectEvent = object : PaintSelectEvent {
                 override fun onItemClickOnce(item: PaintItem) {
-
                     paintViewModel.selectPaint(item)
                 }
 
-                override fun eraserSetting(item: PaintItem) {
-
-                    Log.d("MainUIActivity", "eraserSetting: ${item}")
+                override fun eraserSetting(item: PaintItem, archView: View) {
+                    setLocation(archView)
                     paintViewModel.setShapeList()
                 }
 
-                override fun smartLineSetting(item: PaintItem) {
-                    Log.d("MainUIActivity", "eraserSetting: ${item}")
+                override fun smartLineSetting(item: PaintItem, archView: View) {
+                    setLocation(archView)
                     paintViewModel.setShapeList()
                 }
 
-                override fun commonLineSetting(item: PaintItem) {
+                override fun commonLineSetting(item: PaintItem, archView: View) {
+                    setLocation(archView)
                     paintViewModel.setShapeList()
+                }
+
+                override fun setLocation(archView: View) {
+                    val location = IntArray(2)
+                    archView.getLocationOnScreen(location)
+                    val left = location[0]
+                    val top = location[1]
+                    val right = left + archView.width
+                    val bottom = top + archView.height
+                    val rect = Rect(left, top, right, bottom)
+                    paintViewModel.setSelectedRect(rect)
+                    Log.d("MainUIActivity", "setLocation: $rect")
                 }
 
             },
@@ -103,7 +115,7 @@ class MainUIActivity : AppCompatActivity() {
     private val paintSettingPop by lazy {
         PaintSettingPopWindow(
             content = binding.root,
-            onCancel = {},
+            onCancel = { paintViewModel.clearShapeList() },
             paintEditEvent = object : PaintEditEvent {
                 override fun colorSetting(item: PaintColor) {
                     colorSettingPop.showAtLocation(binding.root, Gravity.BOTTOM, 0, 0)
@@ -134,11 +146,24 @@ class MainUIActivity : AppCompatActivity() {
             sideBarViewModel.selectedItem.collectLatest {
                 if (it == SideBarItems.DrawPaintItem) paintViewModel.addPaints()
                 else paintViewModel.clear()
-
             }
         }
         lifecycleScope.launch {
-            paintSelectPopWindow.collectState(PopupState<List<PaintItem>>(paintViewModel.paintList,paintViewModel.getSelectedRect()))
+            paintSelectPopWindow.collectState(
+                PopupState<List<PaintItem>>(
+                    paintViewModel.paintList,
+                    paintViewModel.selectedPaintRect
+                )
+            )
+        }
+
+        lifecycleScope.launch {
+            paintSettingPop.collectState(
+                PopupState<List<PaintEditItem>>(
+                    paintViewModel.smartLineUiData,
+                    paintViewModel.selectedPaintRect
+                )
+            )
         }
 
     }

@@ -4,6 +4,7 @@ import android.app.Application
 import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.shapes.Shape
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -45,19 +46,11 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
     private val _paintColorList = MutableStateFlow<List<PaintColor>?>(null)
     private val paintColorList = _paintColorList.asStateFlow()
 
-    private var _selectedPaintRect: Rect? = null
-    fun getSelectedRect(): Rect {
-        val rect = _selectedPaintRect ?: Rect(0, 0, 1920, 1080)
-        clearRect()
-        return rect
-    }
+    private val _selectedPaintRect = MutableStateFlow(Rect(0, 0, 1920, 1080))
+    val selectedPaintRect = _selectedPaintRect.asStateFlow()
 
-    fun setSelectedRect(rect: Rect) {
-        _selectedPaintRect = rect
-    }
-
-    fun clearRect() {
-        _selectedPaintRect = null
+    fun setSelectedRect(rect: Rect?) {
+        _selectedPaintRect.value = rect ?: Rect(0, 0, 0, 0)
     }
 
     private val mutex = Mutex()
@@ -100,7 +93,17 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
                     _paintColorList.value = paintColors
                 }
             }
+    }
 
+    fun clearShapeList() {
+        viewModelScope
+            .launch {
+                mutex.withLock {
+                    _paintShapeList.value = null
+                    _paintThickList.value = null
+                    _paintColorList.value = null
+                }
+            }
     }
 
 

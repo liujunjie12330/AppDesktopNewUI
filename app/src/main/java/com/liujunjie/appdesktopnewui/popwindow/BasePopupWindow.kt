@@ -1,6 +1,7 @@
 package com.liujunjie.appdesktopnewui.popwindow
 
 import android.graphics.Rect
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 open class PopupState<T>(
     var data: StateFlow<T?>,
-    val anchor: Rect
+    val anchor: StateFlow<Rect>
 )
 
 abstract class BasePopupWindow<T>(
@@ -39,8 +40,10 @@ abstract class BasePopupWindow<T>(
     suspend fun collectState(state: PopupState<T>) {
         try {
             state.data.collectLatest { dataValue ->
-                if (dataValue==null){
-                    dismiss()
+                if (dataValue == null) {
+                    withContext(Dispatchers.Main.immediate) {
+                        if (isShowing) dismiss()
+                    }
                     return@collectLatest
                 }
                 withContext(Dispatchers.Main.immediate) {
@@ -48,14 +51,18 @@ abstract class BasePopupWindow<T>(
                 }
             }
         } finally {
-            dismiss()
+            withContext(Dispatchers.Main.immediate) {
+                if (isShowing) dismiss()
+            }
         }
+
     }
 
     private fun updateState(state: PopupState<T>, dataValue: T) {
+
         if (!isShowing) {
             contentView = createContentView(LayoutInflater.from(content.context), null)
-            showAtLocation(state.anchor)
+            showAtLocation(state.anchor.value)
         }
         onStateChanged(dataValue)
     }
