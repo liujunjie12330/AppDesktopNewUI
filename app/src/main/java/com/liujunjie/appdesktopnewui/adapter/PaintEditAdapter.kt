@@ -1,5 +1,7 @@
 package com.liujunjie.appdesktopnewui.adapter
 
+import android.graphics.Color
+import android.graphics.Rect
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,10 +13,10 @@ import com.liujunjie.appdesktopnewui.databinding.ColorSettingColorBinding
 import com.liujunjie.appdesktopnewui.databinding.ColorSettingOperationLayoutBinding
 import com.liujunjie.appdesktopnewui.databinding.ColorSettingShapeThickBinding
 import com.liujunjie.appdesktopnewui.databinding.ColorSettingTitleBinding
-import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
-
+import com.liujunjie.appdesktopnewui.R
 class PaintEditAdapter(
-    val paintEditEvent: PaintEditEvent
+    val paintClickEvent: PaintClickEvent,
+    val colorEditEvent: ColorEditEvent
 ) : ListAdapter<PaintEditItem, RecyclerView.ViewHolder>(PaintEditDiff) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -26,7 +28,7 @@ class PaintEditAdapter(
                 )
             )
 
-            PaintEditType.SHAPE.ordinal, PaintEditType.THICK.ordinal-> ShapeThickViewHolder(
+            PaintEditType.SHAPE.ordinal, PaintEditType.THICK.ordinal -> ShapeThickViewHolder(
                 ColorSettingShapeThickBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -42,8 +44,8 @@ class PaintEditAdapter(
                 )
             )
 
-            PaintEditType.OPERATION.ordinal-> OperationViewHolder(
-                binding = ColorSettingOperationLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+            PaintEditType.OPERATION.ordinal -> OperationViewHolder(
+                binding = ColorSettingOperationLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
 
             else -> throw IllegalArgumentException("Invalid view type")
@@ -51,12 +53,18 @@ class PaintEditAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (getItemViewType(position)) {
-            PaintEditType.TITLE.ordinal -> (holder as TitleViewHolder).bind(getItem(position) as PaintTitle)
-            PaintEditType.SHAPE.ordinal -> (holder as ShapeThickViewHolder).bind(getItem(position) as PaintShape)
-            PaintEditType.THICK.ordinal -> (holder as ShapeThickViewHolder).bind(getItem(position) as PaintThick)
-            PaintEditType.COLOR.ordinal -> (holder as ColorViewHolder).bind(getItem(position) as PaintColor) { paintEditEvent.colorSetting(getItem(position) as PaintColor) }
-            PaintEditType.OPERATION.ordinal -> (holder as OperationViewHolder).bind(getItem(position) as PaintOperation)
+        val item = getItem(position)
+        when (item) {
+            is PaintTitle -> (holder as TitleViewHolder).bind(item)
+            is PaintThick -> (holder as ShapeThickViewHolder).bind(item)
+            is PaintColor -> (holder as ColorViewHolder).bind(
+                item,
+                click = { paintClickEvent.colorClick(it) },
+                setPosition = { colorEditEvent.currentPosition() },
+                colorSetting = { paintClickEvent.colorSetting(it) })
+
+            is PaintOperation -> (holder as OperationViewHolder).bind(item)
+            is PaintShape -> (holder as ShapeThickViewHolder).bind(item)
             else -> throw IllegalArgumentException("Invalid view type")
         }
     }
@@ -97,7 +105,7 @@ class PaintEditAdapter(
 
     class OperationViewHolder(
         val binding: ColorSettingOperationLayoutBinding
-    ): RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: PaintOperation) {
             binding.operate.setImageResource(item.addIcon)
         }
@@ -106,11 +114,38 @@ class PaintEditAdapter(
     class ColorViewHolder(
         val binding: ColorSettingColorBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: PaintColor, click: (item: PaintColor) -> Unit) {
-            binding.colorView.setBackgroundColor(item.color)
+        fun bind(
+            item: PaintColor,
+            click: (item: PaintColor) -> Unit,
+            setPosition: () -> Unit,
+            colorSetting: (item: PaintColor) -> Unit
+        ) {
+            Log.d("ColorViewHolder", "bind: ${item.color}")
+            val context = binding.root.context
+            binding.colorView.outlineWidth = 3F
+            if (Color.luminance(item.color) < 0.9F) {
+                binding.colorView.strokeColor = item.color
+                binding.colorView.outlineColor = item.color
+                binding.remove.imageTintList = context.resources.getColorStateList(R.color.white, null)
+            } else {
+                binding.colorView.strokeColor = context.resources.getColor(R.color.light_gray, null)
+                binding.colorView.outlineColor = context.resources.getColor(R.color.light_gray, null)
+                binding.remove.imageTintList = context.resources.getColorStateList(R.color.light_gray, null)
+            }
+            binding.colorView.background = null
+            binding.colorView.isSelected = item.isSelected
             binding.colorView.setOnClickListener {
                 Log.d("PaintEditAdapter", "点击了颜色：${item.index}")
                 click(item)
+                setPosition()
+            }
+
+            binding.colorView.setOnLongClickListener {
+                Log.d("PaintEditAdapter", "点击了颜色：${item.index}")
+                click(item)
+                setPosition()
+                colorSetting(item)
+                true
             }
         }
 
@@ -180,9 +215,15 @@ enum class PaintEditType {
 }
 
 
-interface PaintEditEvent {
-
+interface PaintClickEvent {
     fun colorSetting(item: PaintColor)
+    fun setCurrentPosition(position: Rect)
+
+    fun colorClick(item: PaintColor)
+}
+
+interface ColorEditEvent {
+    fun currentPosition()
 }
 
 object PaintEditDiff : DiffUtil.ItemCallback<PaintEditItem>() {
@@ -191,7 +232,14 @@ object PaintEditDiff : DiffUtil.ItemCallback<PaintEditItem>() {
     }
 
     override fun areContentsTheSame(oldItem: PaintEditItem, newItem: PaintEditItem): Boolean {
-        return (oldItem as PaintEditItemBase).id == (newItem as PaintEditItemBase).id
+        return when(oldItem) {
+            is PaintColor -> {
+                oldItem.isSelected == (newItem as PaintColor).isSelected && oldItem.isEdit == newItem.isEdit && oldItem.color == newItem.color
+            }
+            else -> {
+                false
+            }
+        }
     }
 
 }

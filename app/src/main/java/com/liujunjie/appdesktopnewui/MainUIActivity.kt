@@ -11,8 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.liujunjie.appdesktopnewui.adapter.*
+import com.liujunjie.appdesktopnewui.config.ColorConfig
 import com.liujunjie.appdesktopnewui.databinding.ActivityMainUiLayoutBinding
 import com.liujunjie.appdesktopnewui.popwindow.PopupState
+import com.liujunjie.appdesktopnewui.popwindow.paint.ColorSettingEvent
 import com.liujunjie.appdesktopnewui.popwindow.paint.ColorSettingPopWindow
 import com.liujunjie.appdesktopnewui.popwindow.paint.PaintSelectPopWindow
 import com.liujunjie.appdesktopnewui.popwindow.paint.PaintSettingPopWindow
@@ -116,9 +118,17 @@ class MainUIActivity : AppCompatActivity() {
         PaintSettingPopWindow(
             content = binding.root,
             onCancel = { paintViewModel.clearShapeList() },
-            paintEditEvent = object : PaintEditEvent {
+            paintClickEvent = object : PaintClickEvent {
                 override fun colorSetting(item: PaintColor) {
-                    colorSettingPop.showAtLocation(binding.root, Gravity.BOTTOM, 0, 0)
+                    paintViewModel.setColorToSetting(ColorConfig(item.color))
+                }
+
+                override fun setCurrentPosition(position: Rect) {
+                    paintViewModel.setSelectedRect(position)
+                }
+
+                override fun colorClick(item: PaintColor) {
+                    paintViewModel.setPaintUsingColor(item)
                 }
             }
         )
@@ -127,7 +137,12 @@ class MainUIActivity : AppCompatActivity() {
     private val colorSettingPop by lazy {
         ColorSettingPopWindow(
             content = binding.root,
-            onCancel = {})
+            onCancel = {},
+            colorSettingEvent = object : ColorSettingEvent {
+                override fun setColor(color: Int) {
+                    paintViewModel.setColor(ColorConfig(color))
+                }
+            })
     }
 
 
@@ -141,19 +156,23 @@ class MainUIActivity : AppCompatActivity() {
             sideBarViewModel.sideBarItems.collectLatest {
                 sideBarAdapter.submitList(it)
             }
-
+        }
+        lifecycleScope.launch {
             sideBarViewModel.selectedItem.collectLatest {
                 if (it == SideBarItems.DrawPaintItem) paintViewModel.addPaints()
                 else paintViewModel.clear()
             }
-
+        }
+        lifecycleScope.launch {
             paintSelectPopWindow.collectState(
                 PopupState<List<PaintItem>>(
                     paintViewModel.paintList,
                     paintViewModel.selectedPaintRect
                 )
             )
+        }
 
+        lifecycleScope.launch {
             paintSettingPop.collectState(
                 PopupState<List<PaintEditItem>>(
                     paintViewModel.smartLineUiData,
@@ -161,7 +180,14 @@ class MainUIActivity : AppCompatActivity() {
                 )
             )
         }
+
+        lifecycleScope.launch {
+            colorSettingPop.collectState(PopupState<ColorConfig>(paintViewModel.currentSettingColor, paintViewModel.selectedPaintRect))
+        }
+
     }
+
+
 }
 
 

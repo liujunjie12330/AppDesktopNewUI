@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="light_gray">#D3D3D3</color>
+    <color name="light_sky_blue">#c7e0fb</color>
+    <color name="ff858080">#FF858080</color>
+    <color name="ffd4d4d4">#FFD4D4D4</color>
+    <color name="ffe6f1ff">#FFE6F1FF</color>
     <color name="blue_press">#4C84FF</color>
 <!--  -->
     <color name="purple_200">#FFBB86FC</color>

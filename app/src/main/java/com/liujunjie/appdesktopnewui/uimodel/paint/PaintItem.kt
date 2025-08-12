@@ -13,6 +13,6 @@ data class PaintItem(
     val isSelected: Boolean = false,
     val type: TrackType,
     val thickness: Float,
-    val colorConfig: ColorConfig,
+    var colorConfig: ColorConfig,
     @DrawableRes val icon: Int
 )

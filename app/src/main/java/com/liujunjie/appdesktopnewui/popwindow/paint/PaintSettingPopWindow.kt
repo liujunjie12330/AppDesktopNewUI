@@ -1,14 +1,10 @@
 package com.liujunjie.appdesktopnewui.popwindow.paint
 
 import android.graphics.Rect
-import android.util.Log
 import android.view.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.liujunjie.appdesktopnewui.adapter.PaintEditAdapter
-import com.liujunjie.appdesktopnewui.adapter.PaintEditEvent
-import com.liujunjie.appdesktopnewui.adapter.PaintEditItem
-import com.liujunjie.appdesktopnewui.adapter.PaintEditType
+import com.liujunjie.appdesktopnewui.adapter.*
 import com.liujunjie.appdesktopnewui.databinding.PaintColorSelectPopBinding
 import com.liujunjie.appdesktopnewui.popwindow.BasePopupWindow
 import com.liujunjie.appdesktopnewui.util.DisplayUtil
@@ -16,7 +12,7 @@ import com.liujunjie.appdesktopnewui.util.DisplayUtil
 class PaintSettingPopWindow(
     val content: View,
     val onCancel: () -> Unit,
-    val paintEditEvent: PaintEditEvent
+    val paintClickEvent: PaintClickEvent
 ) : BasePopupWindow<List<PaintEditItem>>(content, onCancel) {
 
     companion object {
@@ -24,7 +20,21 @@ class PaintSettingPopWindow(
     }
 
     private val binding = PaintColorSelectPopBinding.inflate(LayoutInflater.from(content.context))
-    private val paintEditAdapter = PaintEditAdapter(paintEditEvent)
+    private val paintEditAdapter = PaintEditAdapter(
+        paintClickEvent = this.paintClickEvent,
+        colorEditEvent = object : ColorEditEvent {
+            override fun currentPosition() {
+                val location = IntArray(2)
+                binding.root.getLocationOnScreen(location)
+                val left = location[0]
+                val top = location[1]
+                val right = left + binding.root.width
+                val bottom = top + binding.root.height
+                val rect = Rect(left, top, right, bottom)
+                paintClickEvent.setCurrentPosition(rect)
+            }
+        }
+    )
 
     init {
         width = 339
@@ -62,7 +72,6 @@ class PaintSettingPopWindow(
 
 
     override fun onStateChanged(state: List<PaintEditItem>) {
-        Log.d(TAG, "onStateChanged: $state")
         paintEditAdapter.submitList(state)
     }
 

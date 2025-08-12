@@ -8,6 +8,7 @@
             android:id="@+id/paint"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:translationY="25dp"
             android:src="@drawable/paint_brush_selected_arc_head"
             android:scaleType="centerInside"/>
 
