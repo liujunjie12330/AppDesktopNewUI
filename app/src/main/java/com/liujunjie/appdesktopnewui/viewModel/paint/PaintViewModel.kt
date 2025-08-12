@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import com.liujunjie.appdesktopnewui.R
 import com.liujunjie.appdesktopnewui.adapter.PaintColor
+import com.liujunjie.appdesktopnewui.adapter.PaintEditItem
 import com.liujunjie.appdesktopnewui.adapter.PaintEditItemBase
 import com.liujunjie.appdesktopnewui.adapter.PaintOperation
 import com.liujunjie.appdesktopnewui.adapter.PaintShape
@@ -48,6 +49,9 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
     private val _paintColorList = MutableStateFlow<List<PaintColor>?>(null)
     private val paintColorList = _paintColorList.asStateFlow()
 
+    private val _paintOperation = MutableStateFlow<PaintOperation?>(null)
+
+
     private val _selectedPaintRect = MutableStateFlow(Rect(0, 0, 1920, 1080))
     val selectedPaintRect = _selectedPaintRect.asStateFlow()
 
@@ -66,10 +70,15 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
 
 
     private val mutex = Mutex()
-    val smartLineUiData =
-        combine(_paintShapeList, _paintThickList, _paintColorList) { shapes, thicks, colors ->
+    val smartLineUiData: StateFlow<List<PaintEditItem>?> =
+        combine(
+            _paintShapeList,
+            _paintThickList,
+            _paintColorList,
+            _paintOperation
+        ) { shapes, thicks, colors, opreation ->
             mutex.withLock {
-                if (shapes == null && thicks == null && colors == null) return@combine null
+                if (shapes == null && thicks == null && colors == null && opreation == null) return@combine null
                 val mergedList = mutableListOf<PaintEditItemBase>()
                 mergedList.add(shapeTitle)
                 shapes?.let { mergedList.addAll(shapes) }
@@ -77,7 +86,7 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
                 thicks?.let { mergedList.addAll(thicks) }
                 mergedList.add(colorTitle)
                 colors?.let { mergedList.addAll(colors) }
-                mergedList.add(paintOperation)
+                opreation?.let { mergedList.add(it) }
                 //重排序
                 return@combine mergedList.mapIndexed { idx, item ->
                     when (item) {
@@ -150,6 +159,44 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
         _selectedColor.value = newColor
     }
 
+    fun changeColorItemToDel() {
+        //讲所有的color的canDelete 变成true
+        if (_paintColorList.value == null) return
+        var update: List<PaintColor> = emptyList()
+        update = if (_selectedColor.value != null) {
+            _paintColorList.value!!.map {
+                if (_selectedColor.value!!.index == it.index) {
+                    it.copy(canDelete = false)
+                } else {
+                    it.copy(canDelete = true)
+                }
+            }
+        } else {
+            _paintColorList.value!!.map {
+                it.copy(canDelete = true)
+            }
+        }
+        _paintOperation.value = paintOperation.copy(isAdd = false)
+        _paintColorList.value = update
+    }
+
+    fun deleteColor(item: PaintColor) {
+        if (_paintColorList.value == null) return
+        _paintColorList.value = _paintColorList.value!!.filter {
+            it.index != item.index
+        }
+
+    }
+
+    fun changeColorToSelect() {
+        if (_paintList.value == null) return
+        val update = _paintColorList.value!!.map {
+            it.copy(canDelete = false)
+        }
+        _paintOperation.value = paintOperation.copy(isAdd = true)
+        _paintColorList.value = update
+    }
+
 
     private fun updatePaintThicks(thick: PaintThick) {
         if (_paintThickList.value == null) return
@@ -180,6 +227,7 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
                 _paintShapeList.value = paintShapes
                 _paintThickList.value = paintThicks
                 _paintColorList.value = paintColors
+                _paintOperation.value = paintOperation
             }
         }
     }
@@ -190,6 +238,7 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
                 _paintShapeList.value = null
                 _paintThickList.value = null
                 _paintColorList.value = null
+                _paintOperation.value = null
             }
         }
     }

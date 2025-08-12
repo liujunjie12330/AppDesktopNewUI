@@ -144,15 +144,15 @@ class MainUIActivity : AppCompatActivity() {
                 }
 
                 override fun complete() {
-                    Log.d("MainUIActivity", "clearUp")
+                    paintViewModel.changeColorToSelect()
                 }
 
                 override fun changeColorToDel() {
-                    Log.d("MainUIActivity", "clearUp")
+                   paintViewModel.changeColorItemToDel()
                 }
 
                 override fun delColor(item: PaintColor) {
-                    Log.d("MainUIActivity", "clearUp")
+                   paintViewModel.deleteColor(item)
                 }
 
             }
@@ -162,12 +162,7 @@ class MainUIActivity : AppCompatActivity() {
     private val colorSettingPop by lazy {
         ColorSettingPopWindow(
             content = binding.root,
-            onCancel = {},
-            colorSettingEvent = object : ColorSettingEvent {
-                override fun setColor(color: Int) {
-
-                }
-            })
+            onCancel = {})
     }
 
 

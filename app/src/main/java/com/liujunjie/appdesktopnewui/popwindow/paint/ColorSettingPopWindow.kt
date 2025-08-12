@@ -16,7 +16,9 @@ import com.liujunjie.appdesktopnewui.popwindow.BasePopupWindow
 import com.liujunjie.appdesktopnewui.util.DisplayUtil
 import com.liujunjie.appdesktopnewui.util.isValidColor
 import com.liujunjie.appdesktopnewui.util.preMeasure
+interface ColorSettingEvent{
 
+}
 
 class ColorSettingPopWindow(
     val content: View,
