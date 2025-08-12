@@ -26,7 +26,7 @@ class PaintSelectAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaintItemViewHolder {
-        Log.d("PaintDiffCallback","create")
+        Log.d("PaintDiffCallback", "create")
         val binding = SelectPaintItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PaintItemViewHolder(binding)
     }
@@ -36,7 +36,7 @@ class PaintSelectAdapter(
         if (payloads.isEmpty()) {
             super.onBindViewHolder(holder, position, payloads)
         } else {
-          val list =  payloads[0] as List<*>
+            val list = payloads[0] as List<*>
             list.forEach { payload ->
                 when (payload) {
                     "SELECTION_CHANGED" -> { // 选中状态动画
@@ -52,6 +52,7 @@ class PaintSelectAdapter(
                                 .start()
                         }
                     }
+
                     "COLOR_CHANGED" -> { // 颜色更新
                         val item = getItem(position)
                         val drawable = holder.binding.paint.drawable
@@ -65,7 +66,7 @@ class PaintSelectAdapter(
                                 }
                             }
                         }
-                       holder.binding.paint.postInvalidate()
+                        holder.binding.paint.postInvalidate()
                     }
                 }
             }
@@ -77,22 +78,34 @@ class PaintSelectAdapter(
         val item = getItem(position)
         val type = getItemViewType(position)
         when (type) {
-            TrackType.SMART_LINE.ordinal -> holder.bind(
+            TrackType.LASER_LINE.ordinal -> holder.bind(
                 item = item,
                 itemClick = { paintSelectEvent.onItemClickOnce(it) },
-                itemLongClick ={item, archView ->  paintSelectEvent.smartLineSetting(item,archView) }
+                itemLongClick = { item, archView -> paintSelectEvent.commonLineSetting(item, archView) }
+            )
+
+            TrackType.BRUSH_LINE.ordinal -> holder.bind(
+                item = item,
+                itemClick = { paintSelectEvent.onItemClickOnce(it) },
+                itemLongClick = { item, archView -> paintSelectEvent.commonLineSetting(item, archView) }
             )
 
             TrackType.ERASER.ordinal -> holder.bind(
                 item = item,
                 itemClick = { paintSelectEvent.onItemClickOnce(it) },
-                itemLongClick ={item, archView ->  paintSelectEvent.smartLineSetting(item,archView) }
+                itemLongClick = { item, archView -> paintSelectEvent.eraserSetting(item, archView) }
+            )
+
+            TrackType.MARK_LINE.ordinal -> holder.bind(
+                item = item,
+                itemClick = { paintSelectEvent.onItemClickOnce(it) },
+                itemLongClick = { item, archView -> paintSelectEvent.commonLineSetting(item, archView) }
             )
 
             else -> holder.bind(
                 item = item,
                 itemClick = { paintSelectEvent.onItemClickOnce(it) },
-                itemLongClick ={item, archView ->  paintSelectEvent.smartLineSetting(item,archView) }
+                itemLongClick = { item, archView -> paintSelectEvent.smartLineSetting(item, archView) }
             )
         }
     }
@@ -111,15 +124,18 @@ class PaintSelectAdapter(
             binding.paint.translationY = binding.paint.context.dpToPx(25f)
         }
 
-        fun bind(item: PaintItem, itemClick: (item: PaintItem) -> Unit, itemLongClick: (item: PaintItem,archView:View) -> Unit) {
+        fun bind(
+            item: PaintItem,
+            itemClick: (item: PaintItem) -> Unit,
+            itemLongClick: (item: PaintItem, archView: View) -> Unit
+        ) {
             binding.paint.setImageResource(item.icon)
-            val drawable = binding.paint.drawable
             binding.root.setOnClickListener {
                 itemClick(item)
             }
             binding.root.setOnLongClickListener {
                 itemClick(item)
-                itemLongClick(item,it)
+                itemLongClick(item, it)
                 true
             }
             //todo 双击事件
@@ -137,7 +153,7 @@ object PaintDiffCallback : DiffUtil.ItemCallback<PaintItem>() {
     }
 
     override fun areContentsTheSame(oldItem: PaintItem, newItem: PaintItem): Boolean {
-        return  oldItem == newItem
+        return oldItem == newItem
     }
 
     override fun getChangePayload(oldItem: PaintItem, newItem: PaintItem): Any? {
@@ -155,10 +171,9 @@ object PaintDiffCallback : DiffUtil.ItemCallback<PaintItem>() {
 
 interface PaintSelectEvent {
     fun onItemClickOnce(item: PaintItem)
-    fun eraserSetting(item: PaintItem,archView: View)
-    fun smartLineSetting(item: PaintItem,archView: View)
-    fun commonLineSetting(item: PaintItem,archView: View)
-
+    fun eraserSetting(item: PaintItem, archView: View)
+    fun smartLineSetting(item: PaintItem, archView: View)
+    fun commonLineSetting(item: PaintItem, archView: View)
     fun setLocation(archView: View)
 }
 

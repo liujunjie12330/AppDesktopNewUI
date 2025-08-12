@@ -1,9 +1,8 @@
 package com.liujunjie.appdesktopnewui.adapter
 
-import android.graphics.Color
 import android.graphics.Rect
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.DiffUtil
@@ -13,7 +12,8 @@ import com.liujunjie.appdesktopnewui.databinding.ColorSettingColorBinding
 import com.liujunjie.appdesktopnewui.databinding.ColorSettingOperationLayoutBinding
 import com.liujunjie.appdesktopnewui.databinding.ColorSettingShapeThickBinding
 import com.liujunjie.appdesktopnewui.databinding.ColorSettingTitleBinding
-import com.liujunjie.appdesktopnewui.R
+import com.liujunjie.appdesktopnewui.util.ClickUtils
+
 class PaintEditAdapter(
     val paintClickEvent: PaintClickEvent,
     val colorEditEvent: ColorEditEvent
@@ -56,16 +56,34 @@ class PaintEditAdapter(
         val item = getItem(position)
         when (item) {
             is PaintTitle -> (holder as TitleViewHolder).bind(item)
-            is PaintThick -> (holder as ShapeThickViewHolder).bind(item)
-            is PaintColor -> (holder as ColorViewHolder).bind(
+            is PaintShape -> (holder as ShapeThickViewHolder).bind(
                 item,
-                click = { paintClickEvent.colorClick(it) },
-                setPosition = { colorEditEvent.currentPosition() },
-                colorSetting = { paintClickEvent.colorSetting(it) })
+                setSelectedShape = { paintClickEvent.setSelectedShape(it) })
 
-            is PaintOperation -> (holder as OperationViewHolder).bind(item)
-            is PaintShape -> (holder as ShapeThickViewHolder).bind(item)
-            else -> throw IllegalArgumentException("Invalid view type")
+            is PaintThick -> (holder as ShapeThickViewHolder).bind(
+                item,
+                setSelectedThick = { paintClickEvent.setSelectedThick(it) })
+
+            is PaintColor -> {
+                if (item.canDelete) {
+                    (holder as ColorViewHolder).bindDel(item, delete = { paintClickEvent.delColor(it) })
+                } else {
+                    (holder as ColorViewHolder).bindAdd(
+                        item,
+                        setSelectedColor = { paintClickEvent.setSelectedColor(it) },
+                        setColorToEditPop = { paintClickEvent.setColorToEditPop(it) },
+                        changeColorToDel = { paintClickEvent.changeColorToDel() })
+                }
+            }
+
+            is PaintOperation->{
+                if (item.isAdd) {
+                    (holder as OperationViewHolder).bindAdd(item, addColor = { paintClickEvent.addColorToEditPop() })
+                }else{
+                    (holder as OperationViewHolder).bindDel(item, complete = { paintClickEvent.complete() })
+                }
+            }
+
         }
     }
 
@@ -86,69 +104,90 @@ class PaintEditAdapter(
             binding.paintTitleText.text = item.title
         }
     }
+}
 
-    class ShapeThickViewHolder(
-        val binding: ColorSettingShapeThickBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: PaintShape) {
-            binding.shape.setImageResource(item.shapeIcon)
-        }
-
-        fun bind(item: PaintThick) {
-            binding.shape.setImageResource(item.thickIcon)
-        }
-
-        fun bind(item: PaintOperation) {
-            binding.shape.setImageResource(item.addIcon)
-        }
-    }
-
-    class OperationViewHolder(
-        val binding: ColorSettingOperationLayoutBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: PaintOperation) {
-            binding.operate.setImageResource(item.addIcon)
+/**
+ * 选择类型和粗细的地方
+ */
+class ShapeThickViewHolder(
+    val binding: ColorSettingShapeThickBinding
+) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(item: PaintShape, setSelectedShape: (item: PaintShape) -> Unit) {
+        binding.shape.setImageResource(item.shapeIcon)
+        binding.root.isSelected = item.isSelected
+        binding.root.setOnClickListener {
+            setSelectedShape(item)
         }
     }
 
-    class ColorViewHolder(
-        val binding: ColorSettingColorBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(
-            item: PaintColor,
-            click: (item: PaintColor) -> Unit,
-            setPosition: () -> Unit,
-            colorSetting: (item: PaintColor) -> Unit
-        ) {
-            Log.d("ColorViewHolder", "bind: ${item.color}")
-            val context = binding.root.context
-            binding.colorView.outlineWidth = 3F
-            if (Color.luminance(item.color) < 0.9F) {
-                binding.colorView.strokeColor = item.color
-                binding.colorView.outlineColor = item.color
-                binding.remove.imageTintList = context.resources.getColorStateList(R.color.white, null)
-            } else {
-                binding.colorView.strokeColor = context.resources.getColor(R.color.light_gray, null)
-                binding.colorView.outlineColor = context.resources.getColor(R.color.light_gray, null)
-                binding.remove.imageTintList = context.resources.getColorStateList(R.color.light_gray, null)
-            }
-            binding.colorView.background = null
-            binding.colorView.isSelected = item.isSelected
-            binding.colorView.setOnClickListener {
-                Log.d("PaintEditAdapter", "点击了颜色：${item.index}")
-                click(item)
-                setPosition()
-            }
+    fun bind(item: PaintThick, setSelectedThick: (item: PaintThick) -> Unit) {
+        binding.shape.setImageResource(item.thickIcon)
+        binding.root.isSelected = item.isSelected
+        binding.root.setOnClickListener {
+            setSelectedThick(item)
+        }
+    }
 
-            binding.colorView.setOnLongClickListener {
-                Log.d("PaintEditAdapter", "点击了颜色：${item.index}")
-                click(item)
-                setPosition()
-                colorSetting(item)
-                true
+}
+
+class OperationViewHolder(
+    val binding: ColorSettingOperationLayoutBinding
+) : RecyclerView.ViewHolder(binding.root) {
+    fun bindAdd(item: PaintOperation,addColor:()-> Unit) {
+        binding.operate.setImageResource(item.addIcon)
+        binding.root.setOnClickListener {
+            addColor()
+        }
+    }
+    fun bindDel(item: PaintOperation,complete:()-> Unit) {
+        binding.operate.setImageResource(item.completeIcon)
+        binding.root.setOnClickListener {
+            complete()
+        }
+    }
+}
+
+class ColorViewHolder(
+    val binding: ColorSettingColorBinding
+) : RecyclerView.ViewHolder(binding.root) {
+    /**
+     * 正常模式
+     */
+    fun bindAdd(
+        item: PaintColor,
+        setSelectedColor: (item: PaintColor) -> Unit,
+        setColorToEditPop: (item: PaintColor) -> Unit,
+        changeColorToDel: () -> Unit
+    ) {
+        binding.colorView.color = item.color
+        binding.colorView.outlineColor = item.color
+        binding.colorView.outlineWidth = 3F
+        binding.root.isSelected = item.isSelected
+        binding.remove.visibility = View.GONE
+        binding.root.setOnClickListener {
+            if (ClickUtils.isDoubleClick()) {
+                setSelectedColor(item)
+                setColorToEditPop(item)
             }
         }
+        binding.root.setOnLongClickListener {
+            changeColorToDel()
+            true
+        }
+    }
 
+    /**
+     * 删除模式
+     */
+    fun bindDel(item: PaintColor, delete: (item: PaintColor) -> Unit) {
+        binding.colorView.color = item.color
+        binding.colorView.outlineColor = item.color
+        binding.colorView.outlineWidth = 3F
+        binding.root.isSelected = item.isSelected
+        binding.remove.visibility = View.VISIBLE
+        binding.root.setOnClickListener {
+            delete(item)
+        }
     }
 }
 
@@ -192,7 +231,7 @@ data class PaintColor(
     val index: Int,
     val color: Int,
     val isSelected: Boolean,
-    val isEdit: Boolean
+    val canDelete: Boolean
 ) : PaintEditItemBase(index) {
     override fun getType(): Int {
         return PaintEditType.COLOR.ordinal
@@ -216,15 +255,59 @@ enum class PaintEditType {
 
 
 interface PaintClickEvent {
-    fun colorSetting(item: PaintColor)
+    /**
+     * 选中一个笔尖形状，并且改变pop 的图标
+     */
+    fun setSelectedShape(item: PaintShape)
+
+    /**
+     * 选中一个粗细--UI 没有变化
+     */
+    fun setSelectedThick(item: PaintThick)
+
+    /**
+     * 选中一个颜色,这里单单选中，不弹出颜色选择器
+     */
+    fun setSelectedColor(item: PaintColor)
+
+    /**
+     * 设置当前的位置,后面的pop需要用到
+     */
     fun setCurrentPosition(position: Rect)
 
-    fun colorClick(item: PaintColor)
+    /**
+     * 选中当前颜色并且弹出颜色选择-->1.选中当前颜色，2.弹出颜色选择器
+     */
+    fun setColorToEditPop(item: PaintColor)
+
+    /**
+     * 添加一个颜色，三个动作，1.添加一个color,2.选中当前颜色,3.弹出颜色选择器
+     */
+    fun addColorToEditPop()
+
+    /**
+     * 完成,注意当前已经选中的颜色不可删除,同时转换为不可删除
+     */
+    fun complete()
+
+    /**
+     * 改变颜色为可删除，这个时候点击颜色就是删除当前颜色
+     */
+    fun changeColorToDel()
+
+    /**
+     * 删除一个颜色
+     */
+    fun delColor(item: PaintColor)
 }
 
 interface ColorEditEvent {
+    /**
+     * 获取位置，从pop 传入
+     */
     fun currentPosition()
 }
+
 
 object PaintEditDiff : DiffUtil.ItemCallback<PaintEditItem>() {
     override fun areItemsTheSame(oldItem: PaintEditItem, newItem: PaintEditItem): Boolean {
@@ -232,13 +315,13 @@ object PaintEditDiff : DiffUtil.ItemCallback<PaintEditItem>() {
     }
 
     override fun areContentsTheSame(oldItem: PaintEditItem, newItem: PaintEditItem): Boolean {
-        return when(oldItem) {
+        return when (oldItem) {
             is PaintColor -> {
-                oldItem.isSelected == (newItem as PaintColor).isSelected && oldItem.isEdit == newItem.isEdit && oldItem.color == newItem.color
+                oldItem.isSelected == (newItem as PaintColor).isSelected && oldItem.canDelete == newItem.canDelete && oldItem.color == newItem.color
             }
-            else -> {
-                false
-            }
+            is PaintShape -> oldItem.isSelected == (newItem as PaintShape).isSelected
+            is PaintThick -> oldItem.thick == (newItem as PaintThick).thick
+            else -> true
         }
     }
 

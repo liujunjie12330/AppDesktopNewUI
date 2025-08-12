@@ -18,7 +18,7 @@ object Brush {
             TrackType.MARK_LINE -> R.drawable.paint_4_b
             TrackType.ROUND_LINE -> R.drawable.paint_shape_1_b
             TrackType.STRAIGHT_LINE -> R.drawable.paint_shape_2_b
-            TrackType.ARROWHEAD -> R.drawable.paint_shape_3_b
+            TrackType.ARROWHEAD -> R.drawable.paint_brush_selected_one_arrow_head
             TrackType.DOUBLE_ARROWHEAD -> R.drawable.paint_shape_4_b
             TrackType.RECTANGLE_SOLID,
             TrackType.RECTANGLE -> R.drawable.paint_shape_5_b

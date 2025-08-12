@@ -23,6 +23,7 @@ import com.liujunjie.appdesktopnewui.adapter.PaintShape
 import com.liujunjie.appdesktopnewui.adapter.PaintThick
 import com.liujunjie.appdesktopnewui.adapter.PaintTitle
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -31,8 +32,6 @@ import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withLock
 
 class PaintViewModel(application: Application) : AndroidViewModel(application) {
-
-
     companion object {
         const val TAG = "PaintViewModel"
     }
@@ -54,60 +53,6 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _selectedPaintRect = MutableStateFlow(Rect(0, 0, 1920, 1080))
     val selectedPaintRect = _selectedPaintRect.asStateFlow()
-
-
-    /**
-     * 当前画笔选中的颜色
-     */
-    private val _paintUsingColorConfig = MutableStateFlow<PaintColor?>(null)
-    val paintUsingColor = _paintUsingColorConfig.asStateFlow()
-
-    /**
-     * 当前在pop 去设置颜色的color 因为要设置为null 所以分开使用
-     */
-    private val _currentSettingColor = MutableStateFlow<ColorConfig?>(null)
-    val currentSettingColor = _currentSettingColor.asStateFlow()
-
-    private val _shapeConfig = MutableStateFlow<PaintShape?>(null)
-    val shapeConfig = _shapeConfig.asStateFlow()
-
-    /**
-     * 设置当前需要去调整颜色的选项
-     */
-    fun setColorToSetting(color: ColorConfig) {
-        _currentSettingColor.value = color
-    }
-
-    fun closeColorSetting() {
-        _currentSettingColor.value = null
-    }
-
-    fun setPaintUsingColor(colorConfig: PaintColor) {
-        _paintUsingColorConfig.value = colorConfig
-//        _selectedPaint.value!!.copy(colorConfig = ColorConfig(colorConfig.color))
-//        updatePaintItems(_selectedPaint.value!!)
-    }
-
-    /**
-     *设置当前选项的颜色
-     */
-    fun setColor(colorConfig: ColorConfig) {
-        viewModelScope.launch {
-            //Log.d(TAG,"当前选中的颜色-------------${colorConfig.color}")
-            //先更新列表，在更新画笔
-            _paintUsingColorConfig.value = _paintUsingColorConfig.value!!.copy(color = colorConfig.color)
-            // Log.d(TAG,"现在正在使用的颜色------------${_paintUsingColorConfig.value}")
-            updateColorList(_paintUsingColorConfig.value!!)
-            _selectedPaint.value = _selectedPaint.value!!.copy(colorConfig = colorConfig)
-            updatePaintItems(_selectedPaint.value!!)
-        }
-
-    }
-
-    fun setSelectedRect(rect: Rect?) {
-        _selectedPaintRect.value = rect ?: Rect(0, 0, 0, 0)
-    }
-
     private val mutex = Mutex()
     val smartLineUiData =
         combine(_paintShapeList, _paintThickList, _paintColorList) { shapes, thicks, colors ->
@@ -139,74 +84,9 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
             null
         )
 
-    fun setShapeList() {
-        viewModelScope
-            .launch {
-                mutex.withLock {
-                    _paintShapeList.value = paintShapes
-                    _paintThickList.value = paintThicks
-                    _paintColorList.value = paintColors
-                }
-            }
-    }
+    private val _selectedShape = MutableStateFlow<PaintShape?>(null)
+    val selectedShape: StateFlow<PaintShape?> = _selectedShape
 
-    fun clearShapeList() {
-        viewModelScope
-            .launch {
-                mutex.withLock {
-                    _paintShapeList.value = null
-                    _paintThickList.value = null
-                    _paintColorList.value = null
-                }
-            }
-    }
-
-
-    fun selectPaint(item: PaintItem) {
-        Log.d("PaintViewModel", "更新了选中状态: $item")
-        if (_selectedPaint.value != null && _selectedPaint.value!!.index == item.index) {
-            return
-        }
-        _selectedPaint.value = item
-        updatePaintItems(item)
-    }
-
-    fun addPaints() {
-        _paintList.value = mutableListOf<PaintItem>().apply {
-            addAll(paints)
-        }
-    }
-
-    fun clear() {
-        _paintList.value = null
-    }
-
-    private fun updatePaintItems(item: PaintItem) {
-        Log.d(TAG, "更新了画笔: ${item.index}")
-        if (_paintList.value == null) return
-        val updateList = _paintList.value!!.map {
-            if (it.index == item.index) {
-                it.copy(isSelected = true, colorConfig = item.colorConfig)
-            } else
-                it.copy(isSelected = false)
-        }
-        _paintList.value = updateList
-
-    }
-
-    private fun updateColorList(item: PaintColor) {
-//        Log.d(TAG, "颜色更新了--------------------------------: ${item.index}--Color:${item.color}")
-//        Log.d(TAG,"现在的颜色列表---${_paintColorList.value}")
-        if (_paintColorList.value == null) return
-        val updateList = _paintColorList.value!!.map {
-            if (it.index == item.index) {
-                it.copy(color = item.color, isSelected = true)
-            } else
-                it
-        }
-        _paintColorList.value = updateList
-//        Log.d(TAG,"更新之后的颜色列表---${_paintColorList.value}")
-    }
 
 
     /***************************数据模拟***************************************************/
@@ -217,10 +97,10 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
         PaintItem(
             0,
             false,
-            TrackType.SMART_LINE,
+            TrackType.ARROWHEAD,
             1.00f,
             ColorConfig(Color.BLACK),
-            R.drawable.paint_brush_selected_ellipse_head
+            Brush.getResId(TrackType.ARROWHEAD)
         ),
         PaintItem(
             1,
@@ -269,7 +149,7 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
     private val colorTitle = PaintTitle(15, "颜色")
 
     private val paintShapes = listOf(
-        PaintShape(1, R.drawable.icon_shape_arrow, false),
+        PaintShape(1, R.drawable.icon_shape_arrow, true),
         PaintShape(2, R.drawable.icon_shape_circle, false),
         PaintShape(3, R.drawable.icon_shape_double_arrow, false),
         PaintShape(4, R.drawable.icon_shape_ellipse, false),
