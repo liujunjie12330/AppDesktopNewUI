@@ -12,12 +12,14 @@ import com.liujunjie.appdesktopnewui.databinding.ColorSettingColorBinding
 import com.liujunjie.appdesktopnewui.databinding.ColorSettingOperationLayoutBinding
 import com.liujunjie.appdesktopnewui.databinding.ColorSettingShapeThickBinding
 import com.liujunjie.appdesktopnewui.databinding.ColorSettingTitleBinding
+import com.liujunjie.appdesktopnewui.enums.TrackType
 import com.liujunjie.appdesktopnewui.util.ClickUtils
 
 class PaintEditAdapter(
     val paintClickEvent: PaintClickEvent,
     val colorEditEvent: ColorEditEvent
 ) : ListAdapter<PaintEditItem, RecyclerView.ViewHolder>(PaintEditDiff) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             PaintEditType.TITLE.ordinal -> TitleViewHolder(
@@ -76,14 +78,15 @@ class PaintEditAdapter(
                 }
             }
 
-            is PaintOperation->{
+            is PaintOperation -> {
                 if (item.isAdd) {
                     (holder as OperationViewHolder).bindAdd(item, addColor = { paintClickEvent.addColorToEditPop() })
-                }else{
+                } else {
                     (holder as OperationViewHolder).bindDel(item, complete = { paintClickEvent.complete() })
                 }
             }
 
+            else -> throw IllegalArgumentException("Unknown view type")
         }
     }
 
@@ -133,13 +136,14 @@ class ShapeThickViewHolder(
 class OperationViewHolder(
     val binding: ColorSettingOperationLayoutBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bindAdd(item: PaintOperation,addColor:()-> Unit) {
+    fun bindAdd(item: PaintOperation, addColor: () -> Unit) {
         binding.operate.setImageResource(item.addIcon)
         binding.root.setOnClickListener {
             addColor()
         }
     }
-    fun bindDel(item: PaintOperation,complete:()-> Unit) {
+
+    fun bindDel(item: PaintOperation, complete: () -> Unit) {
         binding.operate.setImageResource(item.completeIcon)
         binding.root.setOnClickListener {
             complete()
@@ -168,6 +172,8 @@ class ColorViewHolder(
             if (ClickUtils.isDoubleClick()) {
                 setSelectedColor(item)
                 setColorToEditPop(item)
+            }else{
+                setSelectedColor(item)
             }
         }
         binding.root.setOnLongClickListener {
@@ -219,6 +225,7 @@ data class PaintThick(
 
 data class PaintShape(
     val index: Int = 0,
+    val trackType: TrackType,
     @DrawableRes val shapeIcon: Int,
     val isSelected: Boolean = false
 ) : PaintEditItemBase(index) {
@@ -315,14 +322,30 @@ object PaintEditDiff : DiffUtil.ItemCallback<PaintEditItem>() {
     }
 
     override fun areContentsTheSame(oldItem: PaintEditItem, newItem: PaintEditItem): Boolean {
-        return when (oldItem) {
-            is PaintColor -> {
-                oldItem.isSelected == (newItem as PaintColor).isSelected && oldItem.canDelete == newItem.canDelete && oldItem.color == newItem.color
+        return when {
+            oldItem is PaintColor && newItem is PaintColor -> {
+                oldItem.isSelected == newItem.isSelected && oldItem.canDelete == newItem.canDelete && oldItem.color == newItem.color
             }
-            is PaintShape -> oldItem.isSelected == (newItem as PaintShape).isSelected
-            is PaintThick -> oldItem.thick == (newItem as PaintThick).thick
-            else -> true
+
+            oldItem is PaintShape && newItem is PaintShape -> {
+                oldItem.isSelected == newItem.isSelected
+            }
+
+            oldItem is PaintThick && newItem is PaintThick -> {
+                oldItem.isSelected == newItem.isSelected
+            }
+
+            oldItem is PaintOperation && newItem is PaintOperation -> {
+                oldItem.isAdd == newItem.isAdd
+            }
+
+            oldItem is PaintTitle && newItem is PaintTitle -> {
+                false
+            }
+
+            else -> false
         }
     }
+
 
 }

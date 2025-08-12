@@ -55,25 +55,26 @@ class MainUIActivity : AppCompatActivity() {
     private val paintSelectPopWindow by lazy {
         PaintSelectPopWindow(
             content = binding.root,
-            cancel = {},
+            cancel = {paintViewModel.clear()},
             paintSelectEvent = object : PaintSelectEvent {
-                override fun onItemClickOnce(item: PaintItem) {
-                    paintViewModel.selectPaint(item)
+                override fun setSelectedPaint(item: PaintItem) {
+                    paintViewModel.setSelectedPaint(item)
                 }
 
                 override fun eraserSetting(item: PaintItem, archView: View) {
                     setLocation(archView)
-                    paintViewModel.setShapeList()
+                   // paintViewModel.setShapeList()
                 }
 
                 override fun smartLineSetting(item: PaintItem, archView: View) {
                     setLocation(archView)
-                    paintViewModel.setShapeList()
+                    paintViewModel.clear()
+                    paintViewModel.initSmartLineUiData()
                 }
 
                 override fun commonLineSetting(item: PaintItem, archView: View) {
                     setLocation(archView)
-                    paintViewModel.setShapeList()
+                    //paintViewModel.setShapeList()
                 }
 
                 override fun setLocation(archView: View) {
@@ -84,8 +85,7 @@ class MainUIActivity : AppCompatActivity() {
                     val right = left + archView.width
                     val bottom = top + archView.height
                     val rect = Rect(left, top, right, bottom)
-                    paintViewModel.setSelectedRect(rect)
-                    Log.d("MainUIActivity", "setLocation: $rect")
+                    paintViewModel.setRect(rect)
                 }
 
             },
@@ -117,19 +117,44 @@ class MainUIActivity : AppCompatActivity() {
     private val paintSettingPop by lazy {
         PaintSettingPopWindow(
             content = binding.root,
-            onCancel = { paintViewModel.clearShapeList() },
+            onCancel = {  },
             paintClickEvent = object : PaintClickEvent {
-                override fun colorSetting(item: PaintColor) {
-                    paintViewModel.setColorToSetting(ColorConfig(item.color))
+                override fun setSelectedShape(item: PaintShape) {
+                    paintViewModel.setSelectedShape(item)
+                }
+
+                override fun setSelectedThick(item: PaintThick) {
+                    Log.d("MainUIActivity", "clearUp")
+                }
+
+                override fun setSelectedColor(item: PaintColor) {
+                   paintViewModel.setSelectedColor(item)
                 }
 
                 override fun setCurrentPosition(position: Rect) {
-                    paintViewModel.setSelectedRect(position)
+                    paintViewModel.setRect(position)
                 }
 
-                override fun colorClick(item: PaintColor) {
-                    paintViewModel.setPaintUsingColor(item)
+                override fun setColorToEditPop(item: PaintColor) {
+                    Log.d("MainUIActivity", "clearUp")
                 }
+
+                override fun addColorToEditPop() {
+                    Log.d("MainUIActivity", "clearUp")
+                }
+
+                override fun complete() {
+                    Log.d("MainUIActivity", "clearUp")
+                }
+
+                override fun changeColorToDel() {
+                    Log.d("MainUIActivity", "clearUp")
+                }
+
+                override fun delColor(item: PaintColor) {
+                    Log.d("MainUIActivity", "clearUp")
+                }
+
             }
         )
     }
@@ -140,7 +165,7 @@ class MainUIActivity : AppCompatActivity() {
             onCancel = {},
             colorSettingEvent = object : ColorSettingEvent {
                 override fun setColor(color: Int) {
-                    paintViewModel.setColor(ColorConfig(color))
+
                 }
             })
     }
@@ -159,8 +184,7 @@ class MainUIActivity : AppCompatActivity() {
         }
         lifecycleScope.launch {
             sideBarViewModel.selectedItem.collectLatest {
-                if (it == SideBarItems.DrawPaintItem) paintViewModel.addPaints()
-                else paintViewModel.clear()
+                if (it== SideBarItems.DrawPaintItem) paintViewModel.initPaints()
             }
         }
         lifecycleScope.launch {
@@ -182,7 +206,7 @@ class MainUIActivity : AppCompatActivity() {
         }
 
         lifecycleScope.launch {
-            colorSettingPop.collectState(PopupState<ColorConfig>(paintViewModel.currentSettingColor, paintViewModel.selectedPaintRect))
+
         }
 
     }
