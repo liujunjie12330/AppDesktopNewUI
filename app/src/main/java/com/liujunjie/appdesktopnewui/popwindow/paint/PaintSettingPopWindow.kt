@@ -40,6 +40,7 @@ class PaintSettingPopWindow(
         width = 339
         height = ViewGroup.LayoutParams.WRAP_CONTENT
         binding.settingRecycle.apply {
+            itemAnimator = null
             adapter = paintEditAdapter
             layoutManager = GridLayoutManager(context, 20, GridLayoutManager.VERTICAL, false).apply {
                 spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

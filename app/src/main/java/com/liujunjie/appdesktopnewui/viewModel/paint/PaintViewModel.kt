@@ -52,6 +52,9 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
     val selectedPaintRect = _selectedPaintRect.asStateFlow()
 
 
+    private val _selectedPaintThick = MutableStateFlow<PaintThick?>(null)
+    val selectedPaintThick = _selectedPaintThick.asStateFlow()
+
     private val _selectedPaintShape = MutableStateFlow<PaintShape?>(null)
     val selectedPaintShape = _selectedPaintShape.asStateFlow()
 
@@ -120,6 +123,42 @@ class PaintViewModel(application: Application) : AndroidViewModel(application) {
         _selectedPaint.value = paint.copy(isSelected = true)
         viewModelScope.launch {
             updatePaintItems(paint)
+        }
+    }
+
+
+    /**
+     * 选中粗细
+     */
+    fun setSelectedThick(thick: PaintThick) {
+        _selectedPaintThick.value = thick.copy(isSelected = true)
+        _selectedPaint.value = _selectedPaint.value!!.copy(thickness = thick.thick)
+        updatePaintThicks(thick)
+    }
+
+
+    fun addColor() {
+        if (_paintColorList.value == null) return
+        val color = _paintColorList.value!!.last()
+        val newColor = PaintColor(color.index + 1, color.color, isSelected = true, false)
+        val updateList = _paintColorList.value!!.map {
+            it.copy(isSelected = false)
+        } + newColor  // 这里用 + 运算符添加元素
+
+        _paintColorList.value = updateList
+        Log.d("PaintViewModel", "addColor: ${updateList.size}")
+        _selectedColor.value = newColor
+    }
+
+
+    private fun updatePaintThicks(thick: PaintThick) {
+        if (_paintThickList.value == null) return
+        _paintThickList.value = _paintThickList.value!!.map {
+            if (it.index == thick.index) {
+                it.copy(isSelected = true)
+            } else {
+                it.copy(isSelected = false)
+            }
         }
     }
 

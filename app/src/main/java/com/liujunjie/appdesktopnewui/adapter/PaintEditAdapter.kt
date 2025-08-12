@@ -1,6 +1,7 @@
 package com.liujunjie.appdesktopnewui.adapter
 
 import android.graphics.Rect
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -139,6 +140,7 @@ class OperationViewHolder(
     fun bindAdd(item: PaintOperation, addColor: () -> Unit) {
         binding.operate.setImageResource(item.addIcon)
         binding.root.setOnClickListener {
+            Log.d("OperationViewHolder", "add")
             addColor()
         }
     }

@@ -55,7 +55,7 @@ class MainUIActivity : AppCompatActivity() {
     private val paintSelectPopWindow by lazy {
         PaintSelectPopWindow(
             content = binding.root,
-            cancel = {paintViewModel.clear()},
+            cancel = { paintViewModel.clear() },
             paintSelectEvent = object : PaintSelectEvent {
                 override fun setSelectedPaint(item: PaintItem) {
                     paintViewModel.setSelectedPaint(item)
@@ -63,7 +63,7 @@ class MainUIActivity : AppCompatActivity() {
 
                 override fun eraserSetting(item: PaintItem, archView: View) {
                     setLocation(archView)
-                   // paintViewModel.setShapeList()
+                    // paintViewModel.setShapeList()
                 }
 
                 override fun smartLineSetting(item: PaintItem, archView: View) {
@@ -117,18 +117,18 @@ class MainUIActivity : AppCompatActivity() {
     private val paintSettingPop by lazy {
         PaintSettingPopWindow(
             content = binding.root,
-            onCancel = {  },
+            onCancel = { },
             paintClickEvent = object : PaintClickEvent {
                 override fun setSelectedShape(item: PaintShape) {
                     paintViewModel.setSelectedShape(item)
                 }
 
                 override fun setSelectedThick(item: PaintThick) {
-                    Log.d("MainUIActivity", "clearUp")
+                    paintViewModel.setSelectedThick(item)
                 }
 
                 override fun setSelectedColor(item: PaintColor) {
-                   paintViewModel.setSelectedColor(item)
+                    paintViewModel.setSelectedColor(item)
                 }
 
                 override fun setCurrentPosition(position: Rect) {
@@ -140,7 +140,7 @@ class MainUIActivity : AppCompatActivity() {
                 }
 
                 override fun addColorToEditPop() {
-                    Log.d("MainUIActivity", "clearUp")
+                    paintViewModel.addColor()
                 }
 
                 override fun complete() {
@@ -184,7 +184,7 @@ class MainUIActivity : AppCompatActivity() {
         }
         lifecycleScope.launch {
             sideBarViewModel.selectedItem.collectLatest {
-                if (it== SideBarItems.DrawPaintItem) paintViewModel.initPaints()
+                if (it == SideBarItems.DrawPaintItem) paintViewModel.initPaints()
             }
         }
         lifecycleScope.launch {

@@ -12,9 +12,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.liujunjie.appdesktopnewui.databinding.SelectPaintItemLayoutBinding
 import com.liujunjie.appdesktopnewui.dpToPx
-import com.liujunjie.appdesktopnewui.enums.TrackType
+import com.liujunjie.appdesktopnewui.uimodel.paint.Brush
 import com.liujunjie.appdesktopnewui.uimodel.paint.PaintItem
-import com.liujunjie.appdesktopnewui.util.ClickUtils
 import com.liujunjie.appdesktopnewui.util.setTintColor
 
 class PaintSelectAdapter(
@@ -72,6 +71,9 @@ class PaintSelectAdapter(
                             }
                         }
                         holder.binding.paint.postInvalidate()
+                    }
+                    "TYPE_CHANGED"->{
+                        holder.binding.paint.setImageResource(Brush.getResId(getItem(position).type))
                     }
                 }
             }
@@ -135,7 +137,7 @@ class PaintSelectAdapter(
             openPaintSetting: (item: PaintItem, archView: View) -> Unit
         ) {
             Log.d(TAG,"画笔列表更新了------------$item")
-            binding.paint.setImageResource(item.icon)
+            binding.paint.setImageResource(Brush.getResId(item.type))
             binding.root.setOnClickListener {
                 setSelectedPaint(item)
             }
@@ -168,6 +170,9 @@ object PaintDiffCallback : DiffUtil.ItemCallback<PaintItem>() {
         }
         if (oldItem.colorConfig.color != newItem.colorConfig.color) {
             return listOf("COLOR_CHANGED")
+        }
+        if (oldItem.type != newItem.type) {
+            return listOf("TYPE_CHANGED")
         }
         return super.getChangePayload(oldItem, newItem)
     }
