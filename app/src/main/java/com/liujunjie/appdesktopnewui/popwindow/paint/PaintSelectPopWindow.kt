@@ -32,7 +32,7 @@ class PaintSelectPopWindow(
     init {
         width = 772
         height = 110
-        isTouchable = true
+        isOutsideTouchable = false
         binding.paintList.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = this@PaintSelectPopWindow.adapter
@@ -69,6 +69,7 @@ class PaintSelectPopWindow(
         binding.paintRetract.setOnClickListener {
             paintOperateEvent.retract()
         }
+        isFocusable = true
     }
 
     override fun createContentView(inflater: LayoutInflater, parent: ViewGroup?): ViewGroup {

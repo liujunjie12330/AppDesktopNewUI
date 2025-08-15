@@ -36,8 +36,6 @@ class ColorSettingPopWindow(
         val rootHeight = binding.root.measuredHeight
         height = rootHeight
         width = rootWidth
-        isFocusable = true
-        isOutsideTouchable = true
         colorFormatSpinnerSetting()
         colorConfigValueUi(colorConfig.color, true)
         applyColorInInputHide()

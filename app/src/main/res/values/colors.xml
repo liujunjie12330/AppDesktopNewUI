@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--所有的控件底色-->
+    <color name="weight_bg">#131C29</color>
+
+    <color name="seek_bar_bg_color">#131C29</color>
+    <color name="seek_bar_progress_color">#4C84FF</color>
+
     <color name="light_gray">#D3D3D3</color>
     <color name="light_sky_blue">#c7e0fb</color>
     <color name="ff858080">#FF858080</color>

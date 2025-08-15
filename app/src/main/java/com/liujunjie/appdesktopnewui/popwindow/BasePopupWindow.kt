@@ -25,10 +25,6 @@ abstract class BasePopupWindow<T>(
     init {
         width = ViewGroup.LayoutParams.WRAP_CONTENT
         height = ViewGroup.LayoutParams.WRAP_CONTENT
-        isFocusable = true
-        isOutsideTouchable = true
-        setBackgroundDrawable(0.toDrawable())
-        setOnDismissListener { onCancel() }
     }
 
     abstract fun createContentView(inflater: LayoutInflater, parent: ViewGroup?): ViewGroup
